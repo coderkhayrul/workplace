@@ -53,8 +53,16 @@
                 <li class="nav-item">
                     <a target="_blank" href="{{ route('web.home') }}"
                         class="nav-link">
-                        <i class="nav-icon fas fa-globe text-danger"></i>
+                        <i class="nav-icon fas fa-globe text-primary"></i>
                         <p> Live Visit </p>
+                    </a>
+                </li>
+                {{-- Logout --}}
+                <li class="nav-item">
+                    <a href="{{ route('admin.logout') }}"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+                        <p> LOGOUT </p>
                     </a>
                 </li>
 

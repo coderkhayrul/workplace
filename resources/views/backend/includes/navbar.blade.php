@@ -5,7 +5,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('admin.cache.clear') }}" class="nav-link btn btn-primary btn-sm text-light"><i class="fas fa-broom"></i> Cache Clear</a>
+            <a href="{{ route('admin.cache.clear') }}" class="nav-link btn btn-primary btn-sm text-light"><i class="fas fa-snowflake fa-spin mr-2"></i> Cache Clear</a>
         </li>
     </ul>
 
@@ -38,10 +38,5 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li> --}}
-        <li class="nav-item ml-2">
-            <a title="Logout" class="nav-link btn btn-danger text-white" href="{{ route('admin.logout') }}">
-                <i class="fas fa-sign-out-alt"></i>
-            </a>
-        </li>
     </ul>
 </nav>
