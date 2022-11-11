@@ -1,4 +1,6 @@
 @extends('backend.layouts.layout')
+{{-- Dynamic Title --}}
+@section('admin-title', 'From Design')
 @section('admin_content')
 <div class="content-header">
     <div class="container-fluid">

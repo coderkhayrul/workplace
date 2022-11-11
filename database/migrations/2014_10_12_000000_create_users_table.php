@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('user_name')->unique();
             $table->integer('role_id');
-            $table->string('title');
+            $table->string('user_title');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('profile_image')->nullable();
             $table->string('address')->nullable();
             $table->string('description')->nullable();
-            $table->string('status')->nullable();
+            $table->string('user_slug');
+            $table->string('status')->default(1)->comment('1 For Active 0 For Inactive');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -14,6 +14,8 @@
 <!-- Toastr -->
 <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
 
+@stack('custom-style')
+
 <!-- Theme style -->
 <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
 <!-- Google Font: Source Sans Pro -->

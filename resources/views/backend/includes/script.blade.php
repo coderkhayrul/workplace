@@ -10,6 +10,8 @@
 <!-- Toastr -->
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
 
+@stack('custom-script')
+
 <!-- AdminLTE App -->
 <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
 

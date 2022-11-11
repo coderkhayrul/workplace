@@ -14,7 +14,7 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item">
                     <a href="{{route('admin.dashboard')}}"
                         class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -24,9 +24,8 @@
 
                 <li class="nav-header">Management</li>
 
-                <li class="nav-item has-treeview">
-                    <a href="#"
-                        class="nav-link">
+                <li class="nav-item has-treeview {{ Route::is('admin.user.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             User Manager
@@ -36,7 +35,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.user.index') }}" class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}">
                                 <i class="fas fa-user-cog"></i>
                                 <p>User</p>
                             </a>
@@ -49,11 +48,12 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-header">Short Link</li>
                 {{-- Live Visit --}}
-                <li class="nav-item has-treeview menu-open">
-                    <a target="_blank" href="{{route('web.home')}}"
+                <li class="nav-item">
+                    <a target="_blank" href="{{ route('web.home') }}"
                         class="nav-link">
-                        <i class="nav-icon fas fa-globe"></i>
+                        <i class="nav-icon fas fa-globe text-danger"></i>
                         <p> Live Visit </p>
                     </a>
                 </li>
