@@ -11,7 +11,7 @@ class AdminController extends Controller
         return view('backend.dashboard');
     } //end method
 
-     public function blank(){
+    public function blank(){
         return view('backend.blank');
     } //end method
 

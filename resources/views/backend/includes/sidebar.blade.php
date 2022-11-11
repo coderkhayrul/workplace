@@ -3,11 +3,8 @@
     <a href="index3.html" class="brand-link">
         <img src="{{asset('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">WorkPlace</span>
     </a>
-    @php
-    $routeactive = Route::current()->getName();
-    @endphp
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -19,52 +16,46 @@
             with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <a href="{{route('admin.dashboard')}}"
-                        class="nav-link {{($routeactive == 'admin.dashboard')?'active':''}}">
+                        class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
+                        <p> Dashboard </p>
                     </a>
                 </li>
 
-                <li class="nav-header">EXAMPLES</li>
+                <li class="nav-header">Management</li>
 
                 <li class="nav-item has-treeview">
                     <a href="#"
-                        class="nav-link {{($routeactive == 'admin.blank')||($routeactive == 'admin.form')?'active':''}}">
-                        <i class="nav-icon fas fa-copy"></i>
+                        class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
-                            User
+                            User Manager
                             <i class="fas fa-angle-left right"></i>
-                            <!-- <span class="badge badge-info right">6</span> -->
+                            {{-- <span class="badge badge-info right">6</span> --}}
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage User</p>
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user-cog"></i>
+                                <p>User</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.blank')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Blank Page</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.form')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>FORM DESIGN</p>
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user-shield"></i>
+                                <p>Role</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+                {{-- Live Visit --}}
+                <li class="nav-item has-treeview menu-open">
+                    <a target="_blank" href="{{route('web.home')}}"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p> Live Visit </p>
+                    </a>
                 </li>
 
             </ul>

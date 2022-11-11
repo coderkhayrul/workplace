@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<title>AdminLTE 3 | Dashboard 2</title>
+<title>Admin | @yield('admin-title')</title>
 
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
