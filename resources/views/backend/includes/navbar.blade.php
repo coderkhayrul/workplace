@@ -5,14 +5,14 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link btn btn-primary btn-sm text-light"><i class="fas fa-broom"></i> Cache Clear</a>
+            <a href="{{ route('admin.cache.clear') }}" class="nav-link btn btn-primary btn-sm text-light"><i class="fas fa-broom"></i> Cache Clear</a>
         </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
                 <span class="badge badge-warning navbar-badge">15</span>
@@ -37,9 +37,9 @@
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item ml-2">
-            <a title="logout" class="nav-link btn btn-danger text-light" href="#">
+            <a title="Logout" class="nav-link btn btn-danger text-white" href="{{ route('admin.logout') }}">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </li>
