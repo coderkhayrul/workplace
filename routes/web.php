@@ -39,15 +39,15 @@ Route::prefix('admin')->group(function(){
         Route::get('/cache-clear','cacheClear')->name('admin.cache.clear');
     });
 
-        // <------- ADMIN USER ROUTE LIST ------->
-        Route::controller(UserController::class)->prefix('user')->group(function(){
-            Route::get('/','index')->name('admin.user.index');
-            Route::get('/create','create')->name('admin.user.create');
-            Route::post('/','store')->name('admin.user.store');
-            Route::get('/edit/{slug}','edit')->name('admin.user.edit');
-            Route::put('/update/{slug}','update')->name('admin.user.update');
-            Route::get('/delete/{slug}','destroy')->name('admin.user.destroy');
-        });
+    // <------- ADMIN USER ROUTE LIST ------->
+    Route::controller(UserController::class)->prefix('user')->group(function(){
+        Route::get('/','index')->name('admin.user.index');
+        Route::get('/create','create')->name('admin.user.create');
+        Route::post('/','store')->name('admin.user.store');
+        Route::get('/edit/{slug}','edit')->name('admin.user.edit');
+        Route::put('/update/{slug}','update')->name('admin.user.update');
+        Route::get('/delete/{slug}','destroy')->name('admin.user.destroy');
+    });
 
 
 });
