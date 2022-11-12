@@ -24,8 +24,8 @@
 
                 <li class="nav-header">Management</li>
 
-                <li class="nav-item has-treeview {{ Route::is('admin.user.*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}">
+                <li class="nav-item has-treeview {{ Route::is('admin.user.*') ? 'menu-open' : '' }} {{ Route::is('admin.role.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}  {{ Route::is('admin.role.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             User Manager
@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.role.index') }}" class="nav-link {{ Route::is('admin.role.*') ? 'active' : '' }}">
                                 <i class="fas fa-user-shield"></i>
                                 <p>Role</p>
                             </a>

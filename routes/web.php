@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\WebsiteController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,16 @@ Route::prefix('admin')->group(function(){
         Route::get('/edit/{slug}','edit')->name('admin.user.edit');
         Route::put('/update/{slug}','update')->name('admin.user.update');
         Route::get('/delete/{slug}','destroy')->name('admin.user.destroy');
+    });
+
+    // <------- ADMIN USER ROLE ROUTE LIST ------->
+    Route::controller(RoleController::class)->prefix('role')->group(function(){
+        Route::get('/','index')->name('admin.role.index');
+        Route::get('/create','create')->name('admin.role.create');
+        Route::post('/','store')->name('admin.role.store');
+        Route::get('/edit/{slug}','edit')->name('admin.role.edit');
+        Route::put('/update/{slug}','update')->name('admin.role.update');
+        Route::get('/delete/{slug}','destroy')->name('admin.role.destroy');
     });
 
 

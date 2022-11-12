@@ -9,6 +9,7 @@
 <script src="{{ asset('backend/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- Toastr -->
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
+<script src="{{asset('backend/dist/js/custom.js')}}"></script>
 
 @stack('custom-script')
 
