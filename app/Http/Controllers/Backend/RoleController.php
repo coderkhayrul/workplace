@@ -45,7 +45,7 @@ class RoleController extends Controller
 
         Role::where('role_slug', $slug)->update([
             'role_name' => $request->role_name,
-            'role_slug' => Str::slug($request->role_name),
+            'role_slug' => 'admin',
             'role_comments' => $request->role_comments,
         ]);
 

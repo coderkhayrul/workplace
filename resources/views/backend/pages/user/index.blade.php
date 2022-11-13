@@ -29,7 +29,7 @@
 <section class="content">
     <div class="container-fluid">
         <!-- Info boxes -->
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Total <b>{{ count($users) }}</b> User</h3>
