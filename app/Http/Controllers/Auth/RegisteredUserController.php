@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -34,14 +35,22 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'user_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'role_id' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],
+        [
+            'user_name.required' => 'Enter Your User Name',
+            'email.required' => 'Enter Your Email',
+            'role_id.required' => 'Must Be Select Your Role',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'user_name' => $request->user_name,
+            'user_slug' => uniqid(),
             'email' => $request->email,
+            'role_id' => $request->role_id,
             'password' => Hash::make($request->password),
         ]);
 
@@ -49,6 +58,13 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if ($request->role_id == 2) {
+            return redirect(RouteServiceProvider::HOME);
+        }elseif ($request->role_id == 3) {
+            return redirect(RouteServiceProvider::HOME);
+        }else{
+
+        }
+
     }
 }
