@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 //  ======================================================
 
 Route::get('/', [WebsiteController::class, 'websiteVisit'])->name('web.home');
+Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
 
 
 // =======================================================
