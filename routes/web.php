@@ -28,8 +28,8 @@ Route::get('/', [WebsiteController::class, 'websiteVisit'])->name('web.home');
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
 //  ======================================================
-
-Route::prefix('admin')->group(function(){
+// ->middleware('')
+Route::prefix('admin')->middleware('admin')->group(function(){
 
     // <------- ADMIN ROUTE LIST ------->
     Route::controller(AdminController::class)->group(function(){

@@ -38,12 +38,12 @@ class RoleController extends Controller
 
     public function update(Request $request, $slug)
     {
-        $validation = $request->validate([
+        $request->validate([
             'role_name' => 'required|unique:roles,role_slug,' . $slug . ',role_name',
             'role_comments' => 'required',
         ]);
 
-        $role = Role::where('role_slug', $slug)->update([
+        Role::where('role_slug', $slug)->update([
             'role_name' => $request->role_name,
             'role_slug' => Str::slug($request->role_name),
             'role_comments' => $request->role_comments,

@@ -32,8 +32,8 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Total 25 User</h3>
-                    <a class="btn btn-sm btn-primary" href="#" style="float: right;" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>
+                    <h3 class="card-title">Total <b>{{ count($users) }}</b> User</h3>
+                    <a class="btn btn-sm btn-primary" href="#" style="float: right;" data-toggle="modal" data-target="#AddUser"><i class="fas fa-plus"></i>
                         Create</a>
                 </div>
                 <!-- /.card-header -->
@@ -48,79 +48,41 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 217.078px;">Rendering engine</th>
+                                                style="width: 217.078px;">User Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 278.547px;">Browser</th>
+                                                style="width: 278.547px;">User Role</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 247.531px;">Platform(s)</th>
+                                                style="width: 247.531px;">Email</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1"
                                                 aria-label="Engine version: activate to sort column ascending"
-                                                style="width: 185.562px;">Engine version</th>
+                                                style="width: 185.562px;">Phone</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                                                style="width: 132.281px;">CSS grade</th>
+                                                style="width: 132.281px;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($users as $user)
                                         <tr role="row" class="odd">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Firefox 1.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.7</td>
-                                            <td>A</td>
+                                            <td class="sorting_1">{{ $user->user_name }}</td>
+                                            <td><span class="badge badge-primary">{{ $user->role->role_name }}</span></td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->phone_number }}</td>
+                                            <td>
+                                                <button title="Show" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#roleShow"><i class="fas fa-eye"></i></button>
+                                                @if ($user->id == Auth::id())
+                                                <button disabled title="Edit" class="btn btn-sm btn-secondary"><i class="fas fa-user-edit"></i></button>
+                                                <button disabled title="Delete" class="btn btn-sm btn-danger" href="#"><i class="fas fa-user-times"></i></button>
+                                                @else
+                                                <button title="Edit" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#roleEdit"><i class="fas fa-user-edit"></i></button>
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="#"><i class="fas fa-user-times"></i></a>
+                                                @endif
+                                            </td>
                                         </tr>
-                                        <tr role="row" class="even">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Firefox 1.5</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.8</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Camino 1.0</td>
-                                            <td>OSX.2+</td>
-                                            <td>1.8</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr role="row" class="even">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Camino 1.5</td>
-                                            <td>OSX.3+</td>
-                                            <td>1.8</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Netscape 7.2</td>
-                                            <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                            <td>1.7</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr role="row" class="even">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Netscape Browser 8</td>
-                                            <td>Win 98SE+</td>
-                                            <td>1.7</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Netscape Navigator 9</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.8</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr role="row" class="even">
-                                            <td class="sorting_1">Gecko</td>
-                                            <td>Mozilla 1.0</td>
-                                            <td>Win 95+ / OSX.1+</td>
-                                            <td>1</td>
-                                            <td>A</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -135,7 +97,8 @@
     <!--/. container-fluid -->
 </section>
 
-<div class="modal fade" id="modal-lg"  data-backdrop="static">
+<!-- Edit Modal -->
+<div class="modal fade" id="AddUser"  data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,13 +107,62 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
-            </div>
+            <form action="{{ route('admin.user.store') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputName">User Name</label>
+                            <input name="user_name" value="{{ old('user_name') }}" type="text" class="form-control @error('user_name') is-invalid @enderror" id="exampleInputName" placeholder="Enter User Name">
+                            @error('user_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail">User Email</label>
+                            <input name="email" value="{{ old('email') }}" type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail" placeholder="Enter User Name">
+                            @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword">User Password</label>
+                            <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Enter User Password">
+                            @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        @php
+                            $roles = App\Models\Role::where('role_status', 1)->get();
+                        @endphp
+                        <div class="form-group">
+                            <label for="exampleInputRole">User Role</label>
+                            <select name="role_id" id="role_id" class="form-control  @error('role_id') is-invalid @enderror">
+                                <option label="Select Role"></option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('role_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
+                </div>
+            </form>
         </div>
         <!-- /.modal-content -->
     </div>

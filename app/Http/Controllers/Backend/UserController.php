@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -14,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.user.index');
+        $users = User::where('status', 1)->get();
+        return view('backend.pages.user.index', compact('users'));
     }
 
     /**
@@ -35,7 +39,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_name' => 'required|unique:users,user_name',
+            'email' => 'required|unique:users,email',
+            'password' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        $user = new User();
+        $user->full_name = $request->user_name;
+        $user->user_name = Str::lower($request->user_name);
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role_id = $request->role_id;
+        $user->user_slug = uniqid();
+        $user->save();
+
+        if ($user) {
+            $notification = array(
+                'message' => 'User Create Successfully!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+
+            return redirect()->back()->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'User Create Failed!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+
+            return redirect()->back()->with($notification);
+        }
     }
 
     /**

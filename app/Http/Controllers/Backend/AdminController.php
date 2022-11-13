@@ -23,7 +23,7 @@ class AdminController extends Controller
             'alert-type' => 'success',
         ); // returns Notification,
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('web.home')->with($notification);
     }
 
     // Application Cache Clear Methord
