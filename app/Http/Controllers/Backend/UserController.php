@@ -47,7 +47,6 @@ class UserController extends Controller
         ]);
 
         $user = new User();
-        $user->full_name = $request->user_name;
         $user->user_name = Str::lower($request->user_name);
         $user->email = $request->email;
         $user->password = Hash::make($request->password);

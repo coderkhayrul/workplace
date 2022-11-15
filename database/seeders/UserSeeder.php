@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
     {
 
         User::create([
-            'full_name' => 'Admin',
             'user_name' => 'admin',
             'role_id' => 1,
             'user_slug' => uniqid(),
