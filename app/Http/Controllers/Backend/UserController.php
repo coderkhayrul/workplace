@@ -3,40 +3,31 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $users = User::where('status', 1)->get();
-        return view('backend.pages.user.index', compact('users'));
+        $data['users'] = User::with('role')->where('status', 1)->get();
+        $data['roles'] = Role::where('role_status', 1)->get();
+
+        return view('backend.pages.user.index')->with($data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,13 +37,17 @@ class UserController extends Controller
             'role_id' => 'required',
         ]);
 
-        $user = new User();
-        $user->user_name = Str::lower($request->user_name);
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role_id = $request->role_id;
-        $user->user_slug = uniqid();
-        $user->save();
+        $user = User::insertGetId([
+            'user_name' => Str::lower($request->user_name),
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id,
+            'user_slug' => uniqid(),
+        ]);
+        UserProfile::create([
+            'user_id' => $user,
+            'full_name' => $request->user_name,
+        ]);
 
         if ($user) {
             $notification = array(
@@ -67,52 +62,78 @@ class UserController extends Controller
                 'alert-type' => 'success',
             ); // returns Notification,
 
-            return redirect()->back()->with($notification);
+        return redirect()->back()->with($notification);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+    }
+
+    public function profileShow($slug)
+    {
+        $user = User::where('user_slug', $slug)->with('profile')->first();
+        return view('backend.pages.user.profile', compact('user'));
+    }
+
+    public function profileAccount(Request $request, $slug)
+    {
+        $request->validate([
+            'profile_pic' => 'mimes:png,jpg',
+            'full_name' => 'required',
+            'email' => 'required|unique:users,user_slug,' . $slug . ',email',
+            'phone_number' => 'required|required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:users,user_slug,' . $slug . ',phone_number',
+        ]);
+        $user = User::where('user_slug', $slug)->first();
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        // Image Find And Update
+            if ($user) {
+                if ($request->hasFile('profile_pic')) {
+                    if ($request->profile_old_image) {
+                        unlink($request->profile_old_image);
+                    }
+                    $new_image = $request->file('profile_pic');
+                    $image_name = hexdec(uniqid()) . '.' . $new_image->getClientOriginalExtension();
+                    Image::make($new_image)->resize(150, 150)->save('uploads/user/' . $image_name);
+                    $profile_image = 'uploads/user/' . $image_name;
+
+                    UserProfile::where('user_id', $user->id)->update([
+                        'full_name' => $request->full_name,
+                        'profile_pic' => $profile_image,
+                    ]);
+                }
+            }
+        $user->update();
+
+        if ($user) {
+            $notification = array(
+                'message' => 'User Profile Updated!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'User Updated Failed!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
     }
 }

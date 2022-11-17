@@ -49,6 +49,12 @@ Route::prefix('admin')->middleware('admin')->group(function(){
         Route::get('/edit/{slug}','edit')->name('admin.user.edit');
         Route::put('/update/{slug}','update')->name('admin.user.update');
         Route::get('/delete/{slug}','destroy')->name('admin.user.destroy');
+
+        Route::get('/profile/{slug}','profileShow')->name('admin.user.profile');
+
+        Route::post('/profile/account/{slug}','profileAccount')->name('admin.user.account');
+        Route::get('/profile/{slug}','profileShow')->name('admin.user.profile');
+        Route::get('/profile/{slug}','profileShow')->name('admin.user.profile');
     });
 
     // <------- ADMIN USER ROLE ROUTE LIST ------->

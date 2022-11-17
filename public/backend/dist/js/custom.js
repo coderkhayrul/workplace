@@ -19,3 +19,21 @@ $(document).on("click", "#delete", function(e) {
 });
 
 
+// Custom File Input
+$(document).ready(function () {
+    bsCustomFileInput.init();
+});
+
+// Live Image Upload
+function readURL3(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#profileImage')
+                .attr('src', e.target.result)
+                .width(80)
+                .height(80);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

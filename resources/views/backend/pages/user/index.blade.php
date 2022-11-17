@@ -33,7 +33,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Total <b>{{ count($users) }}</b> User</h3>
-                    <a class="btn btn-sm btn-primary" href="#" style="float: right;" data-toggle="modal" data-target="#AddUser"><i class="fas fa-plus"></i>
+                    <a class="btn btn-sm btn-primary" href="#" style="float: right;" data-toggle="modal"
+                        data-target="#AddUser"><i class="fas fa-plus"></i>
                         Create</a>
                 </div>
                 <!-- /.card-header -->
@@ -68,17 +69,26 @@
                                         @foreach ($users as $user)
                                         <tr role="row" class="odd">
                                             <td class="sorting_1">{{ $user->user_name }}</td>
-                                            <td><span class="badge badge-primary">{{ $user->role->role_name }}</span></td>
+                                            <td><span
+                                                    class="badge badge-primary">{{ optional($user->role)->role_name }}</span>
+                                            </td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->phone_number }}</td>
+                                            <td>{{ $user->phone_number != null ? $user->phone_number : 'Not Available' }}
+                                            </td>
                                             <td>
-                                                <button title="Show" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#roleShow"><i class="fas fa-eye"></i></button>
+                                                <a href="{{ route('admin.user.profile',$user->user_slug) }}" title="Show" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+
                                                 @if ($user->id == Auth::id())
-                                                <button disabled title="Edit" class="btn btn-sm btn-secondary"><i class="fas fa-user-edit"></i></button>
-                                                <button disabled title="Delete" class="btn btn-sm btn-danger" href="#"><i class="fas fa-user-times"></i></button>
+                                                <button disabled title="Edit" class="btn btn-sm btn-secondary"><i
+                                                        class="fas fa-user-edit"></i></button>
+                                                <button disabled title="Delete" class="btn btn-sm btn-danger"
+                                                    href="#"><i class="fas fa-user-times"></i></button>
                                                 @else
-                                                <button title="Edit" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#roleEdit"><i class="fas fa-user-edit"></i></button>
-                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="#"><i class="fas fa-user-times"></i></a>
+                                                <button title="Edit" class="btn btn-sm btn-secondary"
+                                                    data-toggle="modal" data-target="#roleEdit"><i
+                                                        class="fas fa-user-edit"></i></button>
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="#"><i
+                                                        class="fas fa-user-times"></i></a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -97,8 +107,8 @@
     <!--/. container-fluid -->
 </section>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="AddUser"  data-backdrop="static">
+<!-- Create Modal Start  -->
+<div class="modal fade" id="AddUser" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -110,53 +120,57 @@
             <form action="{{ route('admin.user.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
-                        <div class="form-group">
-                            <label for="exampleInputName">User Name</label>
-                            <input name="user_name" value="{{ old('user_name') }}" type="text" class="form-control @error('user_name') is-invalid @enderror" id="exampleInputName" placeholder="Enter User Name">
-                            @error('user_name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                    <div class="form-group">
+                        <label for="exampleInputName">User Name</label>
+                        <input name="user_name" value="{{ old('user_name') }}" type="text"
+                            class="form-control @error('user_name') is-invalid @enderror" id="exampleInputName"
+                            placeholder="Enter User Name">
+                        @error('user_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
+                        @enderror
+                    </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail">User Email</label>
-                            <input name="email" value="{{ old('email') }}" type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail" placeholder="Enter User Name">
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                    <div class="form-group">
+                        <label for="exampleInputEmail">User Email</label>
+                        <input name="email" value="{{ old('email') }}" type="email"
+                            class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail"
+                            placeholder="Enter User Name">
+                        @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
+                        @enderror
+                    </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword">User Password</label>
-                            <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Enter User Password">
-                            @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                    <div class="form-group">
+                        <label for="exampleInputPassword">User Password</label>
+                        <input name="password" type="password"
+                            class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword"
+                            placeholder="Enter User Password">
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
+                        @enderror
+                    </div>
 
-                        @php
-                            $roles = App\Models\Role::where('role_status', 1)->get();
-                        @endphp
-                        <div class="form-group">
-                            <label for="exampleInputRole">User Role</label>
-                            <select name="role_id" id="role_id" class="form-control  @error('role_id') is-invalid @enderror">
-                                <option label="Select Role"></option>
-                                @foreach ($roles as $role)
-                                    <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('role_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                    <div class="form-group">
+                        <label for="exampleInputRole">User Role</label>
+                        <select name="role_id" id="role_id"
+                            class="form-control  @error('role_id') is-invalid @enderror">
+                            <option label="Select Role"></option>
+                            @foreach ($roles as $role)
+                            <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('role_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -168,7 +182,7 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+<!-- Create Modal End  -->
 @endsection
 
 @push('custom-script')

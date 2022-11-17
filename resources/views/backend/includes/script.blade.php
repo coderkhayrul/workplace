@@ -5,13 +5,16 @@
 <!-- overlayScrollbars -->
 <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 
+
 <!-- SweetAlert2 -->
 <script src="{{ asset('backend/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- Toastr -->
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
-<script src="{{asset('backend/dist/js/custom.js')}}"></script>
 
 @stack('custom-script')
+
+<script src="{{asset('backend/dist/js/custom.js')}}"></script>
+
 
 <!-- AdminLTE App -->
 <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
