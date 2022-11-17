@@ -97,10 +97,11 @@ class UserController extends Controller
         $request->validate([
             'profile_pic' => 'mimes:png,jpg',
             'full_name' => 'required',
-            'email' => 'required|unique:users,user_slug,' . $slug . ',email',
-            'phone_number' => 'required|required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:users,user_slug,' . $slug . ',phone_number',
+            'email' => 'required|email|unique:users,user_slug,' . $slug . ',email',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
         $user = User::where('user_slug', $slug)->first();
+
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         // Image Find And Update
@@ -120,6 +121,9 @@ class UserController extends Controller
                     ]);
                 }
             }
+            UserProfile::where('user_id', $user->id)->update([
+                'full_name' => $request->full_name,
+            ]);
         $user->update();
 
         if ($user) {

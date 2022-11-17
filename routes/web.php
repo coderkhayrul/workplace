@@ -53,8 +53,6 @@ Route::prefix('admin')->middleware('admin')->group(function(){
         Route::get('/profile/{slug}','profileShow')->name('admin.user.profile');
 
         Route::post('/profile/account/{slug}','profileAccount')->name('admin.user.account');
-        Route::get('/profile/{slug}','profileShow')->name('admin.user.profile');
-        Route::get('/profile/{slug}','profileShow')->name('admin.user.profile');
     });
 
     // <------- ADMIN USER ROLE ROUTE LIST ------->
