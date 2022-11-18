@@ -37,3 +37,4 @@ function readURL3(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
