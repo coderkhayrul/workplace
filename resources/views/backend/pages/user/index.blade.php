@@ -87,7 +87,7 @@
                                                 <button title="Edit" class="btn btn-sm btn-secondary"
                                                     data-toggle="modal" data-target="#roleEdit"><i
                                                         class="fas fa-user-edit"></i></button>
-                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="#"><i
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('admin.user.destroy',$user->user_slug) }}"><i
                                                         class="fas fa-user-times"></i></a>
                                                 @endif
                                             </td>
