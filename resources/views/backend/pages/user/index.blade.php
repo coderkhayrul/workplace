@@ -76,17 +76,11 @@
                                             <td>{{ $user->phone_number != null ? $user->phone_number : 'Not Available' }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.user.profile',$user->user_slug) }}" title="Show" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-
+                                                <a href="{{ route('admin.user.profile',$user->user_slug) }}" title="Edit" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                                                 @if ($user->id == Auth::id())
-                                                <button disabled title="Edit" class="btn btn-sm btn-secondary"><i
-                                                        class="fas fa-user-edit"></i></button>
                                                 <button disabled title="Delete" class="btn btn-sm btn-danger"
                                                     href="#"><i class="fas fa-user-times"></i></button>
                                                 @else
-                                                <button title="Edit" class="btn btn-sm btn-secondary"
-                                                    data-toggle="modal" data-target="#roleEdit"><i
-                                                        class="fas fa-user-edit"></i></button>
                                                 <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('admin.user.destroy',$user->user_slug) }}"><i
                                                         class="fas fa-user-times"></i></a>
                                                 @endif
