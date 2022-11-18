@@ -43,12 +43,13 @@
                         </div>
 
                         <h3 class="profile-username text-center">{{ $user->profile->full_name }}</h3>
-
+                        @if ($user->profile->user_position != null)
                         <p class="text-muted text-center">{{ optional($user->profile)->user_position }}</p>
+                        @endif
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>Balance</b> <a class="float-right"><b>{{ $user->profile->balance }}</b></a>
+                                <b>Balance</b> <a class="float-right"><b><span class="profile-username">৳</span> {{ $user->profile->balance }}</b></a>
                             </li>
                             <li class="list-group-item">
                                 <b>Online Status</b> <a class="float-right">
@@ -76,35 +77,31 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
                         <p class="text-muted">
                             B.S. in Computer Science from the University of Tennessee at Knoxville
                         </p>
 
+                        @if ( $user->profile->user_skill != null)
                         <hr>
-
                         <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                        <p class="text-muted">Malibu, California</p>
-
+                        <p class="text-muted">{{ $user->profile->present_address }}</p>
+                        @endif
+                        @if ( $user->profile->user_skill != null)
                         <hr>
-
                         <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
                         <p class="text-muted">
-                            <span class="tag tag-danger">UI Design</span>
-                            <span class="tag tag-success">Coding</span>
-                            <span class="tag tag-info">Javascript</span>
-                            <span class="tag tag-warning">PHP</span>
-                            <span class="tag tag-primary">Node.js</span>
+                            @if ($user->profile->user_skill != "")
+                            @foreach(explode(',', $user->profile->user_skill) as $skill)
+                            <span class="tag tag-primary">{{ $skill }}</span>
+                            @endforeach
+                            @endif
                         </p>
-
+                        @endif
+                        @if ( $user->profile->description != null)
                         <hr>
-
                         <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum
-                            enim neque.</p>
+                        <p class="text-muted">{{ $user->profile->description }}</p>
+                        @endif
                     </div>
                     <!-- /.card-body -->
                 </div>
