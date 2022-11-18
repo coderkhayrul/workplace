@@ -4,7 +4,14 @@
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-
+<!-- Summernote -->
+<script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
+</script>
 
 <!-- SweetAlert2 -->
 <script src="{{ asset('backend/plugins/sweetalert2/sweetalert2.min.js') }}"></script>

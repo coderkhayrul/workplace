@@ -140,4 +140,28 @@ class UserController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+    public function profileSetting(Request $request, $slug)
+    {
+        $user = User::where('user_slug', $slug)->first();
+            UserProfile::where('user_id', $user->id)->update([
+                'national_id' => $request->national_id,
+                'user_skill' => $request->user_skill,
+                'user_position' => $request->user_position,
+                'present_address' => $request->present_address,
+                'parmenent_address' => $request->parmenent_address,
+                'description' => $request->description,
+            ]);
+        $user->update();
+        return redirect()->back();
+    }
+    public function profileSocialMedia(Request $request, $slug)
+    {
+        $user = User::where('user_slug', $slug)->first();
+            UserProfile::where('user_id', $user->id)->update([
+                'facebook_link' => $request->facebook_link,
+                'github_link' => $request->github_link,
+            ]);
+        $user->update();
+        return redirect()->back();
+    }
 }

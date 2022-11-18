@@ -1,7 +1,18 @@
 @extends('backend.layouts.layout')
 @push('custom-style')
 <!-- DataTables -->
-<link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+{{--  <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">  --}}
+{{--  <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/bootstrap-tagsinput.css">  --}}
+{{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"/>  --}}
+{{--  <!-- Select2 -->
+<link rel="stylesheet" href="{{ as }}se}}/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="{{ as }}se}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+<style>
+    .bootstrap-tagsinput .tag{
+        color:rgb(17, 100, 234);
+    }
+</style>  --}}
 @endpush
 
 {{-- Dynamic Title --}}
@@ -246,107 +257,80 @@
                             </div>
                             <!-- /.tab-pane -->
 
-                            <div class="tab-pane" id="settings">
-                                <form class="form-horizontal">
+                            <div class=" tab-pane" id="settings">
+                                <form action="{{ Route('admin.user.setting',$user->user_slug) }}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="panel_name" value="settings">
                                     <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                        <label for="national_id" class="col-sm-2 col-form-label">National Id</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" value="{{ $user->profile->national_id }}" name="national_id" id="national_id" placeholder="Enter Your NID">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                        <label for="user_position" class="col-sm-2 col-form-label">Position</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputEmail"
-                                                placeholder="Email">
+                                            <input type="text" class="form-control" value="{{ $user->profile->user_position }}" name="user_position" id="user_position"
+                                                placeholder="Enter Your Position">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                                        <label for="user_skill" class="col-sm-2 col-form-label">Skills</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience"
-                                                placeholder="Experience"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputSkills"
+                                            <input data-role="tagsinput" type="text" value="{{ $user->profile->user_skill }}" class="form-control" name="user_skill" id="user_skill"
                                                 placeholder="Skills">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> I agree to the <a href="#">terms and
-                                                        conditions</a>
-                                                </label>
+                                        <label for="present_address" class="col-sm-2 col-form-label">Present Address</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control"  id="present_address" name="present_address"
+                                                placeholder="present_address">{{ $user->profile->present_address }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="parmenent_address" class="col-sm-2 col-form-label">Parmanent Address</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" id="parmenent_address" name="parmenent_address"
+                                                placeholder="parmenent_address">{{ $user->profile->parmenent_address }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="parmenent_address" class="col-sm-2 col-form-label">About You</label>
+                                        <div class="col-sm-10">
+                                            <div class="mb-3">
+                                                <textarea class="textarea" id="description" placeholder="Place some text here"
+                                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $user->profile->description }}</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="social">
-                                <form class="form-horizontal">
+                                <form action={{ Route('admin.user.socialmedia',$user->user_slug) }} class="form-horizontal" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                        <label for="facebook_link" class="col-sm-2 col-form-label">Facebook Link</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" value="{{ $user->profile->facebook_link }}" id="facebook_link" placeholder="Enter Your Facebook LINK">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                        <label for="github_link" class="col-sm-2 col-form-label">Github Link</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputEmail"
-                                                placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience"
-                                                placeholder="Experience"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputSkills"
-                                                placeholder="Skills">
+                                            <input type="text" class="form-control"value="{{ $user->profile->github_link }}" id="github_link"
+                                                placeholder="Enter Your Github LINK">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> I agree to the <a href="#">terms and
-                                                        conditions</a>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -369,4 +353,7 @@
 @push('custom-script')
     <!-- bs-custom-file-input -->
 <script src="{{ asset('backend') }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+{{--  <script src="{{ asset('backend') }}/dist/js/bootstrap-tagsinput.min.js"></script>  --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
 @endpush

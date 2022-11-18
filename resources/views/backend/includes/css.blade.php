@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
 <!-- overlayScrollbars -->
 <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+<!-- summernote -->
+  <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.css')}}">
 
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
