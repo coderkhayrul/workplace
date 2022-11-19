@@ -173,4 +173,27 @@ class UserController extends Controller
         }
 
     }
+    public function profileSocialMedia(Request $request, $slug)
+    {
+        //return $request->all();
+        $profile = UserProfile::where('profile_id', $request->profile_id)->update([
+            'facebook_link' => $request->facebook_link,
+            'github_link' => $request->github_link
+        ]);
+        Session::put('panel_name', $request->panel_name);
+
+        if ($profile) {
+            $notification = array(
+                'message' => 'User Profile Updated!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'User Updated Failed!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
+    }
 }

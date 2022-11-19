@@ -253,20 +253,20 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane {{ Session::get('panel_name') == 'social' ? 'active' : '' }}" id="social">
-                                <form action="#" class="form-horizontal" method="POST">
+                                <form action="{{ Route('admin.user.socialmedia',$user->user_slug) }}" class="form-horizontal" method="POST">
                                     @csrf
                                     <input type="hidden" name="profile_id" value="{{ $user->profile->profile_id }}">
                                     <input type="hidden" name="panel_name" value="social">
                                     <div class="form-group row">
                                         <label for="facebook_link" class="col-sm-2 col-form-label">Facebook Link</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" value="{{ $user->profile->facebook_link }}" id="facebook_link" placeholder="Enter Your Facebook LINK">
+                                            <input type="text" class="form-control" value="{{ $user->profile->facebook_link }}" name="facebook_link" id="facebook_link" placeholder="Enter Your Facebook LINK">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="github_link" class="col-sm-2 col-form-label">Github Link</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control"value="{{ $user->profile->github_link }}" id="github_link"
+                                            <input type="text" class="form-control"value="{{ $user->profile->github_link }}" name="github_link" id="github_link"
                                                 placeholder="Enter Your Github LINK">
                                         </div>
                                     </div>
