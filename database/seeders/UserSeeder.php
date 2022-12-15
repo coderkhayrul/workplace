@@ -26,11 +26,11 @@ class UserSeeder extends Seeder
             'email' => 'admin@mail.com',
             'password' => Hash::make('password'),
         ]);
+
         UserProfile::create([
             'user_id' => $user,
             'full_name' => 'Admin',
             'balance' => 0,
         ]);
-
     }
 }
