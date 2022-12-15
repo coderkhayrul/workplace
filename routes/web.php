@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\WebsiteController;
+use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class, 'websiteVisit'])->name('web.home');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
+
+
+Route::prefix('buyer')->group(function(){
+
+     // <------- SERVICE ROUTE LIST ------->
+     Route::controller(ServiceController::class)->prefix('service')->group(function(){
+        Route::get('/create', 'create')->name('buyer.service.create');
+     });
+
+});
 
 
 // =======================================================
