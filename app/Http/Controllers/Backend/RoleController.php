@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class RoleController extends Controller
 {
@@ -14,26 +13,6 @@ class RoleController extends Controller
     {
         $roles = Role::where('role_status', 1)->get();
         return view('backend.pages.role.index', compact('roles'));
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
     }
 
     public function update(Request $request, $slug)
@@ -55,7 +34,6 @@ class RoleController extends Controller
         ); // returns Notification,
 
         return redirect()->back()->with($notification);
-
     }
 
     public function destroy($slug)
