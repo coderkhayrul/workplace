@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->integer('cat_id');
+            $table->string('shortDes');
+            $table->longText('longdes');
+            $table->string('document');
+            $table->integer('price');
+            $table->date('StartDate');
+            $table->date('EndDate');
+            $table->integer('status')->default(2)->comment('1 for approve 2 for un approve');
             $table->timestamps();
         });
     }

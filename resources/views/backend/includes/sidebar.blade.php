@@ -75,17 +75,10 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href=""
-                                class="nav-link   'active' : '' }}">
+                            <a href="{{Route('buyer.service.index')}}"
+                                class="nav-link{{Route::is('buyer.service.index.*')}} ? 'active' : '' }}">
                                 <i class="fas fa-comment"></i>
                                 <p>Service Manage</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('buyer.service.create')}}"
-                                class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
-                                <i class="fas fa-plus"></i>
-                                <p>Service Add</p>
                             </a>
                         </li>
                     </ul>

@@ -31,7 +31,8 @@ Route::prefix('buyer')->group(function(){
 
      // <------- SERVICE ROUTE LIST ------->
      Route::controller(ServiceController::class)->prefix('service')->group(function(){
-        Route::get('/create', 'create')->name('buyer.service.create');
+        Route::get('/index', 'index')->name('buyer.service.index');
+        Route::post('/store','store')->name('buyer.service.store');
      });
 
 });
