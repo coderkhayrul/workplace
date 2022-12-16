@@ -31,6 +31,16 @@
         <!------------- SCRIPT END ------------->
         @include('backend.includes.script')
         <!------------- SCRIPT END ------------->
+
+        <!------------- CUSTOME SCREPT  ------------->
+        <div class="custome-script-wrapper">
+            @yield('custome_script')
+        </div>
+
+        <!------------- CUSTOME SCREPT END ------------->
+
+
+
 </body>
 
 </html>

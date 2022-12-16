@@ -36,8 +36,24 @@
                                     placeholder="Enter Service Title">
                             </div>
                             <div class="form-group">
-                                <label for="drescreption">Drescreption</label>
-                                <textarea class="form-control" id="drescreption" rows="3"></textarea>
+                                <label>Category</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Category</option>
+                                    <option>Category</option>
+                                    <option>Category</option>
+                                    <option>Category</option>
+                                    <option>Category</option>
+                                    <option>Category</option>
+                                    <option>Category</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="shortdrescreption">Short Drescreption</label>
+                                <textarea class="form-control" id="shortdrescreption" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="longdrescreption">Long Drescreption</label>
+                                <textarea class="textarea form-control" id="longdrescreption" rows="5" cols="7"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">Product Document</label>
@@ -81,3 +97,5 @@
     </div>
 </section>
 @endsection
+
+
