@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\BalanceRequestController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -61,6 +62,14 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/edit/{slug}', 'edit')->name('admin.role.edit');
         Route::put('/update/{slug}', 'update')->name('admin.role.update');
         Route::get('/delete/{slug}', 'destroy')->name('admin.role.destroy');
+    });
+
+    // <------- ADMIN BALANCE REQUEST ROUTE LIST ------->
+    Route::controller(BalanceRequestController::class)->prefix('balance')->group(function () {
+        Route::get('/', 'index')->name('admin.balance.index');
+        Route::post('/', 'store')->name('admin.balance.store');
+        Route::post('/update/{id}', 'update')->name('admin.balance.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.balance.destroy');
     });
 });
 
