@@ -62,10 +62,8 @@
                         </li>
                     </ul>
                 </li>
-                <li
-                    class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
-                    <a href="#"
-                        class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
                         <i class="fas fa-shopping-cart"></i>
                         <p>
                             Services Manager
@@ -75,12 +73,53 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a href="{{Route('buyer.service.index')}}"
                                 class="nav-link{{Route::is('buyer.service.index.*')}} ? 'active' : '' }}">
+=======
+                            <a href="" class="nav-link   'active' : '' }}">
+>>>>>>> 8cc32441625c85d96f235a901adb54ea6e0bf4b5
                                 <i class="fas fa-comment"></i>
                                 <p>Service Manage</p>
                             </a>
                         </li>
+<<<<<<< HEAD
+=======
+                        <li class="nav-item">
+                            <a href="{{ route('buyer.service.create') }}"
+                                class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                                <i class="fas fa-plus"></i>
+                                <p>Service Add</p>
+                            </a>
+                        </li>
+>>>>>>> 8cc32441625c85d96f235a901adb54ea6e0bf4b5
+                    </ul>
+                </li>
+
+                {{-- Balance  --}}
+                <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                        <p>
+                            Balance
+                            <i class="fas fa-angle-left right"></i>
+                            {{-- <span class="badge badge-info right">6</span> --}}
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.balance.index') }}" class="nav-link   'active' : '' }}">
+                                <i class="fa fa-money"></i>
+                                <p>Create Request</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('admin.balance.index') }}"
+                                class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                                <i class="fas fa-plus"></i>
+                                <p>All Request</p>
+                            </a>
+                        </li> --}}
                     </ul>
                 </li>
                 <li class="nav-header">Short Link</li>
