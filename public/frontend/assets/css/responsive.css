@@ -1,0 +1,1809 @@
+/*---------------------------------
+          Mixins & Animation CSS
+-----------------------------------*/
+@media only screen and (max-width: 575px) {
+  .xs-center {
+    text-align: center;
+  }
+  .xs-none {
+    display: none !important;
+  }
+  .smt-15 {
+    margin-top: 15px !important;
+  }
+  .breadcrumb-wrap {
+    padding: 110px 0 50px;
+  }
+  .breadcrumb-wrap .breadcrumb-title .breadcrumb-menu li {
+    font-size: 14px;
+  }
+  .breadcrumb-wrap .breadcrumb-title .breadcrumb-menu li a {
+    font-size: 14px;
+  }
+  .breadcrumb-wrap .breadcrumb-img img {
+    display: none;
+  }
+  .page-navigation {
+    margin: 15px 0 0;
+  }
+  .page-navigation .page-nav li a {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    line-height: 36px;
+  }
+  .page-navigation .page-nav li a i {
+    font-size: 13px;
+    line-height: 42px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info {
+    position: relative;
+    left: auto;
+    padding: 18px 20px;
+    width: 100%;
+    left: 50%;
+    margin-top: -55px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap h3 {
+    font-size: 20px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .auction-author-info .author-info .author-name h6 {
+    font-size: 14px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .auction-author-info .author-info .author-name a {
+    font-size: 14px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .auction-author-info .auction-item-stat h6, .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .auction-author-info .auction-item-stat span {
+    font-size: 14px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline {
+    margin: 20px 0 0;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline span {
+    font-size: 14px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline .countdown .cdown:after {
+    right: 5px;
+    font-size: 18px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline .countdown .cdown span {
+    font-size: 16px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline .countdown .cdown p {
+    font-size: 14px;
+    display: block;
+  }
+  .hero-wrap.style2 .hero-nft-item .author-info-wrap .author-info {
+    width: 100%;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline {
+    width: calc(100% - 100px);
+    margin-left: 10px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown {
+    margin-top: 10px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown:after {
+    top: 45%;
+    right: -6px;
+    font-size: 16px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown span {
+    font-size: 16px;
+    display: block;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown p {
+    font-size: 13px;
+    display: block;
+  }
+  .hero-wrap.style2 .hero-nft-item .btn {
+    margin-top: 20px;
+    background-color: #051124;
+    border-radius: 3px;
+    padding: 12px 20px;
+  }
+  .hero-wrap.style3 .hero-nft-slider {
+    padding: 10px 10px 0 10px;
+  }
+  .hero-wrap.style3 .hero-nft-slider:after {
+    width: 100%;
+    height: calc(100% - 75px);
+  }
+  .newsletter-wrap .newsletter-form input {
+    padding: 12px 15px;
+    height: 54px;
+  }
+  .newsletter-wrap .newsletter-form button {
+    position: relative;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    padding: 15px 20px;
+  }
+  .newsletter-wrap .newsletter-form button i {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .container-fluid {
+    max-width: 540px;
+    padding: 0 15px;
+  }
+  .breadcrumb-wrap {
+    padding: 90px 0 25px;
+  }
+  .breadcrumb-img img {
+    max-width: 180px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info {
+    width: 440px;
+    left: calc(50% + 5px);
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline {
+    width: calc(100% - 110px);
+    margin-left: 20px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown:after {
+    top: 45%;
+    right: -3px;
+    font-size: 18px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown span {
+    font-size: 22px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown p {
+    font-size: 15px;
+  }
+  .author-item-tab .nav-tabs {
+    padding: 20px;
+  }
+  .author-item-tab .nav-tabs .nav-item {
+    margin-right: 10px;
+  }
+  .author-item-tab .nav-tabs .nav-item .nav-link {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  p, input, textarea {
+    font-size: 14px;
+  }
+  .btn {
+    font-size: 14px;
+  }
+  .sm-none {
+    display: none !important;
+  }
+  .sm-center {
+    text-align: center !important;
+  }
+  .mb-50 {
+    margin-bottom: 30px !important;
+  }
+  .pt-100 {
+    padding-top: 50px;
+  }
+  .pb-50 {
+    padding-bottom: 0px;
+  }
+  .pb-60 {
+    padding-bottom: 15px;
+  }
+  .pb-100 {
+    padding-bottom: 50px;
+  }
+  .mt-100 {
+    margin-top: 50px !important;
+  }
+  .mb-100 {
+    margin-bottom: 50px !important;
+  }
+  .mtb-100 {
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+  }
+  .ptb-100 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .pt-70 {
+    padding-top: 20px;
+  }
+  .pb-70 {
+    padding-bottom: 20px;
+  }
+  .pb-75 {
+    padding-bottom: 25px;
+  }
+  .pb-50 {
+    padding-bottom: 0px;
+  }
+  .pt-75 {
+    padding-top: 25px;
+  }
+  .mb-40 {
+    margin-bottom: 25px !important;
+  }
+  .section-title.mb-50,
+  .content-title.mb-50 {
+    margin-bottom: 30px !important;
+  }
+  .section-title.mb-40 {
+    margin-bottom: 20px !important;
+  }
+  .link, .btn {
+    font-size: 14px;
+  }
+  .btn {
+    padding: 12px 25px 12px;
+  }
+  .back-to-top {
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    line-height: 32px;
+    right: 10px;
+  }
+  .back-to-top i {
+    font-size: 18px;
+  }
+  .section-title.style2 span, .section-title.style3 span,
+  .content-title.style2 span,
+  .content-title.style3 span {
+    font-size: 12px;
+  }
+  .section-title.style1 span,
+  .content-title.style1 span {
+    font-size: 14px;
+  }
+  .section-title h2,
+  .content-title h2 {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  .breadcrumb-title h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .breadcrumb-title .breadcrumb-menu li {
+    font-size: 14px;
+  }
+  .breadcrumb-title .breadcrumb-menu li:after {
+    font-size: 16px;
+    top: -1px;
+  }
+  .breadcrumb-title .breadcrumb-menu li a {
+    font-size: 14px;
+  }
+  .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next {
+    width: 40px;
+    height: 40px;
+  }
+  .owl-carousel .owl-nav button.owl-prev i, .owl-carousel .owl-nav button.owl-next i {
+    font-size: 14px;
+  }
+  .social-profile li a {
+    width: 40px;
+    height: 40px;
+  }
+  .social-profile li a i {
+    font-size: 15px;
+  }
+  .author-card.style1 .author-card-info h3,
+  .author-card.style2 .author-card-info h3,
+  .author-card.style5 .author-card-info h3,
+  .author-card.style3 .author-card-info h3,
+  .author-card.style4 .author-card-info h3,
+  .auction-card h3,
+  .promo-card h3,
+  .activity-card .activity-card-info h3,
+  .seller-card .seller-info h3,
+  .collection-card .collection-info-wrap .collection-info h3,
+  .team-card .team-info h3,
+  .promo-card.style4 .promo-info h3,
+  .auction-card .auction-info-wrap .auction-title h3,
+  .blog-card .blog-info h3 {
+    font-size: 20px;
+  }
+  .hero-wrap .hero-content span {
+    margin-bottom: 8px;
+  }
+  .hero-wrap .hero-content h1 {
+    margin-bottom: 15px;
+  }
+  .hero-wrap .hero-content p {
+    margin-bottom: 25px;
+  }
+  .hero-wrap .hero-content .hero-btn a {
+    padding: 10px 20px 10px;
+  }
+  .hero-wrap .hero-content .hero-btn a:nth-child(1) {
+    margin-right: 10px;
+  }
+  .hero-wrap.style1 .hero-content h1, .hero-wrap.style2 .hero-content h1, .hero-wrap.style3 .hero-content h1 {
+    font-size: 28px;
+  }
+  .hero-wrap.style1 .hero-content p, .hero-wrap.style2 .hero-content p, .hero-wrap.style3 .hero-content p {
+    padding-right: 10px;
+  }
+  .hero-wrap.style2 .hero-nft-item {
+    padding: 20px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap h4 {
+    font-size: 20px;
+    margin: 0 0 15px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    padding: 20px;
+    width: 100%;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .btn {
+    padding: 10px 20px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 100%;
+    display: block;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline {
+    margin-left: 0;
+    margin-bottom: 15px;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline span {
+    font-size: 14px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown {
+    margin-right: 6px;
+    padding-left: 6px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown:after {
+    font-size: 16px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown span {
+    font-size: 16px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown p {
+    font-size: 14px;
+    top: 2px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav,
+  .auction-slider-one.owl-carousel .owl-nav,
+  .auction-slider-two.owl-carousel .owl-nav {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 25px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev, .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    position: relative;
+    top: auto;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev {
+    left: auto;
+    margin-right: 8px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    right: auto;
+    margin-left: 8px;
+  }
+  .blog-slider-one.owl-carousel .owl-dots,
+  .auction-slider-one.owl-carousel .owl-dots,
+  .auction-slider-two.owl-carousel .owl-dots {
+    display: none;
+  }
+  .blog-slider-one.owl-carousel.style3 .owl-nav,
+  .auction-slider-one.owl-carousel.style3 .owl-nav,
+  .auction-slider-two.owl-carousel.style3 .owl-nav {
+    position: relative;
+    top: auto;
+    bottom: 0;
+    right: auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 25px;
+  }
+  .blog-slider-one.owl-carousel.style3 .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel.style3 .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel.style3 .owl-nav button.owl-prev {
+    margin-right: 15px;
+  }
+  .auction-card .auction-img .followers,
+  .auction-card .auction-img .item-popularity {
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    padding: 6px 12px 7px;
+  }
+  .auction-card .auction-img .followers i,
+  .auction-card .auction-img .item-popularity i {
+    font-size: 14px;
+  }
+  .auction-card.style1 .auction-info-wrap {
+    padding: 18px 20px 20px;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-author-info, .auction-card.style2 .auction-info-wrap .auction-author-info, .auction-card.style5 .auction-info-wrap .auction-author-info, .auction-card.style7 .auction-info-wrap .auction-author-info {
+    margin: 20px 0;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style2 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style5 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style7 .auction-info-wrap .auction-author-info .author-info .author-name h6 {
+    font-size: 14px;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-author-info .author-info .author-name h6 a, .auction-card.style2 .auction-info-wrap .auction-author-info .author-info .author-name h6 a, .auction-card.style5 .auction-info-wrap .auction-author-info .author-info .author-name h6 a, .auction-card.style7 .auction-info-wrap .auction-author-info .author-info .author-name h6 a {
+    font-size: 14px;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-author-info .author-info .author-name a, .auction-card.style2 .auction-info-wrap .auction-author-info .author-info .author-name a, .auction-card.style5 .auction-info-wrap .auction-author-info .author-info .author-name a, .auction-card.style7 .auction-info-wrap .auction-author-info .author-info .author-name a {
+    font-size: 14px;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-author-info .auction-item-stat h6,
+  .auction-card.style1 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style2 .auction-info-wrap .auction-author-info .auction-item-stat h6,
+  .auction-card.style2 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style5 .auction-info-wrap .auction-author-info .auction-item-stat h6,
+  .auction-card.style5 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style7 .auction-info-wrap .auction-author-info .auction-item-stat h6,
+  .auction-card.style7 .auction-info-wrap .auction-author-info .auction-bid h6 {
+    font-size: 14px;
+    margin: 0 0 5px;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-author-info .auction-item-stat span,
+  .auction-card.style1 .auction-info-wrap .auction-author-info .auction-bid span, .auction-card.style2 .auction-info-wrap .auction-author-info .auction-item-stat span,
+  .auction-card.style2 .auction-info-wrap .auction-author-info .auction-bid span, .auction-card.style5 .auction-info-wrap .auction-author-info .auction-item-stat span,
+  .auction-card.style5 .auction-info-wrap .auction-author-info .auction-bid span, .auction-card.style7 .auction-info-wrap .auction-author-info .auction-item-stat span,
+  .auction-card.style7 .auction-info-wrap .auction-author-info .auction-bid span {
+    font-size: 14px;
+  }
+  .auction-card.style1 .auction-info-wrap .auction-stock .btn, .auction-card.style2 .auction-info-wrap .auction-stock .btn, .auction-card.style5 .auction-info-wrap .auction-stock .btn, .auction-card.style7 .auction-info-wrap .auction-stock .btn {
+    padding: 7px 14px;
+  }
+  .auction-card.style2 .countdown .cdown, .auction-card.style5 .countdown .cdown, .auction-card.style7 .countdown .cdown {
+    padding: 14px 20px 18px;
+  }
+  .auction-card.style2 .countdown .cdown:after, .auction-card.style5 .countdown .cdown:after, .auction-card.style7 .countdown .cdown:after {
+    right: -6px;
+    font-size: 18px;
+  }
+  .auction-card.style2 .countdown .cdown span, .auction-card.style5 .countdown .cdown span, .auction-card.style7 .countdown .cdown span {
+    font-size: 20px;
+  }
+  .auction-card.style2 .auction-info-wrap .auction-author-info, .auction-card.style5 .auction-info-wrap .auction-author-info, .auction-card.style7 .auction-info-wrap .auction-author-info {
+    margin-bottom: 22px;
+  }
+  .auction-card.style2 .countdown {
+    width: calc(100% - 40px);
+    margin: -40px auto 0;
+  }
+  .auction-card.style2 .auction-info-wrap {
+    padding: 20px;
+  }
+  .auction-card.style3 .auction-info-wrap h3, .auction-card.style4 .auction-info-wrap h3, .auction-card.style6 .auction-info-wrap h3 {
+    margin-bottom: 20px;
+  }
+  .auction-card.style3 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style4 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style6 .auction-info-wrap .auction-author-info .author-info .author-name h6 {
+    font-size: 14px;
+  }
+  .auction-card.style3 .auction-info-wrap .auction-author-info .author-info .author-name a, .auction-card.style4 .auction-info-wrap .auction-author-info .author-info .author-name a, .auction-card.style6 .auction-info-wrap .auction-author-info .author-info .author-name a {
+    font-size: 14px;
+  }
+  .auction-card.style3 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style4 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style6 .auction-info-wrap .auction-author-info .auction-bid h6 {
+    font-size: 14px;
+  }
+  .auction-card.style3 .auction-info-wrap {
+    padding: 18px 20px 20px;
+  }
+  .auction-card.style4 .auction-img .item-popularity {
+    left: 20px;
+  }
+  .auction-card.style4 .auction-info-wrap {
+    padding: 20px 0 0;
+  }
+  .auction-card.style5 {
+    padding: 20px;
+  }
+  .auction-card.style7 .auction-info-wrap {
+    padding: 20px;
+  }
+  .auction-slider-one.owl-carousel .owl-dots .owl-dot span,
+  .auction-slider-two.owl-carousel .owl-dots .owl-dot span,
+  .blog-slider-one.owl-carousel .owl-dots .owl-dot span {
+    width: 20px;
+  }
+  .auction-slider-one.owl-carousel .owl-dots .owl-dot.active span,
+  .auction-slider-two.owl-carousel .owl-dots .owl-dot.active span,
+  .blog-slider-one.owl-carousel .owl-dots .owl-dot.active span {
+    width: 28px;
+  }
+  .author-card.style2 .author-card-info, .author-card.style4 .author-card-info, .author-card.style5 .author-card-info {
+    padding: 0 20px 18px;
+  }
+  .author-card.style2 .author-card-info .btn, .author-card.style4 .author-card-info .btn, .author-card.style5 .author-card-info .btn {
+    padding: 8px 16px 7px;
+    font-size: 14px;
+  }
+  .author-card.style1 .author-card-info p img, .author-card.style2 .author-card-info p img, .author-card.style3 .author-card-info p img, .author-card.style4 .author-card-info p img, .author-card.style5 .author-card-info p img {
+    max-width: 9px;
+  }
+  .author-card.style5 .author-card-info .author-name h3 a {
+    color: #fff;
+  }
+  .author-card.style5 .author-card-info .author-name h3 a:hover {
+    color: #F9574B;
+  }
+  .author-card.style5 .author-card-info .btn {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .author-slider-one.owl-carousel .owl-nav {
+    position: relative;
+    top: auto;
+    bottom: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    right: auto;
+    margin-top: 25px;
+  }
+  .author-slider-one.owl-carousel .owl-nav button.owl-prev {
+    margin-right: 8px;
+  }
+  .author-slider-one.owl-carousel .owl-nav button.owl-next {
+    margin-left: 8px;
+  }
+  .author-details-box {
+    padding: 20px;
+  }
+  .author-details-box .author-img {
+    width: 130px;
+    height: 130px;
+  }
+  .author-details-box .single-author-info {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .author-details-box .single-author-info h3 {
+    font-size: 20px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .edit-profile {
+    width: 45px;
+    height: 45px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .edit-profile i {
+    font-size: 16px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .share-profile,
+  .author-details-box .author-metainfo-wrap .author-metainfo .item-option {
+    margin-left: 0px;
+    margin-right: 8px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .share-profile span,
+  .author-details-box .author-metainfo-wrap .author-metainfo .item-option span {
+    width: 45px;
+    height: 45px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .share-profile span i,
+  .author-details-box .author-metainfo-wrap .author-metainfo .item-option span i {
+    font-size: 16px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .share-profile .social-profile {
+    bottom: -110px;
+    left: 0;
+    z-index: 10;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .share-profile .social-profile li a {
+    width: 45px;
+    height: 45px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .share-profile .social-profile li a i {
+    font-size: 16px;
+  }
+  .author-details-box .author-metainfo-wrap .author-metainfo .btn {
+    padding: 9px 15px;
+    margin-right: 8px;
+  }
+  .author-item-tab .nav-tabs {
+    padding: 20px;
+  }
+  .author-item-tab .nav-tabs .nav-item {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .author-item-tab .nav-tabs .nav-item:last-child {
+    margin-bottom: 0;
+  }
+  .author-item-tab .nav-tabs .nav-item .nav-link {
+    padding: 12px 20px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+  }
+  .cta-wrap.style2, .cta-wrap.style3 {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .cta-wrap.style2 .cta-img-wrap img, .cta-wrap.style3 .cta-img-wrap img {
+    margin: 0 auto;
+  }
+  .promo-card {
+    padding: 20px;
+  }
+  .promo-card .count-num {
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+  }
+  .promo-card.style1 .promo-info h3 {
+    margin: 0 0 10px;
+  }
+  .promo-card.style2 .promo-top, .promo-card.style3 .promo-top {
+    padding: 20px 20px 18px;
+  }
+  .promo-card.style2 .promo-top h3, .promo-card.style3 .promo-top h3 {
+    margin: 0;
+  }
+  .promo-card.style2 .promo-info, .promo-card.style3 .promo-info {
+    padding: 20px;
+  }
+  .promo-card.style4 {
+    padding: 20px;
+  }
+  .promo-card.style4 {
+    padding: 20px;
+  }
+  .collection-card .collection-info-wrap {
+    padding: 0 20px 20px;
+  }
+  .create-collection-form .form-group select {
+    font-size: 14px;
+  }
+  .create-collection-form .checkbox {
+    margin-bottom: 20px;
+  }
+  .seller-card {
+    padding: 20px;
+  }
+  .seller-card .seller-social {
+    margin-top: 20px;
+  }
+  .activity-card {
+    position: relative;
+    padding: 20px;
+  }
+  .activity-card .activity-card-img {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+  .activity-card .activity-card-metainfo {
+    width: 100%;
+  }
+  .activity-card .activity-card-metainfo li {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 14px;
+  }
+  .activity-card .activity-card-info {
+    margin: 15px 0 0;
+    width: 100%;
+    padding-right: 50px;
+  }
+  .activity-card .activity-card-action {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  .activity-card .activity-card-action i {
+    font-size: 16px;
+  }
+  .auction-filter .form-group label {
+    font-size: 18px;
+  }
+  .auction-filter.style2 .form-group select {
+    height: 54px;
+    font-size: 14px;
+  }
+  .auction-filter.style2 .form-group input {
+    height: 54px;
+    font-size: 14px;
+  }
+  .auction-filter.style2 .form-group button {
+    padding: 0 15px;
+  }
+  .bidding-popup h2 {
+    font-size: 22px;
+  }
+  .bidding-popup h6 {
+    font-size: 14px;
+  }
+  .bidding-popup .bidding-form {
+    margin-top: 25px;
+  }
+  .bidding-popup .bidding-form .form-group {
+    margin-bottom: 20px;
+  }
+  .bidding-popup .bidding-form .form-group input {
+    height: 52px;
+  }
+  .bidding-popup .bidding-tablelist {
+    margin-bottom: 20px;
+  }
+  .bidding-popup .bidding-tablelist li span {
+    font-size: 14px;
+  }
+  .blog-card.style1 .blog-info {
+    padding: 20px;
+  }
+  .blog-card.style1 .blog-info p {
+    margin-bottom: 20px;
+  }
+  .blog-card.style3 .blog-info {
+    padding: 20px;
+  }
+  .blog-card.style3 .blog-info h3 {
+    margin: 15px 0 12px;
+  }
+  .blog-card.style3 .blog-info .blog-author-info .blog-date {
+    width: 100%;
+    margin: 15px 0 0;
+  }
+  .item-desc .single-item-author {
+    margin-bottom: 20px;
+    padding-bottom: 22px;
+  }
+  .item-desc .item-deadline-wrap .item-deadline {
+    width: 100%;
+    margin-left: 0;
+  }
+  .item-desc .single-item-author .author-info,
+  .item-desc .item-deadline-wrap .single-item-bid {
+    width: 100%;
+    margin: 0  0 20px;
+  }
+  .item-desc .single-item-author .single-item-bid {
+    width: 100%;
+  }
+  .item-desc .item-title .item-title-left h2 {
+    font-size: 23px;
+    margin: 0 0 15px;
+  }
+  .item-desc .item-title .item-title-right {
+    width: 100%;
+    margin: 20px 0 0;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .item-desc .item-title .item-title-right .share-profile,
+  .item-desc .item-title .item-title-right .item-option {
+    position: relative;
+    margin-right: 10px;
+    margin-left: 0;
+  }
+  .item-desc .single-item-tab .item-history-wrap .history-item {
+    padding: 20px 15px;
+  }
+  .item-desc .item-deadline-wrap .item-deadline,
+  .item-desc .item-deadline-wrap .single-item-bid {
+    padding: 15px 20px;
+  }
+  .item-desc .item-deadline-wrap .item-deadline .countdown .cdown span {
+    font-size: 14px;
+  }
+  .item-desc .item-deadline-wrap .item-deadline .countdown .cdown p {
+    font-size: 13px;
+  }
+  .item-desc .single-item-tab .item-history-wrap .history-item .item-bid h6,
+  .item-desc .single-item-tab .item-history-wrap .history-item .author-name h6 {
+    font-size: 15px;
+  }
+  .item-desc .single-item-tab .item-desc {
+    padding: 20px 20px 10px;
+  }
+  .item-desc .item-title .item-title-right .item-option .more-option {
+    right: auto;
+    left: 0;
+  }
+  .item-desc .item-title .item-title-right .share-profile .social-profile {
+    bottom: -162px;
+    left: 1px;
+  }
+  .testimonial-card {
+    padding: 0 10px;
+  }
+  .testimonial-card .client-quote {
+    max-width: 100%;
+    margin: 0 0 20px;
+  }
+  .testimonial-card .client-info h5 {
+    font-size: 18px;
+  }
+  .testimonial-card .client-info span {
+    font-size: 14px;
+  }
+  .testimonial-slider-one.owl-carousel .owl-nav {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 30px;
+  }
+  .testimonial-slider-one.owl-carousel .owl-nav button.owl-prev, .testimonial-slider-one.owl-carousel .owl-nav button.owl-next {
+    position: relative;
+    top: auto;
+    bottom: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .testimonial-slider-one.owl-carousel .owl-nav button.owl-prev {
+    left: auto;
+    margin-right: 8px;
+  }
+  .testimonial-slider-one.owl-carousel .owl-nav button.owl-next {
+    right: auto;
+    margin-left: 8px;
+  }
+  .testimonial-slider-one.owl-carousel .owl-dots {
+    display: none;
+  }
+  .checkbox label {
+    font-size: 14px;
+  }
+  .checkbox label::before {
+    top: 3px;
+  }
+  .checkbox input:checked + label::after {
+    top: 6px;
+  }
+  .contact-content .content-title {
+    margin-bottom: 20px;
+  }
+  .contact-item {
+    padding: 25px;
+    margin: 42px 0 25px;
+  }
+  .contact-item .contact-icon {
+    width: 75px;
+    height: 75px;
+    margin: -65px auto 20px;
+  }
+  .contact-item .contact-icon i {
+    font-size: 32px;
+  }
+  .contact-item .contact-info h3 {
+    font-size: 20px;
+  }
+  .contact-item .contact-info a,
+  .contact-item .contact-info p {
+    display: block;
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    padding: 0 25px;
+  }
+  #contactForm .form-group input {
+    height: 56px;
+    padding: 12px 15px;
+  }
+  #contactForm .form-group textarea {
+    padding: 15px 15px;
+  }
+  .page-nav li a {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    line-height: 36px;
+  }
+  .page-nav li a i {
+    font-size: 13px;
+  }
+  .login-bg.style1, .login-bg.style2 {
+    height: 300px;
+  }
+  .error-content {
+    margin-top: 70px;
+  }
+  article h1,
+  .terms-wrap h1 {
+    font-size: 24px;
+  }
+  article h2,
+  .terms-wrap h2 {
+    font-size: 22px;
+  }
+  article h3,
+  .terms-wrap h3 {
+    font-size: 20px;
+  }
+  article h4,
+  .terms-wrap h4 {
+    font-size: 18px;
+  }
+  article h5,
+  .terms-wrap h5 {
+    font-size: 16px;
+  }
+  article h6,
+  .terms-wrap h6 {
+    font-size: 16px;
+  }
+  article h1, article h2, article h3, article h4, article h5, article h6,
+  .terms-wrap h1,
+  .terms-wrap h2,
+  .terms-wrap h3,
+  .terms-wrap h4,
+  .terms-wrap h5,
+  .terms-wrap h6 {
+    margin-bottom: 15px;
+  }
+  article ol,
+  .terms-wrap ol {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  article ul li, article ol li,
+  .terms-wrap ul li,
+  .terms-wrap ol li {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  article ul li:last-child, article ol li:last-child,
+  .terms-wrap ul li:last-child,
+  .terms-wrap ol li:last-child {
+    margin-bottom: 0;
+  }
+  article .content-feature-list,
+  .terms-wrap .content-feature-list {
+    margin: 15px 0 15px;
+  }
+  article .author-info {
+    margin-bottom: 25px;
+  }
+  .post-author .post-author-info h4 {
+    font-size: 20px;
+  }
+  .wp-block-quote {
+    padding: 25px;
+    margin: 25px 0 25px;
+  }
+  .wp-block-quote .wp-quote-text {
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    text-align: left;
+  }
+  .wp-block-quote .wp-quote-icon {
+    width: 25px;
+    height: auto;
+  }
+  .wp-block-quote .wp-quote-icon i {
+    font-size: 34px;
+  }
+  .post-metainfo {
+    margin-bottom: 25px;
+  }
+  .post-metainfo li {
+    margin-bottom: 0;
+  }
+  .post-img {
+    margin: 0 0 25px;
+  }
+  .author-info-wrap .author-info h6 {
+    font-size: 15px;
+  }
+  .reply-btn {
+    font-size: 14px;
+    margin-top: 12px;
+    padding: 12px 14px 12px;
+  }
+  .post-tag {
+    margin-bottom: 15px;
+  }
+  .post-tag ul li a {
+    font-size: 13px;
+  }
+  .post-author {
+    padding: 20px;
+  }
+  .post-author .post-author-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+  }
+  .post-author .post-author-info {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .comment-box-wrap {
+    padding: 20px;
+  }
+  .comment-item-wrap .comment-item {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .comment-item-wrap .comment-item.reply {
+    margin-left: 25px;
+  }
+  .comment-item-wrap .comment-item .comment-author-img {
+    width: 55px;
+    height: 55px;
+  }
+  .comment-item-wrap .comment-item .comment-author-wrap {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .comment-item-wrap .comment-item .comment-author-wrap .comment-author-name h5 {
+    font-size: 18px;
+    display: block;
+  }
+  .comment-item-wrap .comment-item .comment-author-wrap .comment-author-name .comment-date {
+    display: block;
+    margin-left: 0;
+    margin-top: 12px;
+    margin-bottom: 13px;
+    font-size: 14px;
+  }
+  .comment-item-wrap .comment-item .comment-author-wrap .comment-text {
+    margin-bottom: 8px;
+  }
+  #cmt-form .comment-form .form-group {
+    margin-bottom: 15px;
+  }
+  #cmt-form .comment-form .form-group label {
+    font-size: 14px;
+  }
+  #cmt-form .comment-form .form-group input {
+    height: 54px;
+  }
+  #cmt-form .comment-form .form-check {
+    margin-bottom: 15px;
+  }
+  .sidebar .sidebar-widget {
+    padding: 20px;
+  }
+  .sidebar .sidebar-widget h4 {
+    font-size: 18px;
+    margin: 0 0 20px;
+  }
+  .category-box ul li a {
+    font-size: 14px;
+    padding: 8px 0 8px 20px;
+  }
+  .category-box ul li a i {
+    top: 12px;
+  }
+  .category-box ul li a span {
+    font-size: 14px;
+  }
+  .category-box ul li:first-child a i {
+    top: 3px;
+  }
+  .tag-list ul li {
+    margin: 9px 6px 0px 0px;
+  }
+  .login-form-wrap {
+    padding: 25px 20px 20px;
+  }
+  .login-form-wrap .login-header h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  .login-form-wrap .login-body .form-group {
+    margin-bottom: 10px;
+  }
+  .login-form-wrap .login-body .form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .login-form-wrap .login-body .form-group input {
+    height: 50px;
+  }
+  .login-form-wrap .login-body .checkbox label {
+    font-size: 14px;
+  }
+  .login-form-wrap .login-body .btn {
+    padding: 12px;
+  }
+  .login-form-wrap .login-body .link {
+    font-size: 13px;
+  }
+  .error-content img {
+    max-width: 280px;
+  }
+  .error-content p {
+    margin: 0 auto 20px;
+    max-width: 300px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .container-fluid {
+    max-width: 720px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .pt-100 {
+    padding-top: 70px;
+  }
+  .pb-100 {
+    padding-bottom: 70px;
+  }
+  .mt-100 {
+    margin-top: 70px !important;
+  }
+  .mb-100 {
+    margin-bottom: 70px !important;
+  }
+  .mtb-100 {
+    margin-top: 70px !important;
+    margin-bottom: 70px !important;
+  }
+  .pb-50 {
+    padding-bottom: 20px;
+  }
+  .pb-60 {
+    padding-bottom: 35px;
+  }
+  .mt-100 {
+    margin-top: 70px !important;
+  }
+  .smb-25 {
+    margin-bottom: 25px;
+  }
+  .smb-70 {
+    margin-bottom: 70px !important;
+  }
+  .ptb-100 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .pt-70 {
+    padding-top: 40px;
+  }
+  .pb-70 {
+    padding-bottom: 40px;
+  }
+  .pb-75 {
+    padding-bottom: 45px;
+  }
+  .pb-50 {
+    padding-bottom: 20px;
+  }
+  .pt-75 {
+    padding-top: 45px;
+  }
+  .breadcrumb-title h2,
+  .section-title h2,
+  .content-title h2 {
+    font-size: 35px;
+  }
+  .breadcrumb-wrap {
+    padding: 120px 0 40px;
+  }
+  .breadcrumb-img img {
+    max-width: 220px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info {
+    width: 440px;
+    left: calc(50% + 5px);
+  }
+  .hero-wrap.style2 .hero-content h1, .hero-wrap.style3 .hero-content h1 {
+    font-size: 32px;
+  }
+  .hero-wrap.style2 .hero-content p, .hero-wrap.style3 .hero-content p {
+    max-width: 90%;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev, .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev {
+    left: -25px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    right: -25px;
+  }
+  .activity-card .activity-card-img {
+    max-width: 125px;
+  }
+  .activity-card .activity-card-info {
+    margin: 0 30px;
+  }
+  .cta-wrap.style2, .cta-wrap.style3 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .cta-wrap.style2 .cta-img-wrap img, .cta-wrap.style3 .cta-img-wrap img {
+    margin: 0 auto;
+  }
+  .login-bg.style1, .login-bg.style2 {
+    height: 450px;
+  }
+  .error-content {
+    margin-top: 70px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .page-wrapper {
+    overflow-x: hidden !important;
+  }
+  .md-none {
+    display: none !important;
+  }
+  .mt-60 {
+    margin-top: 30px !important;
+  }
+  .md-center {
+    text-align: center !important;
+  }
+  .hero-wrap.style1, .hero-wrap.style2, .hero-wrap.style3 {
+    padding: 110px 0 60px;
+  }
+  .hero-wrap.style1 .hero-content, .hero-wrap.style2 .hero-content, .hero-wrap.style3 .hero-content {
+    margin-top: 30px;
+  }
+  .about-wrap .about-img-wrap {
+    margin-bottom: 25px;
+  }
+  .single-item-img {
+    margin: 0 0 25px;
+  }
+  .single-item-img img {
+    width: 100%;
+  }
+  .author-details-box .author-metainfo-wrap {
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 25px;
+  }
+  .login-bg.style1, .login-bg.style2 {
+    margin-bottom: 30px;
+  }
+  .newsletter-form {
+    margin-top: 25px;
+  }
+  .contact-content {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .breadcrumb-title h2,
+  .section-title h2,
+  .content-title h2 {
+    font-size: 32px;
+  }
+  .breadcrumb-wrap {
+    padding: 120px 0 40px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info {
+    left: calc(50% + 25px);
+    width: 400px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline {
+    margin: 20px 0 0;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline span {
+    display: block;
+    margin: 0 0 10px;
+    color: #fff;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline .countdown .cdown span {
+    font-size: 18px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info .auction-info-wrap .nft-deadline .countdown .cdown p {
+    font-size: 14px;
+  }
+  .hero-wrap.style2 .hero-nft-item .author-info-wrap .btn {
+    padding: 18px 20px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .btn {
+    padding: 12px 18px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin-left: 0;
+    margin: 0 0 18px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown {
+    margin-right: 5px;
+    padding-right: 5px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown span {
+    font-size: 18px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown p {
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+  }
+  .hero-wrap.style1 .hero-content h1, .hero-wrap.style2 .hero-content h1, .hero-wrap.style3 .hero-content h1 {
+    font-size: 36px;
+  }
+  .item-desc .item-deadline-wrap .item-deadline {
+    width: 100%;
+    margin-left: 0;
+  }
+  .item-desc .item-deadline-wrap .single-item-bid {
+    width: 100%;
+    margin: 0  0 20px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev, .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev {
+    left: -25px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    right: -25px;
+  }
+  .testimonial-card .client-quote {
+    max-width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .sidebar {
+    margin: 50px 0 0;
+  }
+  .sidebar.style2 {
+    margin: 0 0 30px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .xl-none {
+    display: none !important;
+  }
+  .content-title p {
+    padding-right: 25px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1280px) {
+  .section-img.style2 {
+    right: 10px;
+    max-width: 60px;
+  }
+  .breadcrumb-wrap .section-img {
+    max-width: 140px;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1599px) {
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev, .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev {
+    left: -25px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    right: -25px;
+  }
+  .hero-wrap.style1 .hero-content h1, .hero-wrap.style2 .hero-content h1, .hero-wrap.style3 .hero-content h1 {
+    font-size: 64px !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .breadcrumb-title h2,
+  .section-title h2,
+  .content-title h2 {
+    font-size: 40px;
+  }
+  .breadcrumb-wrap {
+    padding: 120px 0 40px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info {
+    left: calc(50% + 25px);
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline {
+    width: calc(100% - 110px);
+    margin-left: 20px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown:after {
+    top: 45%;
+    right: -3px;
+    font-size: 18px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown span {
+    font-size: 22px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown p {
+    font-size: 15px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap {
+    bottom: 25px;
+    left: 25px;
+    padding: 25px;
+    width: calc(100% - 50px);
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .btn {
+    padding: 12px 18px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown {
+    margin-right: 5px;
+    padding-right: 5px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown span {
+    font-size: 16px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown p {
+    font-size: 14px;
+    position: relative;
+    top: 1px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev, .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev {
+    left: -25px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    right: -25px;
+  }
+  .item-desc .item-deadline-wrap .item-deadline .countdown .cdown span {
+    font-size: 14px;
+  }
+  .testimonial-card .client-quote {
+    max-width: 55%;
+  }
+  .activity-card .activity-card-info {
+    margin: 0 38px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .btn {
+    padding: 17px 25px 17px;
+    font-size: 17px;
+    line-height: 26px;
+  }
+  .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next {
+    width: 60px;
+    height: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev i, .owl-carousel .owl-nav button.owl-next i {
+    font-size: 22px;
+  }
+  .owl-carousel .owl-dots button.owl-dot span {
+    width: 60px !important;
+    height: 5px !important;
+  }
+  .owl-carousel .owl-dots button.owl-dot.active span {
+    width: 100px !important;
+  }
+  .br-img {
+    min-width: 365px;
+  }
+  .hero-wrap.style2 {
+    padding: 192px 0 100px;
+  }
+  .hero-wrap.style2 .hero-content p {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  .hero-wrap.style2 .hero-nft-item {
+    border: 7px solid #fff;
+    padding: 45px 60px 35px;
+    margin-left: 75px;
+  }
+  .hero-wrap.style3 {
+    padding: 172px 0 110px;
+  }
+  .hero-wrap.style3 .hero-nft-slider {
+    width: calc(100% - 50px);
+    margin-right: auto;
+  }
+  .hero-wrap.style1 {
+    padding: 168px 0 104px;
+  }
+  .hero-wrap.style1 .hero-img-wrap .hero-nft-info {
+    width: 440px;
+    left: calc(50% + 45px);
+    padding: 35px 30px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .nft-deadline .countdown .cdown {
+    margin-right: 15px;
+    padding-left: 15px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-info h6 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline span {
+    line-height: 43px;
+    margin: 0;
+  }
+  .hero-wrap.style2 .hero-nft-item .auction-info-wrap .auction-author-info .auction-deadline .countdown .cdown span {
+    font-size: 30px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap .btn {
+    padding: 16px 39px;
+  }
+  .hero-wrap.style3 .nft-slide-item .nft-deadline-wrap {
+    background-color: #fff;
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    padding: 35px;
+    width: calc(100% - 96px);
+    border-radius: 2px;
+  }
+  .auction-card h3 {
+    font-size: 20px;
+  }
+  .auction-card.style4 {
+    padding: 20px 20px 30px;
+  }
+  .auction-card.style5 .auction-info-wrap .auction-author-info {
+    margin-top: 18px;
+  }
+  .auction-card.style3 .auction-info-wrap {
+    padding: 30px 25px;
+  }
+  .auction-card.style6 .auction-info-wrap {
+    padding: 30px 25px 30px;
+  }
+  .auction-slider-two.style2 .auction-card.style5 {
+    padding: 30px;
+  }
+  .auction-card.style3 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style4 .auction-info-wrap .auction-author-info .author-info .author-name h6, .auction-card.style6 .auction-info-wrap .auction-author-info .author-info .author-name h6 {
+    margin: 0;
+    line-height: 20px;
+  }
+  .auction-card.style3 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style4 .auction-info-wrap .auction-author-info .auction-bid h6, .auction-card.style6 .auction-info-wrap .auction-author-info .auction-bid h6 {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0;
+  }
+  .author-card.style1 {
+    padding: 35px 30px 0;
+  }
+  .author-card.style3 {
+    padding: 35px 30px;
+  }
+  .author-card.style3 .author-card-img .badge {
+    bottom: 0;
+    right: 15px;
+    padding: 0;
+  }
+  .author-card.style4 .author-card-img {
+    width: 90px;
+    height: 90px;
+    margin: -50px auto 22px;
+  }
+  .author-card.style1 .author-card-info, .author-card.style2 .author-card-info, .author-card.style5 .author-card-info, .author-card.style3 .author-card-info, .author-card.style4 .author-card-info {
+    margin: 14px 0 0;
+  }
+  .author-card .author-card-img .badge {
+    bottom: 3px;
+    right: 0;
+  }
+  .author-card.style2 .author-card-img,
+  .author-card.style4 .author-card-img,
+  .author-card.style5 .author-card-img {
+    margin: -75px auto 28px;
+  }
+  .author-details-box .single-author-info {
+    margin-left: 40px;
+  }
+  .seller-card .seller-img {
+    width: 90px;
+    height: 90px;
+  }
+  .seller-card .seller-info {
+    width: calc(100% - 110px);
+    margin-left: 20px;
+  }
+  .seller-card {
+    padding: 30px;
+  }
+  .seller-card .seller-social button {
+    font-size: 17px;
+  }
+  .activity-card .activity-card-img {
+    margin-right: 0;
+  }
+  .activity-card .activity-card-info h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .promo-card.style2 .promo-top, .promo-card.style3 .promo-top {
+    padding: 30px 25px 30px;
+  }
+  .promo-card .count-num {
+    right: 25px;
+    font-size: 48px;
+  }
+  .item-desc .single-item-author .author-info .author-img {
+    width: 70px;
+    height: 70px;
+  }
+  .item-desc .single-item-author .author-info .author-name {
+    width: calc(100% - 90px);
+  }
+  .item-desc .single-item-author .author-info .author-name h6 {
+    font-weight: 400;
+  }
+  .single-item-img {
+    padding: 48px 0 45px;
+    background: #010028;
+  }
+  .cta-wrap.style2, .cta-wrap.style3 {
+    padding-left: 85px;
+  }
+  .blog-card.style2 {
+    padding: 30px;
+  }
+  .blog-card.style2 .blog-info .blog-author-info .btn.style1 {
+    padding: 3px 12px;
+  }
+  .blog-card.style2 .blog-info .blog-author-info .btn.style1 i {
+    font-size: 24px;
+    position: relative;
+    top: 3px;
+  }
+  .comment-box-wrap {
+    padding: 55px 50px;
+  }
+  .comment-box-title h4 {
+    font-size: 24px;
+  }
+  .contact-item {
+    padding: 35px 30px;
+  }
+  .author-card.style1 .author-card-info h3,
+  .author-card.style2 .author-card-info h3,
+  .author-card.style5 .author-card-info h3,
+  .author-card.style3 .author-card-info h3,
+  .author-card.style4 .author-card-info h3,
+  .auction-card h3,
+  .promo-card h3,
+  .activity-card .activity-card-info h3,
+  .seller-card .seller-info h3,
+  .collection-card .collection-info-wrap .collection-info h3,
+  .team-card .team-info h3,
+  .promo-card.style4 .promo-info h3,
+  .auction-card .auction-info-wrap .auction-title h3,
+  .blog-card .blog-info h3 {
+    font-size: 20px;
+  }
+  .testimonial-card .client-quote {
+    max-width: 58%;
+    font-size: 20px;
+    line-height: 35px;
+  }
+  .newsletter-wrap .newsletter-form button {
+    padding: 5px 35px;
+    font-size: 17px;
+    line-height: 26px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .breadcrumb-title h2,
+  .section-title h2,
+  .content-title h2 {
+    font-size: 45px;
+  }
+  .breadcrumb-wrap .container {
+    max-width: 1520px;
+    margin: 0 auto;
+  }
+  .hero-wrap .container {
+    max-width: 1540px;
+  }
+  .hero-wrap.style1 .hero-content h1, .hero-wrap.style2 .hero-content h1, .hero-wrap.style3 .hero-content h1 {
+    font-size: 79px !important;
+    line-height: 100px;
+  }
+  .hero-wrap.style1 .hero-content p, .hero-wrap.style2 .hero-content p, .hero-wrap.style3 .hero-content p {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 32px;
+  }
+  .hero-wrap.style3 .hero-content h1 {
+    font-size: 79px;
+  }
+  .hero-wrap.style3 .hero-content p {
+    max-width: 85%;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-prev,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-prev {
+    left: -65px;
+  }
+  .blog-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-one.owl-carousel .owl-nav button.owl-next,
+  .auction-slider-two.owl-carousel .owl-nav button.owl-next {
+    right: -65px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .breadcrumb-wrap .container,
+  .hero-wrap .container {
+    max-width: 1660px;
+  }
+  .blog-slider-one.style2 .owl-nav button.owl-prev,
+  .auction-slider-one.style1 .owl-nav button.owl-prev,
+  .auction-slider-one.style4 .owl-nav button.owl-prev,
+  .auction-slider-two.style2 .owl-nav button.owl-prev,
+  .auction-slider-two.style1 .owl-nav button.owl-prev,
+  .auction-slider-one.style2 .owl-nav button.owl-prev {
+    left: -85px !important;
+  }
+  .blog-slider-one.style2 .owl-nav button.owl-next,
+  .auction-slider-one.style1 .owl-nav button.owl-next,
+  .auction-slider-one.style4 .owl-nav button.owl-next,
+  .auction-slider-two.style1 .owl-nav button.owl-next,
+  .auction-slider-two.style2 .owl-nav button.owl-next,
+  .auction-slider-one.style2 .owl-nav button.owl-next {
+    right: -85px !important;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */

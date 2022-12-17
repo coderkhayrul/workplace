@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class WebsiteController extends Controller
 {
-    public function websiteVisit()
+    public function home()
     {
-        return view('welcome');
+        return view('frontend.layouts.app');
     }
 
     public function Weblogout()
