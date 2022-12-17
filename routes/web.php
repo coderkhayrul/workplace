@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BalanceRequestController;
+use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -71,11 +72,19 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('/update/{id}', 'update')->name('admin.balance.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.balance.destroy');
     });
+    // <------- Category ------->
+    Route::controller(CategoryController::class)->prefix('category')->group(function () {
+        Route::get('/', 'index')->name('admin.category.index');
+        // Route::post('/', 'store')->name('admin.category.store');
+        Route::post('/update/{id}', 'update')->name('admin.category.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
+    });
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
+
+// Route::get('/category', function () {
+//     return view('backend.pages.category.addcategory');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

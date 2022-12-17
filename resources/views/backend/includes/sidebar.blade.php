@@ -105,6 +105,7 @@
                                 <p>Create Request</p>
                             </a>
                         </li>
+
                         {{-- <li class="nav-item">
                             <a href="{{ route('admin.balance.index') }}"
                                 class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
@@ -112,6 +113,26 @@
                                 <p>All Request</p>
                             </a>
                         </li> --}}
+                    </ul>
+                </li>
+
+                {{-- category --}}
+                <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                        <i class="fa-list-alt"></i>
+                        <p>
+                            Category
+                            <i class="fas fa-angle-left right"></i>
+                            {{-- <span class="badge badge-info right">6</span> --}}
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link   'active' : '' }}">
+                                <i class="fas fa-comment"></i>
+                                <p>Category Manage</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-header">Short Link</li>
