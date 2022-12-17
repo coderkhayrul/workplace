@@ -12,6 +12,10 @@ class WebsiteController extends Controller
     {
         return view('frontend.home');
     }
+    public function profile($slug)
+    {
+        return view('frontend.pages.profile');
+    }
 
     public function Weblogout()
     {

@@ -2,7 +2,7 @@
 <header class="header-wrap style1">
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('web.home') }}">
                 <img src="{{ asset('frontend') }}/assets/img/logo-white.png" alt="logo">
             </a>
             <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
@@ -84,19 +84,36 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item d-lg-none">
-                        <a href="login.html" class="btn style1">Sign in</a>
-                    </li>
+                    @guest
+                        <li class="nav-item d-lg-none">
+                            <a href="{{ route('login') }}" class="btn style1">Sign in</a>
+                        </li>
+                    @endguest
+                    @auth
+                        <li class="nav-item d-lg-none">
+                            <a href="{{ route('web.profile', Auth::user()->user_slug) }}" class="btn style1">Profile</a>
+                        </li>
+                    @endauth
                 </ul>
                 <div class="others-options  md-none">
                     <button class="searchbtn"><i class="ri-search-line"></i></button>
                 </div>
-                <div class="others-options  md-none">
-                    <div class="header-btn">
-                        <a href="{{ route('login') }}" class="btn style1">Sign In<i
-                                class="flaticon-right-arrow-1"></i></a>
+                @guest
+                    <div class="others-options  md-none">
+                        <div class="header-btn">
+                            <a href="{{ route('login') }}" class="btn style1">Sign In<i
+                                    class="flaticon-right-arrow-1"></i></a>
+                        </div>
                     </div>
-                </div>
+                @endguest
+                @auth
+                    <div class="others-options  md-none">
+                        <div class="header-btn">
+                            <a href="{{ route('web.profile', Auth::user()->user_slug) }}" class="btn style1">Profile<i
+                                    class="flaticon-user-avatar"></i></a>
+                        </div>
+                    </div>
+                @endauth
             </div>
         </nav>
         <div class="mobile-bar-wrap">

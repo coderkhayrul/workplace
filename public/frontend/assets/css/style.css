@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------
     Theme Name: Anfi
-    Theme URI: 
+    Theme URI:
     Description: Anfi - NFT Marketplace HTML Template
     Author: EnvyTheme
     Author URI: https://envytheme.com/
@@ -9,7 +9,7 @@
 /*--------------------------------
      =====Table Of Contents====
 
-1.  General Styles 
+1.  General Styles
 2.  Mixins CSS
 3.  Back To Top Button CSS
 4.  Preloader CSS
@@ -29,7 +29,7 @@
 ----------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Roboto:wght@300;400;500;700;900&amp;display=swap");
 /*---------------------------------
-            General Styles 
+            General Styles
 -----------------------------------*/
 * {
   -webkit-box-sizing: border-box;
@@ -1502,7 +1502,7 @@ select {
 }
 
 /*---------------------------------
-        Header CSS 
+        Header CSS
 -----------------------------------*/
 @-webkit-keyframes fadeInDown {
   0% {
@@ -2190,7 +2190,7 @@ select {
 }
 
 /*---------------------------------
-       Breadcrumb CSS 
+       Breadcrumb CSS
 -----------------------------------*/
 .breadcrumb-wrap {
   position: relative;
@@ -2371,6 +2371,16 @@ select {
 }
 
 .login-form-wrap .login-body .form-group input {
+  border-radius: 5px;
+  background: #051124;
+  border: none;
+  width: 100%;
+  color: #fff;
+  height: 60px;
+  padding: 15px 20px;
+}
+
+.login-form-wrap .login-body .form-group select {
   border-radius: 5px;
   background: #051124;
   border: none;
@@ -7478,7 +7488,7 @@ article .author-info .author-name a {
 }
 
 /*---------------------------------
-        Footer CSS 
+        Footer CSS
 -----------------------------------*/
 .footer-wrap {
   position: relative;

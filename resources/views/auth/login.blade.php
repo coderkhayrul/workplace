@@ -1,110 +1,122 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
-
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                        @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+@extends('frontend.layouts.app')
+@section('home-content')
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumb-title">
+                        <h2>Login</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{{ route('web.home') }}">Home </a></li>
+                            <li>Login</li>
+                        </ul>
                     </div>
-                    <div class="input-group mb-3">
-                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                        @error('role_name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
                 </div>
-                <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    <a href="{{ route('password.request') }}">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-                </p>
+                <div class="col-sm-6">
+                    <div class="breadcrumb-img">
+                        <img class="br-img" src="{{ asset('frontend') }}/assets/img/breadcrumb/breadcrumb-1.png"
+                            alt="Image">
+                        <img class="br-shape" src="{{ asset('frontend') }}/assets/img/breadcrumb/br-shape.png"
+                            alt="Image">
+                    </div>
+                </div>
             </div>
-            <!-- /.login-card-body -->
         </div>
     </div>
-    <!-- /.login-box -->
+    <!-- Breadcrumb End -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('backend') }}/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('backend') }}/dist/js/adminlte.min.js"></script>
-
-</body>
-
-</html>
+    <!-- Account Section start -->
+    <section class="Login-wrap ptb-100 bg-zodiac">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-6">
+                    <div class="login-bg style2 bg-f">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login-form-wrap">
+                        <div class="login-header">
+                            <h3>Sign In</h3>
+                        </div>
+                        <div class="login-form">
+                            <div class="login-body">
+                                <form class="form-wrap" action="{{ route('login') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input class="@error('password') is-invalid @enderror" id="email"
+                                                    name="email" type="email" required placeholder="Email">
+                                                @error('email')
+                                                    <span class="text-danger">
+                                                        {{ $message }}
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input id="pwd" name="password" type="password" required
+                                                    placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="test_1" name="remember">
+                                                <label for="test_1">Remember Me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-end mb-20">
+                                            <a href="{{ route('password.request') }}" class="link style1">Forgot
+                                                Password?</a>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <button class="btn style1 w-100 d-block">
+                                                    Sign In
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="or-text">
+                                                <p>Or Login With</p>
+                                                <ul class="social-profile style1 list-style">
+                                                    <li>
+                                                        <a class="fb" target="_blank" href="https://facebook.com/">
+                                                            <i class="ri-facebook-fill"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="tt" target="_blank" href="https://twitter.com/">
+                                                            <i class="ri-twitter-fill"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="gplus" target="_blank" href="https://instagram.com/">
+                                                            <i class="ri-instagram-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="linkedin" target="_blank" href="https://linkedin.com/">
+                                                            <i class="ri-linkedin-fill"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-center mt-25">
+                                            <p class="mb-0">Don't Have an Account? <a class="link style1"
+                                                    href="{{ route('register') }}">Create One</a></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Account Section end -->
+@endsection
