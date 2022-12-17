@@ -149,7 +149,7 @@
                             <label for="exampleInputFile">Service Document</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" name="document" class="custom-file-input" id="pro_document" onchange="readURLserviceImg(this);">
+                                    <input type="file" name="document" class="custom-file-input" id="pro_document" onchange="readURLserviceUpdateImg(this);">
                                     <label class="custom-file-label" for="pro_document">Choose file</label>
                                 </div>
                                 <div class="input-group-append">
@@ -161,7 +161,7 @@
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                             <div class="input-group">
-                                <img src="{{asset('uploads/services/'.$service->document)}}" alt="" class="img-thumbnail" id="servicepreviewImg">
+                                <img src="{{asset('uploads/services/'.$service->document)}}" alt="" class="img-thumbnail" id="servicepreviewupdateImg">
                             </div>
                         </div>
                         {{-- ---------- --}}
