@@ -18,11 +18,20 @@ Route::get('/', [WebsiteController::class, 'websiteVisit'])->name('web.home');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
 
 
-Route::prefix('buyer')->group(function () {
-    // <------- SERVICE ROUTE LIST ------->
-    Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/create', 'create')->name('buyer.service.create');
-    });
+// =======================================================
+//  <------------------ BUYER ROUTE LIST ---------------->
+//  ======================================================
+
+Route::prefix('buyer')->group(function(){
+
+     // <------- SERVICE ROUTE LIST ------->
+     Route::controller(ServiceController::class)->prefix('service')->group(function(){
+        Route::get('/', 'index')->name('buyer.service.index');
+        Route::post('/store','store')->name('buyer.service.store');
+        Route::get('/delete/{id}','distroy')->name('buyer.service.delete');
+        Route::post('/update/{id}', 'update')->name('buyer.service.update');
+     });
+
 });
 
 // =======================================================
