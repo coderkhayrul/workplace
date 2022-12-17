@@ -86,12 +86,12 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editService"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editService{{$service->id}}"><i class="fas fa-edit"></i></button>
                                                     <a id="delete" class="btn btn-sm btn-danger" href="{{route('buyer.service.delete',$service->id)}}"><i class="fas fa-user-slash"></i></a>
                                                     <a id="view" class="btn btn-sm btn-warning" href=""><i class="fas fa-eye"></i></a>
                                                 </td>
                                                 <!-- Edit Modal Start  -->
-<div class="modal fade" id="editService" data-backdrop="static">
+<div class="modal fade" id="editService{{$service->id}}" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -101,7 +101,7 @@
                 </button>
             </div>
            <!-- form start -->
-           <form role="form" action="" method="post" enctype="multipart/form-data">
+           <form role="form" action="{{route('buyer.service.update',$service->id)}}" method="post" enctype="multipart/form-data">
              @csrf
             <div class="card-body">
                 <div class="row">
@@ -185,9 +185,9 @@
             <!-- /.card-body -->
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
-           </form><!-- form start -->
+        </form><!-- form start -->
         </div>
         <!-- /.modal-content -->
     </div>
