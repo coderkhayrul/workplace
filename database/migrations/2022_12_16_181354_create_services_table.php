@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->integer('cat_id');
+            $table->integer('user_id');
             $table->string('shortDes');
             $table->longText('longdes');
             $table->string('document');

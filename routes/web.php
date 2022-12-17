@@ -7,17 +7,6 @@ use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 
 // =======================================================
 //  <------------------ WEBSITE ROUTE LIST -------------->
@@ -27,21 +16,25 @@ Route::get('/', [WebsiteController::class, 'websiteVisit'])->name('web.home');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
 
 
+// =======================================================
+//  <------------------ BUYER ROUTE LIST ---------------->
+//  ======================================================
+
 Route::prefix('buyer')->group(function(){
 
      // <------- SERVICE ROUTE LIST ------->
      Route::controller(ServiceController::class)->prefix('service')->group(function(){
-        Route::get('/index', 'index')->name('buyer.service.index');
+        Route::get('/', 'index')->name('buyer.service.index');
         Route::post('/store','store')->name('buyer.service.store');
+        Route::get('/delete/{id}','distroy')->name('buyer.service.delete');
      });
 
 });
 
-
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
 //  ======================================================
-// ->middleware('')
+
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
 
     // <------- ADMIN ROUTE LIST ------->
