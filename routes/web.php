@@ -31,8 +31,8 @@ Route::prefix('buyer')->group(function () {
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
         Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice');
-        Route::get('/request','viewServiceRequest')->name('buyer.service.request');
-        Route::get('/approve/{id}','ApproveService')->name('buyer.service.ApproveRequest');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
     });
 });
 
@@ -53,7 +53,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     });
 
     // <------- ADMIN USER ROUTE LIST ------->
-    Route::controller(UserController::class)->prefix('user')->group(function () {
+    Route::controller(UserController::class)->prefix('user')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.user.index');
         Route::get('/create', 'create')->name('admin.user.create');
         Route::post('/', 'store')->name('admin.user.store');
@@ -68,7 +68,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     });
 
     // <------- ADMIN USER ROLE ROUTE LIST ------->
-    Route::controller(RoleController::class)->prefix('role')->group(function () {
+    Route::controller(RoleController::class)->prefix('role')->middleware('superadmin')->group(function () {
         Route::get('/', 'index')->name('admin.role.index');
         Route::get('/create', 'create')->name('admin.role.create');
         Route::post('/', 'store')->name('admin.role.store');

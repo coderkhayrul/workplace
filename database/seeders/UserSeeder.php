@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -20,16 +19,16 @@ class UserSeeder extends Seeder
     {
 
         $user = User::insertGetId([
-            'user_name' => 'admin',
+            'user_name' => 'superadmin',
             'role_id' => 1,
             'user_slug' => uniqid(),
-            'email' => 'admin@mail.com',
+            'email' => 'superadmin@mail.com',
             'password' => Hash::make('password'),
         ]);
 
         UserProfile::create([
             'user_id' => $user,
-            'full_name' => 'Admin',
+            'full_name' => 'Super Admin',
             'balance' => 0,
         ]);
     }
