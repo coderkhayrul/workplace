@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BalanceRequestController;
+use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 //  <------------------ WEBSITE ROUTE LIST -------------->
 //  ======================================================
 
-Route::get('/', [WebsiteController::class, 'websiteVisit'])->name('web.home');
+Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
+Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
 
 
@@ -22,14 +24,18 @@ Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout
 //  ======================================================
 
 Route::prefix('buyer')->group(function () {
-
     // <------- SERVICE ROUTE LIST ------->
     Route::controller(ServiceController::class)->prefix('service')->group(function () {
         Route::get('/', 'index')->name('buyer.service.index');
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
+        Route::post('/update/{id}', 'update')->name('buyer.service.update');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
     });
 });
+
 
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
@@ -78,11 +84,19 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::post('/update/{id}', 'update')->name('admin.balance.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.balance.destroy');
     });
+    // <------- Category ------->
+    Route::controller(CategoryController::class)->prefix('category')->group(function () {
+        Route::get('/', 'index')->name('admin.category.index');
+        // Route::post('/', 'store')->name('admin.category.store');
+        Route::post('/update/{id}', 'update')->name('admin.category.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
+    });
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
+
+// Route::get('/category', function () {
+//     return view('backend.pages.category.addcategory');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

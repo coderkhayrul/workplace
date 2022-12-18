@@ -1,67 +1,4 @@
-{{-- <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <form method="POST" action="{{ route('register') }}">
-@csrf
-
-<!-- Name -->
-<div>
-    <x-input-label for="name" :value="__('Name')" />
-
-    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-
-    <x-input-error :messages="$errors->get('name')" class="mt-2" />
-</div>
-
-<!-- Email Address -->
-<div class="mt-4">
-    <x-input-label for="email" :value="__('Email')" />
-
-    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-
-    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-</div>
-
-<!-- Password -->
-<div class="mt-4">
-    <x-input-label for="password" :value="__('Password')" />
-
-    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-        autocomplete="new-password" />
-
-    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-</div>
-
-<!-- Confirm Password -->
-<div class="mt-4">
-    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-    <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation"
-        required />
-
-    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-</div>
-
-<div class="flex items-center justify-end mt-4">
-    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-        {{ __('Already registered?') }}
-    </a>
-
-    <x-primary-button class="ml-4">
-        {{ __('Register') }}
-    </x-primary-button>
-</div>
-</form>
-</x-auth-card>
-</x-guest-layout> --}}
-
-
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -96,7 +33,8 @@
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
-                        <input name="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" placeholder="User Name">
+                        <input name="user_name" type="text"
+                            class="form-control @error('user_name') is-invalid @enderror" placeholder="User Name">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -109,7 +47,8 @@
                         @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -123,13 +62,16 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <select name="role_id" id="role_id" class="custom-select @error('role_id') is-invalid @enderror">
+                        <select name="role_id" id="role_id"
+                            class="custom-select @error('role_id') is-invalid @enderror">
                             @php
-                                $roles = App\Models\Role::where('role_status', 1)->where('role_slug', '!=' ,'admin')->get();
+                                $roles = App\Models\Role::where('role_status', 1)
+                                    ->where('role_slug', '!=', 'admin')
+                                    ->get();
                             @endphp
                             <option label="Select Type"></option>
                             @foreach ($roles as $role)
-                            <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+                                <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
                             @endforeach
                         </select>
                         <div class="input-group-append">
@@ -145,7 +87,8 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                        <input name="password" type="password"
+                            class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -158,7 +101,9 @@
                         @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Retype password">
+                        <input name="password_confirmation" type="password"
+                            class="form-control @error('password_confirmation') is-invalid @enderror"
+                            placeholder="Retype password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -209,4 +154,143 @@
     <script src="{{ asset('backend') }}/dist/js/adminlte.min.js"></script>
 </body>
 
-</html>
+</html> --}}
+
+@extends('frontend.layouts.app')
+@section('home-content')
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumb-title">
+                        <h2>Register</h2>
+                        <ul class="breadcrumb-menu list-style">
+                            <li><a href="{{ route('web.home') }}">Home </a></li>
+                            <li>Register</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="breadcrumb-img">
+                        <img class="br-img" src="{{ asset('frontend') }}/assets/img/breadcrumb/breadcrumb-1.png"
+                            alt="Image">
+                        <img class="br-shape" src="{{ asset('frontend') }}/assets/img/breadcrumb/br-shape.png"
+                            alt="Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Account Section start -->
+    <section class="Login-wrap ptb-100 bg-zodiac">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-6">
+                    <div class="login-bg style1 bg-f">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login-form-wrap">
+                        <div class="login-header">
+                            <h3>Sign Up</h3>
+                        </div>
+                        <div class="login-form">
+                            <div class="login-body">
+                                <form class="form-wrap" action="{{ route('register') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input id="text" name="name" type="text" placeholder="Full Name"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input id="email" name="email" type="email" placeholder="Email"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <select name="role_id">
+                                                    <option label="User Type"></option>
+                                                    <option value="2">Buyer</option>
+                                                    <option value="3">Seller</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input id="pwd" name="password" type="password" placeholder="Password"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <input id="pwd_2" name="password_confirmation"
+                                                    placeholder="Confirm Password" type="password" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-12 mb-20">
+                                            <div class="checkbox style3">
+                                                <input type="checkbox" id="test_1" name="remember">
+                                                <label for="test_1">
+                                                    I Agree with the <a class="link style1" href="#">Terms &amp;
+                                                        conditions</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <button class="btn style1">
+                                                    Sign Up
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-center">
+                                            <p class="mb-0">Have an Account? <a class="link style1"
+                                                    href="{{ route('login') }}">Sign
+                                                    In</a></p>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="or-text">
+                                                <p>Or Sign Up With</p>
+                                                <ul class="social-profile style1 list-style">
+                                                    <li>
+                                                        <a class="fb" target="_blank" href="https://facebook.com/">
+                                                            <i class="ri-facebook-fill"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="tt" target="_blank" href="https://twitter.com/">
+                                                            <i class="ri-twitter-fill"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="gplus" target="_blank" href="https://instagram.com/">
+                                                            <i class="ri-instagram-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="linkedin" target="_blank" href="https://linkedin.com/">
+                                                            <i class="ri-linkedin-fill"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Account Section end -->
+@endsection

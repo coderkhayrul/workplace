@@ -8,7 +8,7 @@ use App\Models\Service;
 use Carbon\Carbon;
 use Image;
 use File;
-use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -36,7 +36,7 @@ class ServiceController extends Controller
         ]);
         $services = new Service;
         $services->title= $request->title;
-        $services->slug= str_slug($request->title);
+        $services->slug= Str::slug($request->title);
         $services->user_id= auth()->user()->id;
         $services->cat_id= $request->cat_id;
         $services->shortDes= $request->shortDes;
@@ -86,7 +86,7 @@ class ServiceController extends Controller
          }
          else{
             $notification = array(
-                'message' => 'Delete Create Failed!',
+                'message' => ' Service Delete  Failed!',
                 'alert-type' => 'error',
             ); // returns Notification,
 
@@ -96,4 +96,83 @@ class ServiceController extends Controller
 
 
      }//end method
+
+     //service update method
+     public function update($id, Request $request){
+        $service = Service::find($id);
+        $service->title= $request->title;
+        $service->slug= Str::slug($request->title);
+        $service->user_id= auth()->user()->id;
+        $service->cat_id= $request->cat_id;
+        $service->shortDes= $request->shortDes;
+        $service->longdes= $request->longdes;
+        $service->price= $request->price;
+        $service->EndDate= $request->EndDate;
+        if(!empty($request->document)){
+            if(File::exists('uploads/services/'.$service->document)){
+                File::delete('uploads/services/'.$service->document);
+            }
+            $image = $request->file('document');
+            $imageCustomename = rand().'.'.$image->getClientOriginalExtension();
+            $location = public_path('uploads/services/'.$imageCustomename);
+            Image::make($image)->save($location);
+            $service->document= $imageCustomename;
+        }
+        $service->update();
+        if($service){
+            $notification = array(
+                'message' => 'Service Update Successfully!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
+        else{
+            $notification = array(
+                'message' => ' Service Update  Failed!',
+                'alert-type' => 'error',
+            ); // returns Notification,
+
+            return redirect()->back()->with($notification);
+         }
+
+
+
+
+     }//end method
+
+     //your service method
+     public function yourservice($user_id){
+        $services = Service::where('user_id',$user_id)->OrderBy('created_at','DESC')->get();
+        $TotalServiceCount= $services->count();
+        return view('backend.pages.service.yourService',compact('services','TotalServiceCount'));
+
+
+     }//end method
+
+     //service request start
+     public function viewServiceRequest(){
+        $requestedService = Service::where('status',2)->OrderBy('created_at','DESC')->get();
+        return view('backend.pages.service.serviceRequest',compact('requestedService'));
+     }//end method
+
+     public function ApproveService($id){
+        $request= Service::find($id);
+        $request->status= 1;
+        $request->update();
+        if($request){
+            $notification = array(
+                'message' => 'Service Aproved Successfully!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
+        else{
+            $notification = array(
+                'message' => ' Service Update  Failed!',
+                'alert-type' => 'error',
+            ); // returns Notification,
+
+            return redirect()->back()->with($notification);
+         }
+     }
 }
