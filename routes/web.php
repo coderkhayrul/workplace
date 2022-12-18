@@ -30,6 +30,7 @@ Route::prefix('buyer')->group(function () {
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice');
     });
 });
 

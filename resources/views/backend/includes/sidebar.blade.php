@@ -79,6 +79,14 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{Route('buyer.service.yourservice',auth()->user()->id)}}"  class="nav-link{{Route::is('buyer.service.index.*')}} ? 'active' : '' }}">
+                                <i class="fas fa-comment"></i>
+                                <p> Your Service</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 {{-- Balance  --}}

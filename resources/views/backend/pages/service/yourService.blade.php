@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Roles</h1>
+                <h1 class="m-0 text-dark">My Services</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -52,9 +52,6 @@
                                                 style="width: 217.078px;">Title</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 278.547px;">Author</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending"
                                                 style="width: 278.547px;">Category</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
@@ -71,7 +68,6 @@
                                         @foreach($services as $service)
                                             <tr role="row" class="odd">
                                                 <td>{{$service->title}}</td>
-                                                <td>{{$service->user->user_name }}</td>
                                                 <td>{{$service->cat_id}}</td>
                                                 <td>{{$service->price}}</td>
                                                 @php
@@ -79,10 +75,12 @@
                                                     $today= Carbon\Carbon::now();
                                                 @endphp
                                                 <td>
-                                                    @if ($service->EndDate >= $today )
+                                                    @if ($service->EndDate >= $today && $service->status==1)
                                                         <span class="badge badge-primary">Running</span>
+                                                    @elseif($service->status==2)
+                                                        <span class="badge badge-warning">Panding..</span>
                                                     @else
-                                                        <span class="badge badge-warning">Expaired</span>
+                                                        <span class="badge badge-danger">Expaired</span>
                                                     @endif
                                                 </td>
                                                 <td>
