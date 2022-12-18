@@ -21,15 +21,14 @@ Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout
 //  <------------------ BUYER ROUTE LIST ---------------->
 //  ======================================================
 
-Route::prefix('buyer')->group(function(){
+Route::prefix('buyer')->group(function () {
 
-     // <------- SERVICE ROUTE LIST ------->
-     Route::controller(ServiceController::class)->prefix('service')->group(function(){
+    // <------- SERVICE ROUTE LIST ------->
+    Route::controller(ServiceController::class)->prefix('service')->group(function () {
         Route::get('/', 'index')->name('buyer.service.index');
-        Route::post('/store','store')->name('buyer.service.store');
-        Route::get('/delete/{id}','distroy')->name('buyer.service.delete');
-     });
-
+        Route::post('/store', 'store')->name('buyer.service.store');
+        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
+    });
 });
 
 // =======================================================
