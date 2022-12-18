@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2" style="margin-top: 8%">
-                                <button class="btn btn-lg btn-primary">Approve</button>
+                                <a href="{{Route('buyer.service.ApproveRequest',$service->id)}}" class="btn btn-lg btn-primary">Approve</a>
                             </div><!-- /end card -->
                         </div>
                     </div>
