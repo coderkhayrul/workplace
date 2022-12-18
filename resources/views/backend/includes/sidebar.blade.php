@@ -32,38 +32,40 @@
                     </a>
                 </li>
 
-                <li class="nav-header">Management</li>
+                <li class="nav-header">Feature</li>
 
-                <li
-                    class="nav-item has-treeview {{ Route::is('admin.user.*') ? 'menu-open' : '' }} {{ Route::is('admin.role.*') ? 'menu-open' : '' }}">
-                    <a href="#"
-                        class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}  {{ Route::is('admin.role.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            User Manager
-                            <i class="fas fa-angle-left right"></i>
-                            {{-- <span class="badge badge-info right">6</span> --}}
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.user.index') }}"
-                                class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}">
-                                <i class="fas fa-user-cog"></i>
-                                <p>User</p>
-                            </a>
-                        </li>
-                        @if (Auth::user()->role_id == 1)
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                    <li
+                        class="nav-item has-treeview {{ Route::is('admin.user.*') ? 'menu-open' : '' }} {{ Route::is('admin.role.*') ? 'menu-open' : '' }}">
+                        <a href="#"
+                            class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}  {{ Route::is('admin.role.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                User Manager
+                                <i class="fas fa-angle-left right"></i>
+                                {{-- <span class="badge badge-info right">6</span> --}}
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.role.index') }}"
-                                    class="nav-link {{ Route::is('admin.role.*') ? 'active' : '' }}">
-                                    <i class="fas fa-user-shield"></i>
-                                    <p>Role</p>
+                                <a href="{{ route('admin.user.index') }}"
+                                    class="nav-link {{ Route::is('admin.user.*') ? 'active' : '' }}">
+                                    <i class="fas fa-user-cog"></i>
+                                    <p>User</p>
                                 </a>
                             </li>
-                        @endif
-                    </ul>
-                </li>
+                            @if (Auth::user()->role_id == 1)
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.role.index') }}"
+                                        class="nav-link {{ Route::is('admin.role.*') ? 'active' : '' }}">
+                                        <i class="fas fa-user-shield"></i>
+                                        <p>Role</p>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
                 <li class="nav-item has-treeview {{ Route::is('buyer.service.index.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ Route::is('buyer.service.index.*') ? 'active' : '' }}">
                         <i class="fas fa-shopping-cart"></i>
@@ -103,6 +105,7 @@
                 </li>
 
                 {{-- Balance  --}}
+<<<<<<< HEAD
                 <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
                         <i class="fas fa-user" aria-hidden="true"></i>
@@ -119,36 +122,58 @@
                                 <p>Balance Topup</p>
                             </a>
                         </li>
+=======
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 4)
+                    <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <p>
+                                Balance
+                                <i class="fas fa-angle-left right"></i>
+                                {{-- <span class="badge badge-info right">6</span> --}}
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.balance.index') }}" class="nav-link   'active' : '' }}">
+                                    <i class="fa fa-money"></i>
+                                    <p>Create Request</p>
+                                </a>
+                            </li>
+>>>>>>> 19b1d144f0dd324c30752c804f1b4ad1b165f706
 
-                        {{-- <li class="nav-item">
+                            {{-- <li class="nav-item">
                             <a href="{{ route('admin.balance.index') }}"
                                 class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
                                 <i class="fas fa-plus"></i>
                                 <p>All Request</p>
                             </a>
                         </li> --}}
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                @endif
 
                 {{-- category --}}
-                <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
-                        <i class="fa-list-alt"></i>
-                        <p>
-                            Category
-                            <i class="fas fa-angle-left right"></i>
-                            {{-- <span class="badge badge-info right">6</span> --}}
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="" class="nav-link   'active' : '' }}">
-                                <i class="fas fa-comment"></i>
-                                <p>Category Manage</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                    <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                            <i class="fa-list-alt"></i>
+                            <p>
+                                Category
+                                <i class="fas fa-angle-left right"></i>
+                                {{-- <span class="badge badge-info right">6</span> --}}
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link   'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Category Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
                 <li class="nav-header">Short Link</li>
                 {{-- Live Visit --}}
                 <li class="nav-item">
