@@ -53,13 +53,15 @@
                                 <p>User</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.role.index') }}"
-                                class="nav-link {{ Route::is('admin.role.*') ? 'active' : '' }}">
-                                <i class="fas fa-user-shield"></i>
-                                <p>Role</p>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role_id == 1)
+                            <li class="nav-item">
+                                <a href="{{ route('admin.role.index') }}"
+                                    class="nav-link {{ Route::is('admin.role.*') ? 'active' : '' }}">
+                                    <i class="fas fa-user-shield"></i>
+                                    <p>Role</p>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ Route::is('buyer.service.index.*') ? 'menu-open' : '' }}">
@@ -73,7 +75,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{Route('buyer.service.index')}}"  class="nav-link{{Route::is('buyer.service.index.*')}} ? 'active' : '' }}">
+                            <a href="{{ Route('buyer.service.index') }}"
+                                class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
                                 <i class="fas fa-comment"></i>
                                 <p>Service Manage</p>
                             </a>
@@ -81,7 +84,8 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{Route('buyer.service.request')}}"  class="nav-link{{Route::is('buyer.service.index.*')}} ? 'active' : '' }}">
+                            <a href="{{ Route('buyer.service.request') }}"
+                                class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
                                 <i class="fas fa-comment"></i>
                                 <p>Requested Service</p>
                             </a>
@@ -89,7 +93,8 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{Route('buyer.service.yourservice',auth()->user()->id)}}"  class="nav-link{{Route::is('buyer.service.index.*')}} ? 'active' : '' }}">
+                            <a href="{{ Route('buyer.service.yourservice', auth()->user()->id) }}"
+                                class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
                                 <i class="fas fa-comment"></i>
                                 <p> My Services</p>
                             </a>
