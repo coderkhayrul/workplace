@@ -69,9 +69,11 @@
                                                     colspan="1"
                                                     aria-label="Engine version: activate to sort column ascending"
                                                     style="width: 185.562px;">Status</th>
+                                                @if(Auth::user()->role_id==1)
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                     style="width: 132.281px;">Action</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -89,10 +91,12 @@
                                                             <span class="badge badge-success">Success</span>
                                                         @endif
                                                     </td>
+                                                    @if(Auth::user()->role_id==1)
                                                     <td>
                                                         <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#EditBalance{{ $balance->balance_id }}"><i class="fas fa-edit"></i></button>
                                                         <a id="delete" class="btn btn-sm btn-danger" href="{{ route('admin.balance.destroy',$balance->balance_id) }}"><i class="fas fa-trash"></i></a>
                                                     </td>
+                                                    @endif
                                                 </tr>
                                                 <!-- Edit Modal -->
                                                 <div class="modal fade" id="EditBalance{{ $balance->balance_id }}" data-backdrop="static">

@@ -116,7 +116,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.balance.index') }}" class="nav-link   'active' : '' }}">
                                 <i class="fa fa-money"></i>
-                                <p>Create Request</p>
+                                <p>Balance Topup</p>
                             </a>
                         </li>
 
