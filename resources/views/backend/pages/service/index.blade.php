@@ -82,7 +82,7 @@
                                                     @if ($service->EndDate >= $today )
                                                         <span class="badge badge-primary">Running</span>
                                                     @else
-                                                        <span class="badge badge-danger">Expaired</span>
+                                                        <span class="badge badge-warning">Expaired</span>
                                                     @endif
                                                 </td>
                                                 <td>

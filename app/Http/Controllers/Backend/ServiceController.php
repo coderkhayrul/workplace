@@ -138,5 +138,41 @@ class ServiceController extends Controller
 
 
 
+     }//end method
+
+     //your service method
+     public function yourservice($user_id){
+        $services = Service::where('user_id',$user_id)->OrderBy('created_at','DESC')->get();
+        $TotalServiceCount= $services->count();
+        return view('backend.pages.service.yourService',compact('services','TotalServiceCount'));
+
+
+     }//end method
+
+     //service request start
+     public function viewServiceRequest(){
+        $requestedService = Service::where('status',2)->OrderBy('created_at','DESC')->get();
+        return view('backend.pages.service.serviceRequest',compact('requestedService'));
+     }//end method
+
+     public function ApproveService($id){
+        $request= Service::find($id);
+        $request->status= 1;
+        $request->update();
+        if($request){
+            $notification = array(
+                'message' => 'Service Aproved Successfully!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
+        else{
+            $notification = array(
+                'message' => ' Service Update  Failed!',
+                'alert-type' => 'error',
+            ); // returns Notification,
+
+            return redirect()->back()->with($notification);
+         }
      }
 }

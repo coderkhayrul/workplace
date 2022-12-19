@@ -30,6 +30,9 @@ Route::prefix('buyer')->group(function () {
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
     });
 });
 
@@ -38,7 +41,7 @@ Route::prefix('buyer')->group(function () {
 //  <------------------ ADMIN ROUTE LIST ---------------->
 //  ======================================================
 
-Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
+Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
 
     // <------- ADMIN ROUTE LIST ------->
     Route::controller(AdminController::class)->group(function () {
@@ -50,7 +53,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     });
 
     // <------- ADMIN USER ROUTE LIST ------->
-    Route::controller(UserController::class)->prefix('user')->group(function () {
+    Route::controller(UserController::class)->prefix('user')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.user.index');
         Route::get('/create', 'create')->name('admin.user.create');
         Route::post('/', 'store')->name('admin.user.store');
@@ -65,7 +68,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     });
 
     // <------- ADMIN USER ROLE ROUTE LIST ------->
-    Route::controller(RoleController::class)->prefix('role')->group(function () {
+    Route::controller(RoleController::class)->prefix('role')->middleware('superadmin')->group(function () {
         Route::get('/', 'index')->name('admin.role.index');
         Route::get('/create', 'create')->name('admin.role.create');
         Route::post('/', 'store')->name('admin.role.store');
@@ -75,14 +78,14 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     });
 
     // <------- ADMIN BALANCE REQUEST ROUTE LIST ------->
-    Route::controller(BalanceRequestController::class)->prefix('balance')->group(function () {
+    Route::controller(BalanceRequestController::class)->prefix('balance')->middleware('seller')->group(function () {
         Route::get('/', 'index')->name('admin.balance.index');
         Route::post('/', 'store')->name('admin.balance.store');
         Route::post('/update/{id}', 'update')->name('admin.balance.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.balance.destroy');
     });
     // <------- Category ------->
-    Route::controller(CategoryController::class)->prefix('category')->group(function () {
+    Route::controller(CategoryController::class)->prefix('category')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
         Route::post('/', 'store')->name('admin.category.store');
         Route::post('/update/{id}', 'update')->name('admin.category.update');

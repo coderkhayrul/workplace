@@ -17,14 +17,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role->role_slug == 'admin'){
+        if (Auth::user()->role->role_slug == 'super-admin' || Auth::user()->role->role_slug == 'admin') {
             return $next($request);
         }
-
-        $notification = array(
-            'message' => 'Access Denied',
-            'alert-type' => 'error',
-        ); // returns Notification,
-        return redirect()->route('web.home')->with($notification);
+        return redirect()->back();
     }
 }

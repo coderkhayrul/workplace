@@ -13,11 +13,18 @@ class BalanceRequestController extends Controller
 {
     public function index()
     {
-        $balances = BalanceRequest::all();
+
         // $checkUser = User::where('role_id', 1)->get();
         // $balances = BalanceRequest::where('user_id', 1)->get();
         // dd($checkUser);
-        return view('backend.pages.balanceRequest.index', compact('balances'));
+
+        if (Auth::user()->role_id == 1) {
+            $balances = BalanceRequest::all();
+            return view('backend.pages.balanceRequest.index', compact('balances'));
+        } else {
+            $balances = BalanceRequest::where('user_id', Auth::user()->id)->get();
+            return view('backend.pages.balanceRequest.index', compact('balances'));
+        }
     }
 
     public function store(Request $request)

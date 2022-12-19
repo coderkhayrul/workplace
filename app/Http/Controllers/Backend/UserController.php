@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -18,10 +16,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $data['users'] = User::with('role')->where('status', 1)->get();
-        $data['roles'] = Role::where('role_status', 1)->get();
-
-        return view('backend.pages.user.index')->with($data);
+        $users = User::with('role')->where('status', 1)->where('role_id', '!=', 1)->get();
+        return view('backend.pages.user.index', compact('users'));
     }
 
     public function create()
@@ -57,13 +53,13 @@ class UserController extends Controller
             ); // returns Notification,
 
             return redirect()->back()->with($notification);
-        }else{
+        } else {
             $notification = array(
                 'message' => 'User Create Failed!',
                 'alert-type' => 'success',
             ); // returns Notification,
 
-        return redirect()->back()->with($notification);
+            return redirect()->back()->with($notification);
         }
     }
 
@@ -105,25 +101,25 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         // Image Find And Update
-            if ($user) {
-                if ($request->hasFile('profile_pic')) {
-                    if ($request->profile_old_image) {
-                        unlink($request->profile_old_image);
-                    }
-                    $new_image = $request->file('profile_pic');
-                    $image_name = hexdec(uniqid()) . '.' . $new_image->getClientOriginalExtension();
-                    Image::make($new_image)->resize(150, 150)->save('uploads/user/' . $image_name);
-                    $profile_image = 'uploads/user/' . $image_name;
-
-                    UserProfile::where('user_id', $user->id)->update([
-                        'full_name' => $request->full_name,
-                        'profile_pic' => $profile_image,
-                    ]);
+        if ($user) {
+            if ($request->hasFile('profile_pic')) {
+                if ($request->profile_old_image) {
+                    unlink($request->profile_old_image);
                 }
+                $new_image = $request->file('profile_pic');
+                $image_name = hexdec(uniqid()) . '.' . $new_image->getClientOriginalExtension();
+                Image::make($new_image)->resize(150, 150)->save('uploads/user/' . $image_name);
+                $profile_image = 'uploads/user/' . $image_name;
+
+                UserProfile::where('user_id', $user->id)->update([
+                    'full_name' => $request->full_name,
+                    'profile_pic' => $profile_image,
+                ]);
             }
-            UserProfile::where('user_id', $user->id)->update([
-                'full_name' => $request->full_name,
-            ]);
+        }
+        UserProfile::where('user_id', $user->id)->update([
+            'full_name' => $request->full_name,
+        ]);
         $user->update();
         Session::put('panel_name', $request->panel_name);
 
@@ -133,7 +129,7 @@ class UserController extends Controller
                 'alert-type' => 'success',
             ); // returns Notification,
             return redirect()->back()->with($notification);
-        }else{
+        } else {
             $notification = array(
                 'message' => 'User Updated Failed!',
                 'alert-type' => 'success',
@@ -164,14 +160,13 @@ class UserController extends Controller
                 'alert-type' => 'success',
             ); // returns Notification,
             return redirect()->back()->with($notification);
-        }else{
+        } else {
             $notification = array(
                 'message' => 'User Updated Failed!',
                 'alert-type' => 'success',
             ); // returns Notification,
             return redirect()->back()->with($notification);
         }
-
     }
     public function profileSocialMedia(Request $request, $slug)
     {
@@ -188,7 +183,7 @@ class UserController extends Controller
                 'alert-type' => 'success',
             ); // returns Notification,
             return redirect()->back()->with($notification);
-        }else{
+        } else {
             $notification = array(
                 'message' => 'User Updated Failed!',
                 'alert-type' => 'success',
