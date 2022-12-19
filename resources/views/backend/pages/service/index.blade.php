@@ -82,12 +82,12 @@
                                                     @if ($service->EndDate >= $today )
                                                         <span class="badge badge-primary">Running</span>
                                                     @else
-                                                        <span class="badge badge-warning">Expaired</span>
+                                                        <span class="badge badge-danger">Expaired</span>
                                                     @endif
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editService{{$service->id}}"><i class="fas fa-edit"></i></button>
-                                                    <a id="delete" class="btn btn-sm btn-danger" href="{{route('buyer.service.delete',$service->id)}}"><i class="fas fa-user-slash"></i></a>
+                                                    <a id="delete" class="btn btn-sm btn-danger" href="{{route('buyer.service.delete',$service->id)}}"><i class="fas fa-trash"></i></a>
                                                     <a id="view" class="btn btn-sm btn-warning" href=""><i class="fas fa-eye"></i></a>
                                                 </td>
                                                 <!-- Edit Modal Start  -->

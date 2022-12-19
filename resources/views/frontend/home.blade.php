@@ -31,7 +31,7 @@
                             </div>
                             <div class="auction-bid">
                                 <h6>{{$service->price}}৳</h6>
-                                <span>&nbsp;{{$service->EndDate}}</span>
+                                <span>&nbsp;{{Carbon\Carbon::parse($service->EndDate)->format('d M, y')}}</span>
                             </div>
                         </div>
                         <div class="auction-stock">
