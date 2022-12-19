@@ -12,25 +12,26 @@
                 </div>
             </div>
             <div class="auction-slider-one style1 owl-carousel">
+                @foreach($services as $service)
                 <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                     <div class="auction-img">
-                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-16.jpg" alt="Image">
+                        <img src="{{asset('uploads/services/'.$service->document)}}" alt="Image">
                     </div>
                     <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">Abstract Art On Wall</a></h3>
+                        <h3><a href="item-details.html">{{Str::limit($service->title,23)}}</a></h3>
                         <div class="auction-author-info">
                             <div class="author-info">
                                 <div class="author-img">
                                     <img src="{{ asset('frontend') }}/assets/img/author/author-15.jpg" alt="Image">
                                 </div>
                                 <div class="author-name">
-                                    <h6><a href="author-profile.html">Viola Bush</a></h6>
-                                    <a href="author-profile.html">@viola</a>
+                                    <h6><a href="author-profile.html">{{$service->user->user_name}}</a></h6>
+                                    <a>Expaired On:-</a>
                                 </div>
                             </div>
                             <div class="auction-bid">
-                                <h6>1.56ETH</h6>
-                                <span>Current Bid</span>
+                                <h6>{{$service->price}}৳</h6>
+                                <span>&nbsp;{{$service->EndDate}}</span>
                             </div>
                         </div>
                         <div class="auction-stock">
@@ -39,143 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
-                    <div class="auction-img">
-                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-17.jpg" alt="Image">
-                    </div>
-                    <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">Twilight City Art</a></h3>
-                        <div class="auction-author-info">
-                            <div class="author-info">
-                                <div class="author-img">
-                                    <img src="{{ asset('frontend') }}/assets/img/author/author-3.jpg" alt="Image">
-                                </div>
-                                <div class="author-name">
-                                    <h6><a href="author-profile.html">Hugh Snee</a></h6>
-                                    <a href="author-profile.html">@hugh</a>
-                                </div>
-                            </div>
-                            <div class="auction-bid">
-                                <h6>2.34ETH</h6>
-                                <span>Current Bid</span>
-                            </div>
-                        </div>
-                        <div class="auction-stock">
-                            <p>19+ Place Bid</p>
-                            <a href="place-bid.html" class="btn style1">Place Bid <i class="flaticon-right-arrow-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-                    <div class="auction-img">
-                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-18.jpg" alt="Image">
-                    </div>
-                    <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">Walking On Air</a></h3>
-                        <div class="auction-author-info">
-                            <div class="author-info">
-                                <div class="author-img">
-                                    <img src="{{ asset('frontend') }}/assets/img/author/author-10.jpg" alt="Image">
-                                </div>
-                                <div class="author-name">
-                                    <h6><a href="author-profile.html">Harold Tyler</a></h6>
-                                    <a href="author-profile.html">@harold</a>
-                                </div>
-                            </div>
-                            <div class="auction-bid">
-                                <h6>1.23ETH</h6>
-                                <span>Current Bid</span>
-                            </div>
-                        </div>
-                        <div class="auction-stock">
-                            <p>17+ Place Bid</p>
-                            <a href="place-bid.html" class="btn style1">Place Bid <i class="flaticon-right-arrow-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">
-                    <div class="auction-img">
-                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-19.jpg" alt="Image">
-                    </div>
-                    <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">Exe Dream Light</a></h3>
-                        <div class="auction-author-info">
-                            <div class="author-info">
-                                <div class="author-img">
-                                    <img src="{{ asset('frontend') }}/assets/img/author/author-1.jpg" alt="Image">
-                                </div>
-                                <div class="author-name">
-                                    <h6><a href="author-profile.html">Lane Bourn</a></h6>
-                                    <a href="author-profile.html">@bourn</a>
-                                </div>
-                            </div>
-                            <div class="auction-bid">
-                                <h6>0.56ETH</h6>
-                                <span>Current Bid</span>
-                            </div>
-                        </div>
-                        <div class="auction-stock">
-                            <p>22+ Place Bid</p>
-                            <a href="place-bid.html" class="btn style1">Place Bid <i class="flaticon-right-arrow-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
-                    <div class="auction-img">
-                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-20.jpg" alt="Image">
-                    </div>
-                    <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">Etharum On Diamond</a></h3>
-                        <div class="auction-author-info">
-                            <div class="author-info">
-                                <div class="author-img">
-                                    <img src="{{ asset('frontend') }}/assets/img/author/author-7.jpg" alt="Image">
-                                </div>
-                                <div class="author-name">
-                                    <h6><a href="author-profile.html">Les Carter</a></h6>
-                                    <a href="author-profile.html">@carter</a>
-                                </div>
-                            </div>
-                            <div class="auction-bid">
-                                <h6>1.45ETH</h6>
-                                <span>Current Bid</span>
-                            </div>
-                        </div>
-                        <div class="auction-stock">
-                            <p>16+ Place Bid</p>
-                            <a href="place-bid.html" class="btn style1">Place Bid <i
-                                    class="flaticon-right-arrow-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="700">
-                    <div class="auction-img">
-                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-21.jpg" alt="Image">
-                    </div>
-                    <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">Super Neumorphism</a></h3>
-                        <div class="auction-author-info">
-                            <div class="author-info">
-                                <div class="author-img">
-                                    <img src="{{ asset('frontend') }}/assets/img/author/author-3.jpg" alt="Image">
-                                </div>
-                                <div class="author-name">
-                                    <h6><a href="author-profile.html">Willium David</a></h6>
-                                    <a href="author-profile.html">@david</a>
-                                </div>
-                            </div>
-                            <div class="auction-bid">
-                                <h6>2.43ETH</h6>
-                                <span>Current Bid</span>
-                            </div>
-                        </div>
-                        <div class="auction-stock">
-                            <p>21+ Place Bid</p>
-                            <a href="place-bid.html" class="btn style1">Place Bid <i
-                                    class="flaticon-right-arrow-1"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
