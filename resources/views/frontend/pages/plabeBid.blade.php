@@ -6,7 +6,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumb-title">
-                        <h2>Seller Profile</h2>
+                        <h2>Place Bid</h2>
                         <ul class="breadcrumb-menu list-style">
                             <li><a href="{{ route('web.home') }}">Home </a></li>
                             <li>Place Bid</li>
@@ -30,8 +30,11 @@
     <section class="place-bid-wrap ptb-100 bg-zodiac">
         <div class="container">
             <div class="row">
+                <div class="bid-title mb-3">
+                    <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2>
+                </div>
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
-                    <div class="bidding-popup">
+                    <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
                         <h6>You must bid at least <span>5.88 ETH</span></h6>
                         <form action="#" class="bidding-form">

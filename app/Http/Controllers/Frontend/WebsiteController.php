@@ -21,6 +21,13 @@ class WebsiteController extends Controller
         return view('frontend.pages.profile');
     }
 
+    //place bid page show method
+    public function PlaceBid( string $slug){
+        $service = Service::where('slug',$slug)->first();
+        return view('frontend.pages.plabeBid',compact('service'));
+
+    }//end method
+
     public function Weblogout()
     {
         Auth::logout();

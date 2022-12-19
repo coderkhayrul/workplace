@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
-Route::get('/placebid',[WebsiteController::class, 'PlaceBid'])->name('web.placebid');
+Route::get('/placebid/{slug}',[WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 
 
 // =======================================================
