@@ -105,7 +105,7 @@
                 </li>
 
                 {{-- Balance  --}}
-<<<<<<< HEAD
+
                 <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
                         <i class="fas fa-user" aria-hidden="true"></i>
@@ -122,7 +122,6 @@
                                 <p>Balance Topup</p>
                             </a>
                         </li>
-=======
                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 4)
                     <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
@@ -140,7 +139,6 @@
                                     <p>Create Request</p>
                                 </a>
                             </li>
->>>>>>> 19b1d144f0dd324c30752c804f1b4ad1b165f706
 
                             {{-- <li class="nav-item">
                             <a href="{{ route('admin.balance.index') }}"
