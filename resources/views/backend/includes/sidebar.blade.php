@@ -147,7 +147,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link   'active' : '' }}">
+                                <a href="{{ route('admin.category.index') }}" class="nav-link   'active' : '' }}">
                                     <i class="fas fa-comment"></i>
                                     <p>Category Manage</p>
                                 </a>
