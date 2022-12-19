@@ -51,7 +51,10 @@
                                             <label for="category_name">Category Name</label>
                                             <input type="text" class="form-control" name="category_name"
                                                 id="category_name" placeholder=" Enter your Category Name">
-                                            <span class="text-danger catNameError"></span>
+                                            @error('category_name')
+                                                <span class="text-danger">{{$message}}</span>
+                                            @enderror
+
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status</label>
@@ -80,10 +83,19 @@
                                 <thead>
                                     <tr>
                                         <th class="wd-5p">#SL</th>
-                                        <th class="wd-20p">Id</th>
                                         <th class="wd-6p">Name</th>
                                         <th class="wd-15p">Status</th>
                                     </tr>
+                                    @php
+                                        $sl=1;
+                                    @endphp
+                                    @foreach ($categories as $category)
+                                    <tr>
+                                        <td>{{ $sl++ }}</td>
+                                        <td>{{ $category->name}}</td>
+                                        <td>{{ $category->status}}</td>
+                                    </tr>
+                                    @endforeach
                                 </thead>
                                 <tbody>
                                 </tbody>
