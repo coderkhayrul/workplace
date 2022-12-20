@@ -36,31 +36,31 @@
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
-                        <h6>You must bid at least <span>5.88 ETH</span></h6>
                         <form action="#" class="bidding-form">
                             <div class="form-group">
-                                <input type="number" placeholder="00.00 ETH">
+                                <label for="bidtitle">Bid Title</label>
+                                <input type="text" name="bid-title" placeholder="Enter Bid Title" id="bidtitle" style="background-color:#203048; outline-style: none; border:none">
                             </div>
                             <div class="form-group">
-                                <p>Enter Quantity: <span>5 Available</span></p>
-                                <input type="number" placeholder="00.00 ETH">
+                                <label for="price">Price</label>
+                                <input type="number" name="price" placeholder="Enter Bid Price" id="price" style="background-color:#203048; outline-style: none; border:none">
                             </div>
+                            <div class="form-group">
+                                <label for="bidtitle">Date Line</label>
+                                <input type="date" name="bid-title" placeholder="Enter Bid Title" id="bidtitle">
+                            </div>
+                            <div class="form-group">
+                                <label for="bidtitle">File</label>
+                                <input type="file" class="form-control" id="inputGroupFile02">
+                            </div>
+                            <div class="form-group">
+                                <label for="bidtitle">Drescreption</label>
+                                <textarea style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
+                            </div>
+
+                            <button class="btn style1" type="submit"> Place A Bid</button>
+
                         </form>
-                        <ul class="bidding-tablelist list-style">
-                            <li>
-                                <p>You must bid at least</p>
-                                <span>5.88 ETH</span>
-                            </li>
-                            <li>
-                                <p>Service Fee</p>
-                                <span>0.88 ETH</span>
-                            </li>
-                            <li>
-                                <p>Total Bid Amount</p>
-                                <span>5 ETH</span>
-                            </li>
-                        </ul>
-                        <button class="btn style1" type="submit"> Place A Bid</button>
                     </div>
                 </div>
             </div>
