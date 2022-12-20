@@ -138,7 +138,7 @@
                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                     <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
-                            <i class="fa-list-alt"></i>
+                            <i class="fa fa-list-alt"></i>
                             <p>
                                 Category
                                 <i class="fas fa-angle-left right"></i>
@@ -170,7 +170,6 @@
                         <p> LOGOUT </p>
                     </a>
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

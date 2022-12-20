@@ -23,12 +23,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card card-primary">
-
-                    {{-- <div class="card-header">
-                        <h4>All Category <a class="btn btn-info btn-sm" href="" style="float: right;"
-                                data-toggle="modal" data-target="#addcategory">Add Category</a></h4>
-                    </div> --}}
-
+                    
                     <!-- category add Modal -->
                     <div class="modal fade" id="addcategory" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -52,7 +47,7 @@
                                             <input type="text" class="form-control" name="category_name"
                                                 id="category_name" placeholder=" Enter your Category Name">
                                             @error('category_name')
-                                                <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                             @enderror
 
                                         </div>
@@ -64,7 +59,7 @@
                                                 <option value="0">Inactive</option>
                                             </select>
                                             @error('status')
-                                                <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
                                 </div><!-- end Modal Body -->
@@ -77,87 +72,60 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- /.card-body -->
-                    <!-- form start -->
-                    {{-- <form role="form">
-                        <div class="card-body">
-                            <table id="datatableid" class="table table-bordered table-striped dataTable" role="grid"
-                                    aria-describedby="example1_info">
-                                <thead>
-                                    <tr>
-                                        <th class="wd-5p">#SL</th>
-                                        <th class="wd-6p">Name</th>
-                                        <th class="wd-15p">Status</th>
-                                    </tr>
-                                    @php
-                                        $sl=1;
-                                    @endphp
-                                    @foreach ($categories as $category)
-                                    <tr>
-                                        <td>{{ $sl++ }}</td>
-                                        <td>{{ $category->name}}</td>
-                                        <td>{{ $category->status}}</td>
-                                    </tr>
-                                    @endforeach
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </form> --}}
-                        {{-- iughuyguyguy --}}
-                                        <!-- /.card-header -->
-                <div class="card-body">
-                    <h4>Category Manage <a class="btn btn-info btn-sm" href="" style="float: right;"
-                        data-toggle="modal" data-target="#addcategory">Add Category</a></h4>
-                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="datatableid" class="table table-bordered table-striped dataTable" role="grid"
-                                    aria-describedby="example1_info">
-                                    <thead>
-                                        <tr role="row" class="bg-gray">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-sort="ascending"
-                                                aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 217.078px;">#SL</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 278.547px;">Name</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 278.547px;">Status</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 200.547px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($categories as $key=> $category)
-                                         <tr>
-                                             <td>{{ $key+1 }}</td>
-                                             <td>{{ $category->name}}</td>
-                                             <td>
-                                                 @if($category->status == 1)
-                                                 <span class="badge badge-info">Active</span>
-                                                 @else
-                                                 <span class="badge badge-warning">Inactive</span>
-                                                 @endif
-                                             </td>
-                                             <td>
-                                                 <button class="btn-sm btn-info btn" data-target="#editmodal" data-toggle="modal"><i class="fa fa-edit"></i></button>
-                                                 <button class="btn-sm btn-danger btn" data-target="#deletemodal" data-toggle="modal"><i class="fa fa-trash"></i></button>
-                                             </td>
-                                         </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <h4>Category Manage <a class="btn btn-info btn-sm" href="" style="float: right;"
+                                data-toggle="modal" data-target="#addcategory">Add Category</a></h4>
+                        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="datatableid" class="table table-bordered table-striped dataTable"
+                                        role="grid" aria-describedby="example1_info">
+                                        <thead>
+                                            <tr role="row" class="bg-gray">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending"
+                                                    style="width: 217.078px;">#SL</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 278.547px;">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 278.547px;">Status</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 200.547px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($categories as $key=> $category)
+                                            <tr>
+                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ $category->name}}</td>
+                                                <td>
+                                                    @if($category->status == 1)
+                                                    <span class="badge badge-info">Active</span>
+                                                    @else
+                                                    <span class="badge badge-warning">Inactive</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <button class="btn-sm btn-info btn" data-target="#editmodal"
+                                                        data-toggle="modal"><i class="fa fa-edit"></i></button>
+                                                    <button class="btn-sm btn-danger btn" data-target="#deletemodal"
+                                                        data-toggle="modal"><i class="fa fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.card-body -->
-                        {{-- iughuyguyguy --}}
+                    <!-- /.card-body -->
+                    {{-- iughuyguyguy --}}
 
 
 
