@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
         'panelaccess' => \App\Http\Middleware\PanelMiddleware::class,
         'superadmin' => \App\Http\Middleware\SuperAdmin::class,
         'admin' => \App\Http\Middleware\Admin::class,
-        'seller' => \App\Http\Middleware\Seller::class,
+        'buyer' => \App\Http\Middleware\Buyer::class,
     ];
 }

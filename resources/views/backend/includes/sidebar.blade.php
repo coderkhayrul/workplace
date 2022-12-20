@@ -75,24 +75,26 @@
                             {{-- <span class="badge badge-info right">6</span> --}}
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ Route('buyer.service.index') }}"
-                                class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
-                                <i class="fas fa-comment"></i>
-                                <p>Service Manage</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ Route('buyer.service.request') }}"
-                                class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
-                                <i class="fas fa-comment"></i>
-                                <p>Requested Service</p>
-                            </a>
-                        </li>
-                    </ul>
+                    @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ Route('buyer.service.index') }}"
+                                    class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Service Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ Route('buyer.service.request') }}"
+                                    class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Requested Service</p>
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ Route('buyer.service.yourservice', auth()->user()->id) }}"

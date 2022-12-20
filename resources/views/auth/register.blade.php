@@ -218,8 +218,8 @@
                                             <div class="form-group">
                                                 <select name="role_id">
                                                     <option label="User Type"></option>
-                                                    <option value="2">Buyer</option>
-                                                    <option value="3">Seller</option>
+                                                    <option value="2">Seller</option>
+                                                    <option value="3">Buyer</option>
                                                 </select>
                                             </div>
                                         </div>

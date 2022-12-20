@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Seller
+class Buyer
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class Seller
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role->role_slug == 'seller') {
+        if (Auth::user()->role->role_slug == 'buyer') {
             return $next($request);
         }
         return redirect()->back();

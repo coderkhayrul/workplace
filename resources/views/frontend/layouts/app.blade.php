@@ -1,6 +1,6 @@
 @include('frontend.includes.header')
 
-<!--Preloader starts-->
+<!-- Preloader starts -->
 @include('frontend.includes.pleloader')
 <!--Preloader ends-->
 

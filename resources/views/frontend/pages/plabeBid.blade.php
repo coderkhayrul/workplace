@@ -51,14 +51,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">File</label>
-                                <input type="file" class="form-control" id="inputGroupFile02">
+                                <input name="file" type="file" class="form-control" id="inputGroupFile02">
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">Drescreption</label>
-                                <textarea style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
+                                <textarea name="bidDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
                             </div>
 
-                            <button class="btn style1" type="submit"> Place A Bid</button>
+                            <button type="submit" class="btn style1" type="submit"> Place A Bid</button>
 
                         </form>
                     </div>

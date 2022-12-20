@@ -80,7 +80,19 @@ class UserController extends Controller
 
     public function destroy($slug)
     {
-        //
+        $user = User::where('user_slug', $slug)->delete();
+        if ($user) {
+            $notification = array(
+                'message' => 'User Delete Updated!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+        } else {
+            $notification = array(
+                'message' => 'User Delete Failed!',
+                'alert-type' => 'success',
+            ); // returns Notification,
+        }
+        return redirect()->back()->with($notification);
     }
 
     public function profileShow($slug)
@@ -128,14 +140,13 @@ class UserController extends Controller
                 'message' => 'User Profile Updated!',
                 'alert-type' => 'success',
             ); // returns Notification,
-            return redirect()->back()->with($notification);
         } else {
             $notification = array(
                 'message' => 'User Updated Failed!',
                 'alert-type' => 'success',
             ); // returns Notification,
-            return redirect()->back()->with($notification);
         }
+        return redirect()->back()->with($notification);
     }
     public function profileSetting(Request $request, $slug)
     {
