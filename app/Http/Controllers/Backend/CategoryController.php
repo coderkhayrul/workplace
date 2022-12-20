@@ -38,28 +38,18 @@ class CategoryController extends Controller
     public function store(Request $all)
     {
         $all->validate([
-            'name'=>'required',
+            'category_name'=>'required',
             'status'=>'required',
         ]);
         $Category = new Category();
         $Category->name = $all->category_name;
         $Category->status = $all->status;
         $Category->save();
-        if( $Category){
-            $notification = array(
-                'message' => 'Category Create Successfully!',
-                'alert-type' => 'success',
-            ); // returns Notification,
-            return redirect()->back()->with($notification);
-        }
-        else{
-            $notification = array(
-                'message' => ' Service Delete  Failed!',
-                'alert-type' => 'error',
-            ); // returns Notification,
-
-            return redirect()->back()->with($notification);
-         }
+        $notification = array(
+            'message' => ' CAtegory Created Done',
+            'alert-type' => 'success',
+        ); // returns Notification,
+         return redirect()->back()->with($notification);
 
     }
 

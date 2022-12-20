@@ -88,7 +88,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     // <------- Category ------->
     Route::controller(CategoryController::class)->prefix('category')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
-        Route::post('/', 'store')->name('admin.category.store');
+        Route::post('/store','store')->name('admin.category.store');
         Route::post('/update/{id}', 'update')->name('admin.category.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
     });
