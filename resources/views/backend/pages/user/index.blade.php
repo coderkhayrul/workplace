@@ -160,8 +160,8 @@
                                 class="form-control  @error('role_id') is-invalid @enderror">
                                 <option label="Select Role"></option>
                                 <option value="2">Admin</option>
-                                <option value="3">Buyer</option>
-                                <option value="4">Seller</option>
+                                <option value="3">Seller</option>
+                                <option value="4">Buyer</option>
                             </select>
                             @error('role_id')
                                 <div class="invalid-feedback">

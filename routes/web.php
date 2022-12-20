@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
-Route::get('/placebid/{slug}',[WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
+Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 
 
 // =======================================================
@@ -27,11 +27,11 @@ Route::get('/placebid/{slug}',[WebsiteController::class, 'PlaceBid'])->middlewar
 Route::prefix('buyer')->group(function () {
     // <------- SERVICE ROUTE LIST ------->
     Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/', 'index')->name('buyer.service.index');
+        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
-        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
         Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
         Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
     });
@@ -79,7 +79,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     });
 
     // <------- ADMIN BALANCE REQUEST ROUTE LIST ------->
-    Route::controller(BalanceRequestController::class)->prefix('balance')->middleware('seller')->group(function () {
+    Route::controller(BalanceRequestController::class)->prefix('balance')->middleware('buyer')->group(function () {
         Route::get('/', 'index')->name('admin.balance.index');
         Route::post('/', 'store')->name('admin.balance.store');
         Route::post('/update/{id}', 'update')->name('admin.balance.update');
@@ -88,7 +88,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     // <------- Category ------->
     Route::controller(CategoryController::class)->prefix('category')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
-        Route::post('/store','store')->name('admin.category.store');
+        Route::post('/store', 'store')->name('admin.category.store');
         Route::post('/update/{id}', 'update')->name('admin.category.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
     });
