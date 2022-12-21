@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -26,7 +27,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -35,22 +35,22 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $all)
+    public function store(Request $request)
     {
-        $all->validate([
-            'category_name'=>'required',
-            'status'=>'required',
+        $request->validate([
+            'category_name' => 'required',
+            'status' => 'required',
         ]);
         $Category = new Category();
-        $Category->name = $all->category_name;
-        $Category->status = $all->status;
+        $Category->name = $request->category_name;
+        $Category->slug = Str::slug($request->category_name, '-');
+        $Category->status = $request->status;
         $Category->save();
         $notification = array(
-            'message' => ' CAtegory Created Done',
+            'message' => ' Category Created Done',
             'alert-type' => 'success',
         ); // returns Notification,
-         return redirect()->back()->with($notification);
-
+        return redirect()->back()->with($notification);
     }
 
     /**
