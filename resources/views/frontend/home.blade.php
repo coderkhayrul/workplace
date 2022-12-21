@@ -44,10 +44,10 @@
                                         <span>Current Bid</span>
                                     </div>
                                 </div>
-                                <div class="nft-deadline">
+                                {{-- <div class="nft-deadline">
                                     <span>Auction Ending In</span>
                                     <div class="countdown text-center" data-countdown="2022/12/30"></div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -131,8 +131,7 @@
                             <div class="auction-author-info">
                                 <div class="author-info">
                                     <div class="author-img">
-                                        <img src="{{ asset('frontend') }}/assets/img/author/author-13.jpg"
-                                            alt="Image">
+                                        <img src="{{ asset('frontend') }}/assets/img/author/author-13.jpg" alt="Image">
                                         <span class="badge"><img src="{{ asset('frontend') }}/assets/img/badge.png"
                                                 alt="Image"></span>
                                     </div>

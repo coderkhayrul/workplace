@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Backend\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DemoSeeder extends Seeder
