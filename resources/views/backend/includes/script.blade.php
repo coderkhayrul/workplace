@@ -6,6 +6,7 @@
 <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- Summernote -->
 <script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+
 <script>
   $(function () {
     // Summernote

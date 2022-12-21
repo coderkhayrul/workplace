@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -91,6 +92,11 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.category.store');
         Route::post('/update/{id}', 'update')->name('admin.category.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
+    });
+    // <------- SubCategory ------->
+    Route::controller(SubCategoryController::class)->prefix('sub-category')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.subcategory.index');
+        Route::post('/', 'store')->name('admin.subcategory.store');
     });
 });
 
