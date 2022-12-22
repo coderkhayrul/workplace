@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Backend\SubCategory;
 use App\Models\Backend\Category;
+use App\Http\Requests\SubCategoryRequest;
 
 class SubCategoryController extends Controller
 {
@@ -39,12 +40,12 @@ class SubCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubCategoryRequest $request)
     {
-        $request->validate([
-            'category_id' => 'required',
-            'name' => 'required',
-        ]);
+        // $request->validate([
+        //     'category_id' => 'required',
+        //     'name' => 'required',
+        // ]);
 
         $data = SubCategory::create([
             'category_id' => $request->category_id,
@@ -98,7 +99,7 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(SubCategoryRequest $request)
     {
         // dd($request->all());
 
