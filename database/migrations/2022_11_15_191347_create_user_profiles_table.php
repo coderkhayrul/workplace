@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('profile_pic')->nullable();
             $table->string('present_address')->nullable();
             $table->string('parmenent_address')->nullable();
-            $table->integer('national_id')->nullable();
+            $table->unsignedBigInteger('national_id')->nullable();
             $table->string('balance')->default(0);
             $table->string('user_skill')->nullable();
             $table->string('user_position')->nullable();

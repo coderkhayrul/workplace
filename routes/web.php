@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -107,6 +108,16 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.subcategory.store');
         Route::get('/edit', 'edit')->name('admin.subcategory.edit');
         Route::post('/update', 'update')->name('admin.subcategory.update');
+    });
+    // <------- Product ------->
+    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::post('/store', 'store')->name('admin.product.store');
+        Route::post('/update/{id}', 'update')->name('admin.product.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.product.delete');
+        // Product Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.product.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
 });
 
