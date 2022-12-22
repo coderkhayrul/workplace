@@ -19,6 +19,7 @@
                                     class="flaticon-right-arrow-1"></i></a>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-6 order-lg-2 order-md-1 order-1">
                     <div class="hero-img-wrap">
@@ -74,14 +75,18 @@
                             <img src="{{ asset('uploads/services/' . $service->document) }}" alt="Image">
                         </div>
                         <div class="auction-info-wrap">
-                            <h3><a href="item-details.html">{{ Str::limit($service->title, 23) }}</a></h3>
+                            <h3><a
+                                    href="{{ route('web.single.service', $service->slug) }}">{{ Str::limit($service->title, 23) }}</a>
+                            </h3>
                             <div class="auction-author-info">
                                 <div class="author-info">
                                     <div class="author-img">
                                         <img src="{{ asset('frontend') }}/assets/img/author/author-15.jpg" alt="Image">
                                     </div>
                                     <div class="author-name">
-                                        <h6><a href="author-profile.html">{{ $service->user->user_name }}</a></h6>
+                                        <h6><a
+                                                href="{{ route('web.buyer.profile', $service->user->user_slug) }}">{{ $service->user->user_name }}</a>
+                                        </h6>
                                         <a>Expaired On:-</a>
                                     </div>
                                 </div>
