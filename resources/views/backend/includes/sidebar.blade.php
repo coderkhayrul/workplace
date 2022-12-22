@@ -126,12 +126,12 @@
                             </li>
 
                             {{-- <li class="nav-item">
-                            <a href="{{ route('admin.balance.index') }}"
-                                class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
-                                <i class="fas fa-plus"></i>
-                                <p>All Request</p>
-                            </a>
-                        </li> --}}
+                                <a href="{{ route('admin.balance.index') }}"
+                                    class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                                    <i class="fas fa-plus"></i>
+                                    <p>All Request</p>
+                                </a>
+                            </li> --}}
                         </ul>
                     </li>
                 @endif
