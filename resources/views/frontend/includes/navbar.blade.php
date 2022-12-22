@@ -16,20 +16,16 @@
                                 {{ $navbar->name }}
                                 <i class="ri-add-line"></i>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="index-3.html" class="nav-link">Website Design</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index-2.html" class="nav-link ">Logo Design</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index-3.html" class="nav-link">App Desigin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link active">Flyer Design</a>
-                                </li>
-                            </ul>
+
+                            @if (count($navbar->subcategory) > 0)
+                                <ul class="dropdown-menu">
+                                    @foreach ($navbar->subcategory as $navbarsubcategory)
+                                        <li class="nav-item">
+                                            <a href="index-3.html" class="nav-link">{{ $navbarsubcategory->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
                     @endforeach
 
