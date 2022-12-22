@@ -31,7 +31,7 @@
         <div class="container">
             <div class="author-details-box">
                 <div class="author-img">
-                    <img src="{{ asset('frontend') }}/assets/img/author/author-7.jpg" alt="Image">
+                    <img src="{{ asset($buyer->profile->profile_pic) }}" alt="Image">
                     <span class="author-badge"><img src="{{ asset('frontend') }}/assets/img/badge.png"
                             alt="Image"></span>
                 </div>
@@ -70,11 +70,7 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="history-tab" data-bs-toggle="tab" data-bs-target="#tab-1"
-                            type="button" role="tab" aria-controls="tab-1" aria-selected="true">Item On Sale</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="bids-tab" data-bs-toggle="tab" data-bs-target="#tab-2" type="button"
-                            role="tab" aria-controls="tab-2" aria-selected="false">Top Reviewed</button>
+                            type="button" role="tab" aria-controls="tab-1" aria-selected="true">All Service</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#tab-3"
@@ -213,138 +209,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                <div class="auction-card style3">
-                                    <div class="auction-img">
-                                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-5.jpg" alt="Image">
-                                        <span class="item-popularity"><i class="ri-heart-fill"></i>1.4k</span>
-                                        <a href="place-bid.html" class="btn style1">Place Bid <i
-                                                class="flaticon-right-arrow-1"></i></a>
-                                    </div>
-                                    <div class="auction-info-wrap">
-                                        <h3><a href="item-details.html">3D Triangle Art</a></h3>
-                                        <div class="auction-author-info">
-                                            <div class="author-info">
-                                                <div class="author-img">
-                                                    <img src="{{ asset('frontend') }}/assets/img/author/author-3.jpg"
-                                                        alt="Image">
-                                                    <span class="badge"><img
-                                                            src="{{ asset('frontend') }}/assets/img/badge.png"
-                                                            alt="Image"></span>
-                                                </div>
-                                                <div class="author-name">
-                                                    <h6><a href="author-profile.html">James Parker</a></h6>
-                                                    <a href="author-profile.html">@parket</a>
-                                                </div>
-                                            </div>
-                                            <div class="auction-bid">
-                                                <h6>1.228ETH</h6>
-                                                <span>Current Bid</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                <div class="auction-card style3">
-                                    <div class="auction-img">
-                                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-6.jpg" alt="Image">
-                                        <span class="item-popularity"><i class="ri-heart-fill"></i>1.6k</span>
-                                        <a href="place-bid.html" class="btn style1">Place Bid <i
-                                                class="flaticon-right-arrow-1"></i></a>
-                                    </div>
-                                    <div class="auction-info-wrap">
-                                        <h3><a href="item-details.html">Blue Angle</a></h3>
-                                        <div class="auction-author-info">
-                                            <div class="author-info">
-                                                <div class="author-img">
-                                                    <img src="{{ asset('frontend') }}/assets/img/author/author-5.jpg"
-                                                        alt="Image">
-                                                    <span class="badge"><img
-                                                            src="{{ asset('frontend') }}/assets/img/badge.png"
-                                                            alt="Image"></span>
-                                                </div>
-                                                <div class="author-name">
-                                                    <h6><a href="author-profile.html">Thomas Eddi</a></h6>
-                                                    <a href="author-profile.html">@thomas</a>
-                                                </div>
-                                            </div>
-                                            <div class="auction-bid">
-                                                <h6>2.068ETH</h6>
-                                                <span>Current Bid</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                <div class="auction-card style3">
-                                    <div class="auction-img">
-                                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-7.jpg" alt="Image">
-                                        <span class="item-popularity"><i class="ri-heart-fill"></i>1.1k</span>
-                                        <a href="place-bid.html" class="btn style1">Place Bid <i
-                                                class="flaticon-right-arrow-1"></i></a>
-                                    </div>
-                                    <div class="auction-info-wrap">
-                                        <h3><a href="item-details.html">Diamond Art</a></h3>
-                                        <div class="auction-author-info">
-                                            <div class="author-info">
-                                                <div class="author-img">
-                                                    <img src="{{ asset('frontend') }}/assets/img/author/author-12.jpg"
-                                                        alt="Image">
-                                                    <span class="badge"><img
-                                                            src="{{ asset('frontend') }}/assets/img/badge.png"
-                                                            alt="Image"></span>
-                                                </div>
-                                                <div class="author-name">
-                                                    <h6><a href="author-profile.html">Jack Sparrow</a></h6>
-                                                    <a href="author-profile.html">@Sparrow</a>
-                                                </div>
-                                            </div>
-                                            <div class="auction-bid">
-                                                <h6>0.068ETH</h6>
-                                                <span>Current Bid</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                <div class="auction-card style3">
-                                    <div class="auction-img">
-                                        <img src="{{ asset('frontend') }}/assets/img/nft/nft-8.jpg" alt="Image">
-                                        <span class="item-popularity"><i class="ri-heart-fill"></i>1.5k</span>
-                                        <a href="place-bid.html" class="btn style1">Place Bid <i
-                                                class="flaticon-right-arrow-1"></i></a>
-                                    </div>
-                                    <div class="auction-info-wrap">
-                                        <h3><a href="item-details.html">Icecube Immoratals</a></h3>
-                                        <div class="auction-author-info">
-                                            <div class="author-info">
-                                                <div class="author-img">
-                                                    <img src="{{ asset('frontend') }}/assets/img/author/author-8.jpg"
-                                                        alt="Image">
-                                                    <span class="badge"><img
-                                                            src="{{ asset('frontend') }}/assets/img/badge.png"
-                                                            alt="Image"></span>
-                                                </div>
-                                                <div class="author-name">
-                                                    <h6><a href="author-profile.html">Olivia Jen</a></h6>
-                                                    <a href="author-profile.html">@olivia</a>
-                                                </div>
-                                            </div>
-                                            <div class="auction-bid">
-                                                <h6>0.468ETH</h6>
-                                                <span>Current Bid</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
-                        <div class="row justify-content-center">
                             <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                                 <div class="auction-card style3">
                                     <div class="auction-img">
