@@ -6,7 +6,7 @@
             <div class="row align-items-center gx-5">
                 <div class="col-lg-6 order-lg-1 order-md-2 order-2">
                     <div class="hero-content">
-                        <span data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">NFT Marketplace</span>
+                        {{-- <span data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">NFT Marketplace</span> --}}
                         <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">Discover Rare Artworks By
                             World Class Artists</h1>
                         <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">Lorem ipsum dolor sit amet,
@@ -75,8 +75,8 @@
                             <img src="{{ asset('uploads/services/' . $service->document) }}" alt="Image">
                         </div>
                         <div class="auction-info-wrap">
-                            <h3><a
-                                    href="{{ route('web.single.service', $service->slug) }}">{{ Str::limit($service->title, 23) }}</a>
+                            <h3><a href="{{ route('web.single.service', $service->slug) }}"
+                                    title="{{ $service->title }}">{{ Str::limit($service->title, 23) }}</a>
                             </h3>
                             <div class="auction-author-info">
                                 <div class="author-info">

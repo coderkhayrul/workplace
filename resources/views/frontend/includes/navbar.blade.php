@@ -12,22 +12,28 @@
                 <ul class="navbar-nav ms-auto">
                     @foreach ($navbars as $navbar)
                         <li class="nav-item has-child">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                 {{ $navbar->name }}
-                                <i class="ri-add-line"></i>
                             </a>
-
-                            @if (count($navbar->subcategory) > 0)
-                                <ul class="dropdown-menu">
-                                    @foreach ($navbar->subcategory as $navbarsubcategory)
-                                        <li class="nav-item">
-                                            <a href="index-3.html" class="nav-link">{{ $navbarsubcategory->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
                         </li>
                     @endforeach
+                    <li class="nav-item has-child">
+                        <a href="#" class="nav-link">
+                            More
+                            <i class="ri-add-line"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <a href="index-3.html" class="nav-link">Hello One</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index-3.html" class="nav-link">Hello Two</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index-3.html" class="nav-link">Hello Three</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     @guest
                         <li class="nav-item d-lg-none">

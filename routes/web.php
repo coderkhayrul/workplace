@@ -23,29 +23,13 @@ Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout
 // Frontend Service Route
 Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
 Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
+Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->name('web.category.service');
 
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore',[WebsiteController::class,'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
 
-
-// =======================================================
-//  <------------------ BUYER ROUTE LIST ---------------->
-//  ======================================================
-
-Route::prefix('buyer')->group(function () {
-    // <------- SERVICE ROUTE LIST ------->
-    Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
-        Route::post('/store', 'store')->name('buyer.service.store');
-        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
-        Route::post('/update/{id}', 'update')->name('buyer.service.update');
-        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth');
-        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request')->middleware('auth', 'panelaccess');
-        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest')->middleware('auth', 'panelaccess');
-    });
-});
 
 
 // =======================================================
@@ -108,6 +92,28 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.subcategory.store');
         Route::get('/edit', 'edit')->name('admin.subcategory.edit');
         Route::post('/update', 'update')->name('admin.subcategory.update');
+    });
+
+    // <------- SERVICE ROUTE LIST ------->
+    Route::controller(ServiceController::class)->prefix('service')->group(function () {
+        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
+        Route::post('/store', 'store')->name('buyer.service.store');
+        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
+        Route::post('/update/{id}', 'update')->name('buyer.service.update');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
+    });
+
+    // <------- Product ------->
+    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::post('/store', 'store')->name('admin.product.store');
+        Route::post('/update/{id}', 'update')->name('admin.product.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.product.delete');
+        // Product Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.product.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
 });
 
