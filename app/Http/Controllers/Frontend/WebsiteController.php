@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Models\PlaceBit;
 
 class WebsiteController extends Controller
 {
@@ -28,6 +29,28 @@ class WebsiteController extends Controller
         $service = Service::where('slug', $slug)->first();
         return view('frontend.pages.plabeBid', compact('service'));
     } //end method
+
+    //Bid store method
+    public function Bid_store(Request $request){
+        $placeBid = new PlaceBit;
+        $placeBid->service_id = $request->service_id;
+        $placeBid->user_id = Auth::user()->id;
+        $placeBid->price = $request->price;
+        $placeBid->dateline = $request->price;
+        $placeBid->file = 'file';
+        $placeBid->bidDes = $request->bidDes;
+        $placeBid->save();
+        if ($placeBid) {
+            $notification = array(
+                'message' => 'Successfully Biding Complete',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
+
+
+
+    }//end bid store
 
     public function Weblogout()
     {

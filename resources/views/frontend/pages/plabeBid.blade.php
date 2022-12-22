@@ -36,8 +36,9 @@
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
-                        <form action="#" class="bidding-form">
-                            <input type="hidden" name="bid_id" value="{{$service->id}}">
+                        <form action="#" class="bidding-form" method="POSTt" action="{{Route('web.placebid.store')}}">
+                            @csrf
+                            <input type="hidden" name="service_id" value="{{$service->id}}">
                             <div class="form-group">
                                 <label for="price">Biding Price</label><span class="text-danger">*</span>
                                 <input type="number" name="price" placeholder="Enter Bid Price" id="price" style="background-color:#203048; outline-style: none; border:none">
