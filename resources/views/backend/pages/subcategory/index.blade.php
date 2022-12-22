@@ -49,42 +49,43 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Rendering engine: activate to sort column descending"
-                                                    style="width: 217.078px;">User Name</th>
+                                                    style="width: 217.078px;">#SL</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                    style="width: 278.547px;">User Role</th>
+                                                    style="width: 278.547px;">Name</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1"
                                                     aria-label="Platform(s): activate to sort column ascending"
-                                                    style="width: 247.531px;">Email</th>
+                                                    style="width: 247.531px;">Category ID</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1"
                                                     aria-label="Engine version: activate to sort column ascending"
-                                                    style="width: 185.562px;">Phone</th>
+                                                    style="width: 185.562px;">Order By</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                     style="width: 132.281px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php($sl=1)
                                             @foreach ($subCategories as $row)
+
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"></td>
-                                                    <td>
-                                                        <span class="badge badge-primary"></span>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td class="sorting_1">{{ $sl }}</td>
+                                                    <td>{{ $row->name }}</td>
+                                                    <td>{{ $row->category_id }}</td>
+                                                    <td>{{ $row->orderby }}</td>
                                                     <td>
                                                         <a href="#"
-                                                            title="Edit" class="btn btn-sm btn-primary"><i
-                                                                class="fas fa-user-edit"></i></a>
+                                                            title="Edit" id="editsubcategory" data-id= {{ $row->id }} class="btn btn-sm btn-primary"><i
+                                                            data-toggle="modal" data-target="#editModel" class="fas fa-user-edit"></i></a>
 
                                                         <a title="Delete" id="delete" class="btn btn-sm btn-danger"
                                                             href="#"><i
                                                                 class="fas fa-user-times"></i></a>
                                                     </td>
                                                 </tr>
+                                                @php($sl++)
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -164,6 +165,72 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- Create Modal End  -->
+
+
+    <!-- edit Modal Start  -->
+    <div class="modal fade" id="editModel" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><b>Edit Sub-Category</b></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" id="submitEditSubCategory" method="POST">
+                    @csrf
+                    <input name="subcategory_id" type="hidden" id="subcategory_id">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputRole">Select Category</label>
+                            <select name="category_id" id="category_idd"
+                                class="form-control  @error('category_id') is-invalid @enderror">
+                                <option label="Select Category"></option>
+                                @foreach ($categories as $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Name</label>
+                            <input name="name" value="" type="text"
+                                class="form-control @error('name') is-invalid @enderror" id="subcat_name"
+                                placeholder="Enter Name">
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Order By</label>
+                            <input name="orderby" id="subcat_orderby" value="" type="text"
+                                class="form-control @error('orderby') is-invalid @enderror">
+                            @error('orderby')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- edit Modal End  -->
 @endsection
 
 @push('custom-script')
@@ -171,4 +238,44 @@
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ asset('backend/dist/js/datatable.js') }}"></script>
+
+    <script>
+        jQuery(document).on('click','#editsubcategory',function(event)
+        {
+            event.preventDefault();
+            var subcat_id = jQuery(this).data('id');
+            $.ajax({
+                    url     : "{{ route('admin.subcategory.edit') }}",
+                    type    : 'GET',
+                    dataType: 'json',
+                    data    : {
+                        id : subcat_id,
+                    },
+                    success : function(response){
+                        console.log(response.subcategories);
+
+                        jQuery('#subcat_name').val(response.subcategories.name);
+                        jQuery('#subcat_orderby').val(response.subcategories.orderby);
+                        jQuery('#subcategory_id').val(response.subcategories.id);
+                        jQuery("#category_idd").val(response.subcategories.category_id).change();
+                    },
+                });
+        });
+
+        jQuery('#submitEditSubCategory').on('submit', function(){
+            // event.preventDefault();
+            // alert('ok');
+
+            $.ajax({
+                url     : '{{ route("admin.subcategory.update") }}',
+                type    : 'post',
+                dataType: 'json',
+                data    : $('#submitEditSubCategory').serialize(),
+                success : function(response){
+                    location.reload();
+                },
+            });
+        });
+
+    </script>
 @endpush

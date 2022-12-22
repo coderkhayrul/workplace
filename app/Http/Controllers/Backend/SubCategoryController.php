@@ -19,6 +19,7 @@ class SubCategoryController extends Controller
     {
         $data['categories'] = Category::where('status', 1)->get();
         $data['subCategories'] = SubCategory::where('status', 1)->get();
+        // dd($data);
         return view('backend.pages.subcategory.index', $data);
     }
 
@@ -82,9 +83,12 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $subcategories = SubCategory::findOrFail($request->id);
+        return response()->json([
+            'subcategories' => $subcategories,
+        ]);
     }
 
     /**
@@ -94,9 +98,35 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request->all());
+
+        // $request->validate([
+        //     'category_id' => 'required',
+        //     'name' => 'required',
+        // ]);
+
+        SubCategory::where('id', $request->subcategory_id)->update([
+            'category_id' => $request->category_id,
+            'name' => $request->name,
+            'orderby' => $request->orderby,
+        ]);
+
+        // if ($data) {
+        //     $notification = array(
+        //         'message' => 'Sub-Category Updated Successfully!',
+        //         'alert-type' => 'success',
+        //     ); // returns Notification,
+        // } else {
+        //     $notification = array(
+        //         'message' => 'Sub-Category Update Failed!',
+        //         'alert-type' => 'success',
+        //     ); // returns Notification,
+        // }
+        return response()->json([
+            'success' => 'Sub-Category Updated Successfully',
+        ]);
     }
 
     /**

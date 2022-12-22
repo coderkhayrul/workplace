@@ -96,7 +96,9 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     // <------- SubCategory ------->
     Route::controller(SubCategoryController::class)->prefix('sub-category')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.subcategory.index');
-        Route::post('/', 'store')->name('admin.subcategory.store');
+        Route::post('/store', 'store')->name('admin.subcategory.store');
+        Route::get('/edit', 'edit')->name('admin.subcategory.edit');
+        Route::post('/update', 'update')->name('admin.subcategory.update');
     });
 });
 
