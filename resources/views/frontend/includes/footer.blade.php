@@ -180,6 +180,36 @@
 <!-- Toastr -->
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
 
+<script>
+    @if (Session::has('message'))
+
+    // Custom SweetAlert
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
+    var type = "{{ Session::get('alert-type', 'info') }}"
+    switch (type) {
+        case 'info':
+            toastr.info("{{ Session::get('message') }}")
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('message') }}")
+            break;
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}")
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('message') }}")
+            break;
+    }
+    @endif
+</script>
+
+
 </body>
 
 </html>

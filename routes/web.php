@@ -26,7 +26,7 @@ Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('w
 
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
-Route::post('/placebid/store',[WebsiteController::class,'Bid_store'])->middleware('auth')->name('web.placebid.store');
+Route::post('/bidstore',[WebsiteController::class,'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
 
 
