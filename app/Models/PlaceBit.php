@@ -11,7 +11,6 @@ class PlaceBit extends Model
     protected $fillable=([
         'service_id',
         'user_id',
-        'bid-title',
         'price',
         'dateline',
         'file',

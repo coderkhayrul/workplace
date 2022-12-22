@@ -37,19 +37,17 @@ class WebsiteController extends Controller
         $placeBid->service_id = $request->service_id;
         $placeBid->user_id = Auth::user()->id;
         $placeBid->price = $request->price;
-        $placeBid->dateline = $request->price;
+        $placeBid->dateline = $request->dateline;
         $placeBid->file = 'file';
         $placeBid->bidDes = $request->bidDes;
         $placeBid->save();
         if ($placeBid) {
             $notification = array(
-                'message' => 'Successfully Biding Complete',
+                'message' => 'Biding  Successfully! Thank you :)',
                 'alert-type' => 'success',
             ); // returns Notification,
             return redirect()->back()->with($notification);
         }
-
-
 
     }//end bid store
 

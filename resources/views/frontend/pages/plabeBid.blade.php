@@ -31,12 +31,12 @@
         <div class="container">
             <div class="row">
                 <div class="bid-title mb-3">
-                    <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2>
+                    {{-- <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2> --}}
                 </div>
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
-                        <form action="#" class="bidding-form" method="POSTt" action="{{Route('web.placebid.store')}}">
+                        <form action="{{Route('web.placebid.store')}}" class="bidding-form" method="POST">
                             @csrf
                             <input type="hidden" name="service_id" value="{{$service->id}}">
                             <div class="form-group">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">Date Line</label><span class="text-danger">*</span>
-                                <input type="date" name="dateline" placeholder="Enter Bid Title" id="bidtitle">
+                                <input type="date" name="dateline" data-date-format="YYY MMMM DD" id="bidtitle">
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">File</label>
@@ -56,7 +56,7 @@
                                 <textarea name="bidDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
                             </div>
 
-                            <button type="submit" class="btn style1" type="submit"> Place A Bid</button>
+                            <button type="submit" class="btn style1"> Place A Bid</button>
 
                         </form>
                     </div>
