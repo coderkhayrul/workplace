@@ -101,6 +101,72 @@
         <!--/. container-fluid -->
     </section>
 
+    <!-- edit Modal Start  -->
+    <div class="modal fade" id="editModel" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><b>Edit Sub-Category</b></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" id="submitEditSubCategory" method="POST">
+                    @csrf
+                    <input name="subcategory_id" type="hidden" id="subcategory_id">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputRole">Select Category</label>
+                            <select name="category_id" id="category_idd"
+                                class="form-control  @error('category_id') is-invalid @enderror">
+                                <option label="Select Category"></option>
+                                @foreach ($categories as $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Name</label>
+                            <input name="name" value="" type="text"
+                                class="form-control @error('name') is-invalid @enderror" id="subcat_name"
+                                placeholder="Enter Name">
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Order By</label>
+                            <input name="orderby" id="subcat_orderby" value="" type="text"
+                                class="form-control @error('orderby') is-invalid @enderror">
+                            @error('orderby')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- edit Modal End  -->
+
+
     <!-- Create Modal Start  -->
     <div class="modal fade" id="AddUser" data-backdrop="static">
         <div class="modal-dialog">
@@ -166,71 +232,6 @@
     </div>
     <!-- Create Modal End  -->
 
-
-    <!-- edit Modal Start  -->
-    <div class="modal fade" id="editModel" data-backdrop="static">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><b>Edit Sub-Category</b></h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="" id="submitEditSubCategory" method="POST">
-                    @csrf
-                    <input name="subcategory_id" type="hidden" id="subcategory_id">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="exampleInputRole">Select Category</label>
-                            <select name="category_id" id="category_idd"
-                                class="form-control  @error('category_id') is-invalid @enderror">
-                                <option label="Select Category"></option>
-                                @foreach ($categories as $row)
-                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName">Name</label>
-                            <input name="name" value="" type="text"
-                                class="form-control @error('name') is-invalid @enderror" id="subcat_name"
-                                placeholder="Enter Name">
-                            @error('name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail">Order By</label>
-                            <input name="orderby" id="subcat_orderby" value="" type="text"
-                                class="form-control @error('orderby') is-invalid @enderror">
-                            @error('orderby')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- edit Modal End  -->
 @endsection
 
 @push('custom-script')
@@ -262,12 +263,16 @@
                 });
         });
 
-        jQuery('#submitEditSubCategory').on('submit', function(){
-            // event.preventDefault();
+
+
+    </script>
+    <script>
+          $('#submitEditSubCategory').on('submit', function(event){
+            event.preventDefault();
             // alert('ok');
 
             $.ajax({
-                url     : '{{ route("admin.subcategory.update") }}',
+                url     : '/admin/sub-category/update/',
                 type    : 'post',
                 dataType: 'json',
                 data    : $('#submitEditSubCategory').serialize(),
@@ -276,6 +281,5 @@
                 },
             });
         });
-
     </script>
 @endpush

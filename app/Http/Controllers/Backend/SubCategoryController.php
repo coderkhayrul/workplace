@@ -101,18 +101,14 @@ class SubCategoryController extends Controller
      */
     public function update(SubCategoryRequest $request)
     {
-        // dd($request->all());
-
-        // $request->validate([
-        //     'category_id' => 'required',
-        //     'name' => 'required',
-        // ]);
-
-        SubCategory::where('id', $request->subcategory_id)->update([
-            'category_id' => $request->category_id,
-            'name' => $request->name,
-            'orderby' => $request->orderby,
-        ]);
+        // dd("ok");
+        $subcat = SubCategory::where('id', $request->subcategory_id);
+        $subcat = SubCategory::find($request->subcategory_id);
+        // dd($subcat);
+        $subcat->category_id = $request->subcategory_id;
+        $subcat->name = $request->name;
+        $subcat->orderby = $request->orderby;
+        $subcat->update();
 
         // if ($data) {
         //     $notification = array(
