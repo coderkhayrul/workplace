@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Service;
@@ -45,5 +46,11 @@ class WebsiteController extends Controller
     {
         $buyer = User::where('user_slug', $slug)->first();
         return view('frontend.pages.buyerProfile', compact('buyer'));
+    }
+
+    public function cateegoryService($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        return view('frontend.pages.categoryService', compact('category'));
     }
 }

@@ -6,11 +6,11 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumb-title">
-                        <h2>Item Details</h2>
+                        <h2>Service Details</h2>
                         <ul class="breadcrumb-menu list-style">
-                            <li><a href="index.html">Home </a></li>
-                            <li><a href="explore-products.html">Item </a></li>
-                            <li>Item Details</li>
+                            <li><a href="{{ route('web.home') }}">Home </a></li>
+                            <li><a href="{{ route('web.category.service', $service->category->slug) }}">Service </a></li>
+                            <li>Service Details</li>
                         </ul>
                     </div>
                 </div>
@@ -70,8 +70,8 @@
                         <p class="item-description">{{ $service->shortDes }}</p>
                         <div class="item-deadline-wrap">
                             <div class="single-item-bid">
-                                <p>Current Bid</p>
-                                <h6>0.568ETH</h6>
+                                <p>Payment</p>
+                                <h6>Verified</h6>
                             </div>
                             <div class="item-deadline">
 
@@ -93,11 +93,7 @@
                                 <div class="tab-pane fade show active" id="details" role="tabpanel"
                                     aria-labelledby="details-tab">
                                     <div class="item-desc">
-                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks
-                                            as necessary, All the Lorem Ipsum generators on the Internet tend to repeat
-                                            predefined chunks.</p>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab accusamus molestiae
-                                            modi sint possimus beatae.</p>
+                                        {!! $service->longdes !!}
                                     </div>
                                 </div>
                             </div>
