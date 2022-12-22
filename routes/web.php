@@ -18,11 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
-Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 
 // Frontend Service Route
 Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
 Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
+
+//frontend place Bid Route
+Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
+Route::get('/placebid/store',[WebsiteController::class,'store'])->middleware('auth')->name('web.placebid.store');
+
 
 
 // =======================================================
@@ -36,9 +40,9 @@ Route::prefix('buyer')->group(function () {
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
-        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
-        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
-        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request')->middleware('auth', 'panelaccess');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest')->middleware('auth', 'panelaccess');
     });
 });
 
