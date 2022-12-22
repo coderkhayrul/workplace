@@ -26,7 +26,7 @@ Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('w
 
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
-Route::get('/placebid/store',[WebsiteController::class,'store'])->middleware('auth')->name('web.placebid.store');
+Route::post('/placebid/store',[WebsiteController::class,'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
 
 
@@ -108,16 +108,6 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.subcategory.store');
         Route::get('/edit', 'edit')->name('admin.subcategory.edit');
         Route::post('/update', 'update')->name('admin.subcategory.update');
-    });
-    // <------- Product ------->
-    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
-        Route::get('/', 'index')->name('admin.product.index');
-        Route::post('/store', 'store')->name('admin.product.store');
-        Route::post('/update/{id}', 'update')->name('admin.product.update');
-        Route::get('/delete/{id}', 'destroy')->name('admin.product.delete');
-        // Product Status Update
-        Route::get('/active/{slug}', 'active')->name('admin.product.active');
-        Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
 });
 
