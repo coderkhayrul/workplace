@@ -37,16 +37,11 @@
                 </div>
                 <div class="single-author-info">
                     <h3>{{ $buyer->profile->full_name }}</h3>
-                    <span>{{ '@' . Auth::user()->user_name }}</span>
-                    <ul class="author-social list-style">
-                        <li><b>886k</b> Followers</li>
-                        <li><b>69k</b> Following</li>
-                    </ul>
+                    <span>{{ '@' . $buyer->user_name }}</span>
                 </div>
                 <div class="author-metainfo-wrap">
                     <div class="author-metainfo">
-                        <a href="{{ route('web.logout') }}" class="btn style1">Logout<i class="flaticon-exit"></i>
-                        </a>
+                        <a href="#" class="btn style1">Welcome</a>
                         <div class="share-profile">
                             <span><i class="ri-share-line"></i></span>
                             <ul class="social-profile style1 list-style">
@@ -67,16 +62,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="item-option">
-                            <span><i class="ri-more-2-line"></i></span>
-                            <ul class="more-option list-style">
-                                <li><a href="author-profile.html">Author Profile</a></li>
-                                <li><a href="place-bid.html">Place A Bid</a></li>
-                            </ul>
-                        </div>
-                        <a class="edit-profile" href="login.html"><i class="ri-edit-box-line"></i></a>
                     </div>
-                    <p>{{ Auth::user()->profile->present_address }}</p>
+                    <p>{{ $buyer->profile->present_address }}</p>
                 </div>
             </div>
             <div class="author-item-tab">
