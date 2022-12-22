@@ -177,6 +177,9 @@
 <script src="{{ asset('frontend') }}/assets/js/jquery.appear.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/tweenmax.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
+<!-- Toastr -->
+<script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
+
 </body>
 
 </html>

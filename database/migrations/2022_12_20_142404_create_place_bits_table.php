@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('service_id');
             $table->integer('user_id');
-            $table->string('bid-title')->unique();
             $table->string('price');
             $table->date('dateline');
             $table->string('file')->nullable();

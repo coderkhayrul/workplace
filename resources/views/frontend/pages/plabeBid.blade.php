@@ -36,25 +36,23 @@
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
-                        <form action="#" class="bidding-form">
+                        <form action="#" class="bidding-form" method="POSTt" action="{{Route('web.placebid.store')}}">
+                            @csrf
+                            <input type="hidden" name="service_id" value="{{$service->id}}">
                             <div class="form-group">
-                                <label for="bidtitle">Bid Title</label>
-                                <input type="text" name="bid-title" placeholder="Enter Bid Title" id="bidtitle" style="background-color:#203048; outline-style: none; border:none">
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Price</label>
+                                <label for="price">Biding Price</label><span class="text-danger">*</span>
                                 <input type="number" name="price" placeholder="Enter Bid Price" id="price" style="background-color:#203048; outline-style: none; border:none">
                             </div>
                             <div class="form-group">
-                                <label for="bidtitle">Date Line</label>
-                                <input type="date" name="bid-title" placeholder="Enter Bid Title" id="bidtitle">
+                                <label for="bidtitle">Date Line</label><span class="text-danger">*</span>
+                                <input type="date" name="dateline" placeholder="Enter Bid Title" id="bidtitle">
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">File</label>
                                 <input name="file" type="file" class="form-control" id="inputGroupFile02">
                             </div>
                             <div class="form-group">
-                                <label for="bidtitle">Drescreption</label>
+                                <label for="bidtitle">Drescreption</label><span class="text-danger">*</span>
                                 <textarea name="bidDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
                             </div>
 
