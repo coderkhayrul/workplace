@@ -20,6 +20,10 @@ Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 
+// Frontend Service Route
+Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
+Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
+
 
 // =======================================================
 //  <------------------ BUYER ROUTE LIST ---------------->
