@@ -30,7 +30,6 @@ Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middlewa
 Route::post('/placebid/store', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
 
-
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
 //  ======================================================
