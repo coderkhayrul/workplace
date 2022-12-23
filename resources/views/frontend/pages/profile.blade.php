@@ -6,10 +6,10 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumb-title">
-                        <h2>Seller Profile</h2>
+                        <h2>Your Profile</h2>
                         <ul class="breadcrumb-menu list-style">
                             <li><a href="{{ route('web.home') }}">Home </a></li>
-                            <li>Seller Profile</li>
+                            <li>Your Profile</li>
                         </ul>
                     </div>
                 </div>

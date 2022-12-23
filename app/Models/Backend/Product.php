@@ -9,7 +9,7 @@ use App\Models\User;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable =[
+    protected $fillable = [
 
         'product_name',
         'product_price',
@@ -21,6 +21,6 @@ class Product extends Model
     ];
     public function author()
     {
-        return $this->hasOne(User::class,  'id', 'author_id' );
+        return $this->hasOne(User::class,  'id', 'author_id');
     }
 }
