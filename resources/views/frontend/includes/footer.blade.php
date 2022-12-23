@@ -8,31 +8,28 @@
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 pe-lg-5">
                 <div class="footer-widget">
                     <a href="index.html" class="footer-logo">
-                        <img src="{{ asset('frontend') }}/assets/img/logo-white.png" alt="Image">
+                        <img src="{{ asset('uploads/setting/' .$setting->logo) }}" alt="Image">
                     </a>
-                    <p class="comp-desc">
-                        Duis cursus, mi quis viverra ornare, eros dolor nulla utimp erdiet commodo. Mollis
-                        petesque pellen his tesque feu giat risus ut amet volutpat nam convallis urna
-                        sollicitudin nunc opellen tesque pellen tesque feugiat risus.
-                    </p>
+                    <p class="comp-desc">{{ $setting->short_description }}</p>
+
                     <ul class="social-profile style1 list-style">
                         <li>
-                            <a target="_blank" href="https://facebook.com/">
+                            <a target="_blank" href="{{ $setting->facebook_link }}">
                                 <i class="ri-facebook-fill"></i>
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="https://twitter.com/">
+                            <a target="_blank" href="{{ $setting->instagram_link }}">
                                 <i class="ri-twitter-fill"></i>
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="https://instagram.com/">
+                            <a target="_blank" href="{{ $setting->twitter_link }}">
                                 <i class="ri-instagram-line"></i>
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="https://linkedin.com/">
+                            <a target="_blank" href="{{ $setting->linkedin_link }}">
                                 <i class="ri-linkedin-fill"></i>
                             </a>
                         </li>
@@ -153,8 +150,8 @@
             </div>
         </div>
     </div>
-    <p class="copyright-text"><i class="ri-copyright-line"></i> <span>Workplace</span>. All Rights Reserved
-        By <a href="https://khayrulshanto.me" target="_blank">CoderKhayrul</a></p>
+    <p class="copyright-text"><i class="ri-copyright-line"></i> <span>{{ $setting->company_name }}</span>. All Rights Reserved
+        By <a href="" target="_blank">{{ $setting->company_name }}</a></p>
 </footer>
 <!-- Footer Section End -->
 
