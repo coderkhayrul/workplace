@@ -20,6 +20,7 @@ class DemoSeeder extends Seeder
             Category::create([
                 'name' => $category,
                 'slug' => str_slug($category),
+                'status' => 1,
             ]);
         }
 
