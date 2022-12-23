@@ -36,7 +36,7 @@
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
-                        <form action="{{Route('web.placebid.store')}}" class="bidding-form" method="POST">
+                        <form action="{{Route('web.placebid.store')}}" class="bidding-form" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="service_id" value="{{$service->id}}">
                             <div class="form-group">

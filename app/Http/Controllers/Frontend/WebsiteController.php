@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\PlaceBit;
+use Intervention\Image\File;
 
 class WebsiteController extends Controller
 {
@@ -46,8 +47,14 @@ class WebsiteController extends Controller
             $placeBid->user_id = Auth::user()->id;
             $placeBid->price = $request->price;
             $placeBid->dateline = $request->dateline;
-            $placeBid->file = 'file';
             $placeBid->bidDes = $request->bidDes;
+            $file = $request->file;
+            if($file){
+                $filename = rand().'.'.$file->getClientOriginalExtension();
+                $location = public_path('uploads/placeBid/');
+                $file->move($location,  $filename);
+                $placeBid->file = $filename;
+             }
             $placeBid->save();
             if ($placeBid) {
                 $notification = array(
