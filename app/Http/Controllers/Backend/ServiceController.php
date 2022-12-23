@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class ServiceController extends Controller
@@ -179,5 +180,24 @@ class ServiceController extends Controller
     public function Bidapprove($id){
         $allbids = PlaceBit::where('service_id',$id)->OrderBy('created_at','DESC')->get();
         return view('backend.pages.service.bid_approve',compact('allbids'));
-    }
+    }//end method
+
+    //bid file download method
+    public function BidFileDownload($file){
+        return response()->download(public_path('uploads/placeBid/'.$file));
+    }//end method
+
+    //hire seller method
+    public function BidHire($id){
+        $bids = PlaceBit::find($id);
+        $bids->status=1;
+        $bids->update();
+        if($bids){
+            $notification = array(
+                'message' => 'You heaired' .'"'.$bids->user->user_name.'"'. 'For This Project',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
+        }
+    }//end method
 }

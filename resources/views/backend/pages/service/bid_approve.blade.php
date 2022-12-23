@@ -44,7 +44,10 @@
                                                 style="width: 278.547px;">Price</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 278.547px;">File</th>
+                                                style="width: 278.547px;">Date Line</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 150.547px;">File</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
                                                 style="width: 190.547px;">Drescreption</th>
@@ -58,20 +61,31 @@
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ $bid->user->user_name }}</td>
                                                 <td>{{$bid->price}}</td>
+                                                <td>{{Carbon\Carbon::parse($bid->dateline)->format('d M Y')
+                                                }}</td>
                                                 <td>
                                                     @if($bid->file){
-                                                        <a href="#">download</a>
+                                                        <a href="{{route('buyer.bid.download',$bid->file)}}">download</a>
                                                     }
                                                     @else{
                                                         <a>Not Available</a>
                                                     }
                                                     @endif
                                                 </td>
-                                                <td> <button id="view" class="btn btn-sm btn-warning" data-toggle="modal"
+                                                <td>
+                                                    <button id="view" class="btn btn-sm btn-warning" data-toggle="modal"
                                                     data-target="#bidDes{{ $bid->id }}">
                                                     <i class="fas fa-eye"></i></button>
                                                 </td>
-                                                <td>Hire</td>
+                                                <td>
+                                                    @if($bid->status==0)
+                                                        <a href="{{Route('buyer.bid.hire',$bid->id)}}" class="btn btn-sm btn-success">Hire</a>
+                                                    @elseif($bid->status==1)
+                                                        <a href="#" class=" disable btn btn-sm btn-outline-primary">Complete job</a>
+                                                    @elseif ($bid->status==2)
+                                                        <span class="badge bg-success">Successfully Complete Job</span>
+                                                    @endif
+                                                </td>
 
                                                    <!-- Bid Drescreption Modal Start  -->
                                               <div class="modal fade" id="bidDes{{ $bid->id }}"
