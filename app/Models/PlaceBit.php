@@ -16,8 +16,10 @@ class PlaceBit extends Model
         'file',
         'bidDes',
         'status',
-
-
     ]);
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }
