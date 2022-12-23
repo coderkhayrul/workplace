@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\PlaceBit;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
@@ -172,5 +173,11 @@ class ServiceController extends Controller
 
             return redirect()->back()->with($notification);
         }
+    }
+
+    //service Bid show method
+    public function Bidapprove($id){
+        $allbids = PlaceBit::where('service_id',$id)->OrderBy('created_at','DESC')->get();
+        return view('backend.pages.service.bid_approve',compact('allbids'));
     }
 }

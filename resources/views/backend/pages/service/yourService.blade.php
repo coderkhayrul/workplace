@@ -91,7 +91,7 @@
                                                         <a id="delete" class="btn btn-sm btn-danger"
                                                             href="{{ route('buyer.service.delete', $service->id) }}"><i
                                                                 class="fas fa-trash"></i></a>
-                                                        <a id="view" class="btn btn-sm btn-warning" href=""><i
+                                                        <a id="view" class="btn btn-sm btn-warning" href="{{Route('buyer.bid.approve',$service->id)}}"><i
                                                                 class="fas fa-eye"></i></a>
                                                     </td>
                                                     <!-- Edit Modal Start  -->

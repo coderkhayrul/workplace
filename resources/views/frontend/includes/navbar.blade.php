@@ -10,12 +10,20 @@
                     <a href="javascript:void(0)"> <i class="ri-close-line"></i></a>
                 </div>
                 <ul class="navbar-nav ms-auto">
+                    @php
+                        $number = 0;
+                    @endphp
                     @foreach ($navbars as $navbar)
-                        <li class="nav-item has-child">
-                            <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
-                                {{ $navbar->name }}
-                            </a>
-                        </li>
+                        @if ($number < 4)
+                            <li class="nav-item has-child">
+                                <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
+                                    {{ $navbar->name }}
+                                </a>
+                            </li>
+                        @endif
+                        @php
+                            $number++;
+                        @endphp
                     @endforeach
                     <li class="nav-item has-child">
                         <a href="#" class="nav-link">
@@ -23,18 +31,23 @@
                             <i class="ri-add-line"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="nav-item">
-                                <a href="index-3.html" class="nav-link">Hello One</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="index-3.html" class="nav-link">Hello Two</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="index-3.html" class="nav-link">Hello Three</a>
-                            </li>
+                            @php
+                                $number = 0;
+                            @endphp
+                            @foreach ($navbars as $navbar)
+                                @if ($number > 4)
+                                    <li class="nav-item has-child">
+                                        <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
+                                            {{ $navbar->name }}
+                                        </a>
+                                    </li>
+                                @endif
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
                         </ul>
                     </li>
-
                     @guest
                         <li class="nav-item d-lg-none">
                             <a href="{{ route('login') }}" class="btn style1">Sign in</a>
@@ -57,6 +70,13 @@
                         </div>
                     </div>
                 @endguest
+                <!-- Digital Product -->
+                <div class="others-options  md-none">
+                    <div class="header-btn">
+                        <a href="#" class="btn style1">Our
+                            Product<i class="flaticon-file"></i></a>
+                    </div>
+                </div>
                 @auth
                     <div class="others-options  md-none">
                         <div class="header-btn">
