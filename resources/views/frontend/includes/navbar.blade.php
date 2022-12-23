@@ -14,7 +14,7 @@
                         $number = 0;
                     @endphp
                     @foreach ($navbars as $navbar)
-                        @if ($number < 4)
+                        @if ($number < 3)
                             <li class="nav-item has-child">
                                 <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                     {{ $navbar->name }}
@@ -35,7 +35,7 @@
                                 $number = 0;
                             @endphp
                             @foreach ($navbars as $navbar)
-                                @if ($number > 4)
+                                @if ($number > 3)
                                     <li class="nav-item has-child">
                                         <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                             {{ $navbar->name }}
