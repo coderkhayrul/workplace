@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Backend\Category;
+use App\Models\Backend\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->share('navbars', Category::where('status', '1')->get());
+        view()->share('setting', Setting::first());
     }
 }

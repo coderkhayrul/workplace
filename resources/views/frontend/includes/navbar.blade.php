@@ -3,7 +3,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="{{ route('web.home') }}">
-                <img src="{{ asset('uploads/setting/' .$setting->logo)}}" alt="logo">
+                <img src="{{ asset('uploads/setting/' . $setting->logo) }}" alt="logo">
             </a>
             <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                 <div class="menu-close d-lg-none">
@@ -98,7 +98,7 @@
 
 <div class="search-area">
     <div class="container">
-        <form action="{{Route('web.search')}}" method="get">
+        <form action="{{ Route('web.search') }}" method="get">
             @csrf
             <div class="form-group">
                 <input name="search" type="search" placeholder="Search Here" autofocus>
