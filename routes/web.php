@@ -7,6 +7,8 @@ use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,28 +16,30 @@ use Illuminate\Support\Facades\Route;
 //  <------------------ WEBSITE ROUTE LIST -------------->
 //  ======================================================
 
+// TEST NOTIFICATION ROUTE START
+Route::get('/test', function () {
+    $notification = array(
+        'message' => 'Test Notification!',
+        'alert-type' => 'success',
+    ); // returns Notification,
+    return redirect()->back()->with($notification);
+})->name('web.test');
+// TEST NOTIFICATION ROUTE END
+
+
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
-Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
+Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth')->name('web.logout');
+
+// Frontend Service Route
+Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
+Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
+Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->name('web.category.service');
+
+//frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
+Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
-
-// =======================================================
-//  <------------------ BUYER ROUTE LIST ---------------->
-//  ======================================================
-
-Route::prefix('buyer')->group(function () {
-    // <------- SERVICE ROUTE LIST ------->
-    Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
-        Route::post('/store', 'store')->name('buyer.service.store');
-        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
-        Route::post('/update/{id}', 'update')->name('buyer.service.update');
-        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
-        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
-        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
-    });
-});
 
 
 // =======================================================
@@ -91,6 +95,35 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.category.store');
         Route::post('/update/{id}', 'update')->name('admin.category.update');
         Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
+    });
+    // <------- SubCategory ------->
+    Route::controller(SubCategoryController::class)->prefix('sub-category')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.subcategory.index');
+        Route::post('/store', 'store')->name('admin.subcategory.store');
+        Route::get('/edit', 'edit')->name('admin.subcategory.edit');
+        Route::post('/update', 'update')->name('admin.subcategory.update');
+    });
+
+    // <------- SERVICE ROUTE LIST ------->
+    Route::controller(ServiceController::class)->prefix('service')->group(function () {
+        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
+        Route::post('/store', 'store')->name('buyer.service.store');
+        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
+        Route::post('/update/{id}', 'update')->name('buyer.service.update');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
+    });
+
+    // <------- Product ------->
+    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::post('/store', 'store')->name('admin.product.store');
+        Route::post('/update/{id}', 'update')->name('admin.product.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.product.delete');
+        // Product Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.product.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
 });
 

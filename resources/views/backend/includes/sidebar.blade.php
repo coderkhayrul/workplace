@@ -95,15 +95,17 @@
                             </li>
                         </ul>
                     @endif
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ Route('buyer.service.yourservice', auth()->user()->id) }}"
-                                class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
-                                <i class="fas fa-comment"></i>
-                                <p> My Services</p>
-                            </a>
-                        </li>
-                    </ul>
+                    @if (Auth::user()->role_id == 4)
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ Route('buyer.service.yourservice', auth()->user()->id) }}"
+                                    class="nav-link{{ Route::is('buyer.service.index.*') }} ? 'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p> My Services</p>
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                 </li>
 
                 {{-- Balance  --}}
@@ -126,12 +128,12 @@
                             </li>
 
                             {{-- <li class="nav-item">
-                            <a href="{{ route('admin.balance.index') }}"
-                                class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
-                                <i class="fas fa-plus"></i>
-                                <p>All Request</p>
-                            </a>
-                        </li> --}}
+                                <a href="{{ route('admin.balance.index') }}"
+                                    class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                                    <i class="fas fa-plus"></i>
+                                    <p>All Request</p>
+                                </a>
+                            </li> --}}
                         </ul>
                     </li>
                 @endif
@@ -152,6 +154,48 @@
                                 <a href="{{ route('admin.category.index') }}" class="nav-link   'active' : '' }}">
                                     <i class="fas fa-comment"></i>
                                     <p>Category Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                {{-- Subcategory --}}
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                    <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                            <i class="fa fa-list-alt"></i>
+                            <p>
+                                SubCategory
+                                <i class="fas fa-angle-left right"></i>
+                                {{-- <span class="badge badge-info right">6</span> --}}
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.subcategory.index') }}" class="nav-link   'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p>SubCategory Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                {{--  product  --}}
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                    <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                            <i class="fa fa-list-alt"></i>
+                            <p>
+                                Digital Product
+                                <i class="fas fa-angle-left right"></i>
+                                {{-- <span class="badge badge-info right">6</span> --}}
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.product.index') }}" class="nav-link   'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Digital Product Manage</p>
                                 </a>
                             </li>
                         </ul>

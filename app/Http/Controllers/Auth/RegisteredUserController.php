@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserProfile;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Str;
 
@@ -34,17 +36,20 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'user_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'role_id' => ['required'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ],
-        [
-            'user_name.required' => 'Enter Your User Name',
-            'email.required' => 'Enter Your Email',
-            'role_id.required' => 'Must Be Select Your Role',
-        ]);
+        // return $request->all();
+        $request->validate(
+            [
+                'user_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'role_id' => ['required'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ],
+            [
+                'user_name.required' => 'Enter Your User Name',
+                'email.required' => 'Enter Your Email',
+                'role_id.required' => 'Must Be Select Your Role',
+            ]
+        );
 
         $user = User::create([
             'user_name' => $request->user_name,
@@ -54,17 +59,18 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        UserProfile::create([
+            'user_id' => $user->id,
+            'full_name' => $user->name,
+            'balance' => 0,
+        ]);
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        if ($request->role_id == 2) {
-            return redirect(RouteServiceProvider::HOME);
-        }elseif ($request->role_id == 3) {
-            return redirect(RouteServiceProvider::HOME);
-        }else{
+        Session::flash('success', 'User Create Successfully!');
 
-        }
-
+        return redirect()->back();
     }
 }

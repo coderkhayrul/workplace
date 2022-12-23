@@ -31,7 +31,7 @@ class ServiceController extends Controller
     {
         $today = Carbon::now();
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:255',
             'price' => 'required',
             'EndDate' => 'required|after:' . $today,
             'cat_id' => 'required',

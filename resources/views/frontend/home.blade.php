@@ -1,5 +1,62 @@
 @extends('frontend.layouts.app')
 @section('home-content')
+    <!-- Hero Section Start -->
+    <section class="hero-wrap style1">
+        <div class="container">
+            <div class="row align-items-center gx-5">
+                <div class="col-lg-6 order-lg-1 order-md-2 order-2">
+                    <div class="hero-content">
+                        {{-- <span data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">NFT Marketplace</span> --}}
+                        <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">Discover Rare Artworks By
+                            World Class Artists</h1>
+                        <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod ut labore et dolor magna aliqua. Ut enim ad minim
+                            venia mquis ctetur adipisc.</p>
+                        <div class="hero-btn" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
+                            <a href="explore-products.html" class="btn style1">Explore New <i
+                                    class="flaticon-right-arrow-1"></i></a>
+                            <a href="create-collection.html" class="btn style2">Create NFT <i
+                                    class="flaticon-right-arrow-1"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 order-lg-2 order-md-1 order-1">
+                    <div class="hero-img-wrap">
+                        <img src="{{ asset('frontend') }}/assets/img/hero/hero-shape-5.png" alt="Image"
+                            class="hero-shape-one">
+                        <img class="bounce" src="{{ asset('frontend') }}/assets/img/hero/hero-img-1.png" alt="Image">
+                        <div class="hero-nft-info">
+                            <div class="auction-info-wrap">
+                                <h3><a href="item-details.html">Human Head Vector</a></h3>
+                                <div class="auction-author-info">
+                                    <div class="author-info">
+                                        <div class="author-img">
+                                            <img src="{{ asset('frontend') }}/assets/img/author/author-14.jpg"
+                                                alt="Image">
+                                        </div>
+                                        <div class="author-name">
+                                            <h6><a href="author-profile.html">Thora Jenkins</a></h6>
+                                            <a href="author-profile.html">@Jenkins</a>
+                                        </div>
+                                    </div>
+                                    <div class="auction-item-stat">
+                                        <h6>0.567 $</h6>
+                                        <span>Current Bid</span>
+                                    </div>
+                                </div>
+                                {{-- <div class="nft-deadline">
+                                    <span>Auction Ending In</span>
+                                    <div class="countdown text-center" data-countdown="2022/12/30"></div>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
     <!-- New Service Section Start -->
     <section class="auction-wrap ptb-100 bg-zodiac">
         <div class="container mt-3">
@@ -12,34 +69,39 @@
                 </div>
             </div>
             <div class="auction-slider-one style1 owl-carousel">
-                @foreach($services as $service)
-                <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-                    <div class="auction-img">
-                        <img src="{{asset('uploads/services/'.$service->document)}}" alt="Image">
-                    </div>
-                    <div class="auction-info-wrap">
-                        <h3><a href="item-details.html">{{Str::limit($service->title,23)}}</a></h3>
-                        <div class="auction-author-info">
-                            <div class="author-info">
-                                <div class="author-img">
-                                    <img src="{{ asset('frontend') }}/assets/img/author/author-15.jpg" alt="Image">
+                @foreach ($services as $service)
+                    <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                        <div class="auction-img">
+                            <img src="{{ asset('uploads/services/' . $service->document) }}" alt="Image">
+                        </div>
+                        <div class="auction-info-wrap">
+                            <h3><a href="{{ route('web.single.service', $service->slug) }}"
+                                    title="{{ $service->title }}">{{ Str::limit($service->title, 23) }}</a>
+                            </h3>
+                            <div class="auction-author-info">
+                                <div class="author-info">
+                                    <div class="author-img">
+                                        <img src="{{ asset('frontend') }}/assets/img/author/author-15.jpg" alt="Image">
+                                    </div>
+                                    <div class="author-name">
+                                        <h6><a
+                                                href="{{ route('web.buyer.profile', $service->user->user_slug) }}">{{ $service->user->user_name }}</a>
+                                        </h6>
+                                        <a>Expaired On:-</a>
+                                    </div>
                                 </div>
-                                <div class="author-name">
-                                    <h6><a href="author-profile.html">{{$service->user->user_name}}</a></h6>
-                                    <a>Expaired On:-</a>
+                                <div class="auction-bid">
+                                    <h6>{{ $service->price }}৳</h6>
+                                    <span>&nbsp;{{ Carbon\Carbon::parse($service->EndDate)->format('d M, y') }}</span>
                                 </div>
                             </div>
-                            <div class="auction-bid">
-                                <h6>{{$service->price}}৳</h6>
-                                <span>&nbsp;{{Carbon\Carbon::parse($service->EndDate)->format('d M, y')}}</span>
+                            <div class="auction-stock">
+                                <p>25+ Place Bid</p>
+                                <a href="{{ Route('web.placebid', $service->slug) }}" class="btn style1">Place Bid <i
+                                        class="flaticon-right-arrow-1"></i></a>
                             </div>
                         </div>
-                        <div class="auction-stock">
-                            <p>25+ Place Bid</p>
-                            <a href="{{Route('web.placebid',$service->slug)}}" class="btn style1">Place Bid <i class="flaticon-right-arrow-1"></i></a>
-                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -67,16 +129,14 @@
                         <div class="auction-img">
                             <img src="{{ asset('frontend') }}/assets/img/nft/nft-1.jpg" alt="Image">
                             <span class="item-popularity"><i class="ri-heart-fill"></i>1.3k</span>
-                            <a href="place-bid.html" class="btn style1">Place Bid <i
-                                    class="flaticon-right-arrow-1"></i></a>
+                            <a href="place-bid.html" class="btn style1">Place Bid <i class="flaticon-right-arrow-1"></i></a>
                         </div>
                         <div class="auction-info-wrap">
                             <h3><a href="item-details.html">Fly Higher Space</a></h3>
                             <div class="auction-author-info">
                                 <div class="author-info">
                                     <div class="author-img">
-                                        <img src="{{ asset('frontend') }}/assets/img/author/author-13.jpg"
-                                            alt="Image">
+                                        <img src="{{ asset('frontend') }}/assets/img/author/author-13.jpg" alt="Image">
                                         <span class="badge"><img src="{{ asset('frontend') }}/assets/img/badge.png"
                                                 alt="Image"></span>
                                     </div>
@@ -86,7 +146,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.668ETH</h6>
+                                    <h6>0.668$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -117,7 +177,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.254ETH</h6>
+                                    <h6>0.254$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -148,7 +208,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>1.068ETH</h6>
+                                    <h6>1.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -179,7 +239,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>2.68ETH</h6>
+                                    <h6>2.68$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -210,7 +270,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>1.228ETH</h6>
+                                    <h6>1.228$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -241,7 +301,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>2.068ETH</h6>
+                                    <h6>2.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -273,7 +333,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.068ETH</h6>
+                                    <h6>0.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -304,7 +364,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.468ETH</h6>
+                                    <h6>0.468$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -356,7 +416,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.668ETH</h6>
+                                    <h6>0.668$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -387,7 +447,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.254ETH</h6>
+                                    <h6>0.254$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -418,7 +478,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>1.068ETH</h6>
+                                    <h6>1.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -449,7 +509,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>2.68ETH</h6>
+                                    <h6>2.68$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -480,7 +540,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>1.228ETH</h6>
+                                    <h6>1.228$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -511,7 +571,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>2.068ETH</h6>
+                                    <h6>2.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -543,7 +603,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.068ETH</h6>
+                                    <h6>0.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -574,7 +634,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.468ETH</h6>
+                                    <h6>0.468$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -651,7 +711,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.668ETH</h6>
+                                    <h6>0.668$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -682,7 +742,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.254ETH</h6>
+                                    <h6>0.254$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -713,7 +773,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>1.068ETH</h6>
+                                    <h6>1.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -744,7 +804,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>2.68ETH</h6>
+                                    <h6>2.68$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -775,7 +835,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>1.228ETH</h6>
+                                    <h6>1.228$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -806,7 +866,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>2.068ETH</h6>
+                                    <h6>2.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -838,7 +898,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.068ETH</h6>
+                                    <h6>0.068$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
@@ -869,7 +929,7 @@
                                     </div>
                                 </div>
                                 <div class="auction-bid">
-                                    <h6>0.468ETH</h6>
+                                    <h6>0.468$</h6>
                                     <span>Current Bid</span>
                                 </div>
                             </div>
