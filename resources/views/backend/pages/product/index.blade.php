@@ -5,7 +5,7 @@
 @endpush
 
 {{-- Dynamic Title --}}
-@section('admin-title', 'User Role Management')
+@section('admin-title', 'Digital Product')
 
 @section('admin_content')
     <div class="content-header">

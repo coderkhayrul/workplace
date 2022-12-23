@@ -44,6 +44,10 @@ Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middlewa
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
+//frontend search route
+Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
+
+// <------- ADMIN USER ROLE ROUTE LIST ------->
 Route::prefix('product')->group(function () {
     Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
     Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
@@ -136,11 +140,13 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
+        //product download
+        Route::get('/downloadApprove', 'downloadApprove')->name('admin.product.downloadApprove');
     });
     // <------- Setting ------->
     Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.setting.index');
-        Route::get('/update')->name('admin.setting.update');
+        Route::post('/update', 'update')->name('admin.setting.update');
     });
 });
 

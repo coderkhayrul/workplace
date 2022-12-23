@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
 @section('home-content')
+@php
+$setting = App\Models\Backend\Setting::first();
+@endphp
     <!-- Hero Section Start -->
     <section class="hero-wrap style1">
         <div class="container">
