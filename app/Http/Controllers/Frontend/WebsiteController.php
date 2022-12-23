@@ -116,12 +116,19 @@ class WebsiteController extends Controller
 
     public function product()
     {
-        $products = Product::orderby('created_at', "ASC")->get();
+        $products = Product::with('author')->orderby('created_at', "ASC")->get();
         return view('frontend.pages.products', compact('products'));
     }
 
     public function productView($slug)
     {
-        return view('frontend.pages.productView');
+        $product = Product::with('author')->where('product_slug', $slug)->first();
+        return view('frontend.pages.productView', compact('product'));
+    }
+
+    public function productBid($slug)
+    {
+        $product = Product::where('product_slug', $slug)->first();
+        return view('frontend.pages.productBid', compact('product'));
     }
 }

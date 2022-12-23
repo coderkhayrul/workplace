@@ -48,8 +48,7 @@
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">
-                                            <h6><a href="author-profile.html">Sandra Fox</a></h6>
-                                            <a href="author-profile.html">@sandra</a>
+                                            <h6><a href="author-profile.html">Admin</a></h6>
                                         </div>
                                     </div>
                                     <a href="{{ route('web.digital.product.view', $product->product_slug) }}"

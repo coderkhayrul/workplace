@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\ProductOrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -42,10 +43,12 @@ Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.su
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
-// <------- ADMIN USER ROLE ROUTE LIST ------->
+// <------- DIGITAL PRODUCT ROUTE LIST ------->
 Route::prefix('product')->group(function () {
     Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
     Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
+    Route::get('/bid/{slug}', [WebsiteController::class, 'productBid'])->name('web.digital.product.place-bid');
+    Route::post('/payment', [ProductOrderController::class, 'payment'])->name('web.digital.product.order');
 });
 
 // =======================================================
@@ -139,7 +142,6 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/', 'index')->name('admin.setting.index');
         Route::get('/update')->name('admin.setting.update');
     });
-
 });
 
 
