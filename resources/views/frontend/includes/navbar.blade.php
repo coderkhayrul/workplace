@@ -73,7 +73,7 @@
                 <!-- Digital Product -->
                 <div class="others-options  md-none">
                     <div class="header-btn">
-                        <a href="#" class="btn style1">Our
+                        <a href="{{ route('web.digital.product.all') }}" class="btn style1">Our
                             Product<i class="flaticon-file"></i></a>
                     </div>
                 </div>

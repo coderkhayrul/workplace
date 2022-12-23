@@ -41,7 +41,11 @@ Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.su
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
-
+// <------- ADMIN USER ROLE ROUTE LIST ------->
+Route::prefix('product')->group(function () {
+    Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
+    Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
+});
 
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
@@ -130,7 +134,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
     // <------- Setting ------->
-    Route::get('/setting', function(){
+    Route::get('/setting', function () {
         return view('backend.pages.setting.index');
     });
 });

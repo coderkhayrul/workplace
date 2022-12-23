@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
+use App\Models\Backend\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Service;
@@ -111,5 +112,16 @@ class WebsiteController extends Controller
             ); // returns Notification,
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function product()
+    {
+        $products = Product::orderby('created_at', "ASC")->get();
+        return view('frontend.pages.products', compact('products'));
+    }
+
+    public function productView($slug)
+    {
+        return view('frontend.pages.productView');
     }
 }
