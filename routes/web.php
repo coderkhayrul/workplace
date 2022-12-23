@@ -128,6 +128,10 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
+    // <------- Setting ------->
+    Route::get('/setting', function(){
+        return view('backend.pages.setting.index');
+    });
 });
 
 
