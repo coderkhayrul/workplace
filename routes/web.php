@@ -42,7 +42,11 @@ Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.su
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
-
+// <------- ADMIN USER ROLE ROUTE LIST ------->
+Route::prefix('product')->group(function () {
+    Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
+    Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
+});
 
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
@@ -115,10 +119,9 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
         Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
         Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
-        Route::get('/service/bid/{id}','Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
-        Route::get('/bid/download/{file}','BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
-        Route::get('/bid/hire/{id}','BidHire')->name('buyer.bid.hire');
-
+        Route::get('/service/bid/{id}', 'Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
+        Route::get('/bid/download/{file}', 'BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
+        Route::get('/bid/hire/{id}', 'BidHire')->name('buyer.bid.hire');
     });
 
     // <------- Product ------->
@@ -132,10 +135,11 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
     // <------- Setting ------->
-    Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function(){
+    Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.setting.index');
-        Route::post('/update', 'update')->name('admin.setting.update');
+        Route::get('/update')->name('admin.setting.update');
     });
+
 });
 
 

@@ -14,7 +14,7 @@
                         $number = 0;
                     @endphp
                     @foreach ($navbars as $navbar)
-                        @if ($number < 4)
+                        @if ($number < 3)
                             <li class="nav-item has-child">
                                 <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                     {{ $navbar->name }}
@@ -35,7 +35,7 @@
                                 $number = 0;
                             @endphp
                             @foreach ($navbars as $navbar)
-                                @if ($number > 4)
+                                @if ($number > 3)
                                     <li class="nav-item has-child">
                                         <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                             {{ $navbar->name }}
@@ -73,7 +73,7 @@
                 <!-- Digital Product -->
                 <div class="others-options  md-none">
                     <div class="header-btn">
-                        <a href="#" class="btn style1">Our
+                        <a href="{{ route('web.digital.product.all') }}" class="btn style1">Our
                             Product<i class="flaticon-file"></i></a>
                     </div>
                 </div>

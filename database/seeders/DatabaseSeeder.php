@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             DemoSeeder::class,
         ]);
-        Service::factory(10)->create();
+        Service::factory(20)->create();
     }
 }
