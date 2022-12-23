@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Backend\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Backend\Setting;
 
 class DemoSeeder extends Seeder
 {
@@ -23,6 +24,10 @@ class DemoSeeder extends Seeder
                 'status' => 1,
             ]);
         }
+        //Setting Seeder
+        Setting::create([
+            'company_name' => 'Flex Lab',
+       ]);
 
         // SERVICE SEEDER
     }

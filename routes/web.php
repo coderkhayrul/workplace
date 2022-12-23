@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SettingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -131,8 +132,9 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
     // <------- Setting ------->
-    Route::get('/setting', function(){
-        return view('backend.pages.setting.index');
+    Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function(){
+        Route::get('/', 'index')->name('admin.setting.index');
+        Route::post('/update', 'update')->name('admin.setting.update');
     });
 });
 
