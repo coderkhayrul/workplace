@@ -33,21 +33,31 @@ class WebsiteController extends Controller
 
     //Bid store method
     public function Bid_store(Request $request){
-        $placeBid = new PlaceBit;
-        $placeBid->service_id = $request->service_id;
-        $placeBid->user_id = Auth::user()->id;
-        $placeBid->price = $request->price;
-        $placeBid->dateline = $request->dateline;
-        $placeBid->file = 'file';
-        $placeBid->bidDes = $request->bidDes;
-        $placeBid->save();
-        if ($placeBid) {
+        if (PlaceBit::where('user_id', Auth::user()->id )->where('service_id',$request->service_id)->exists()) {
             $notification = array(
-                'message' => 'Biding  Successfully! Thank you :)',
-                'alert-type' => 'success',
+                'message' => 'You Already Bid This Service',
+                'alert-type' => 'error',
             ); // returns Notification,
             return redirect()->back()->with($notification);
         }
+        else{
+            $placeBid = new PlaceBit;
+            $placeBid->service_id = $request->service_id;
+            $placeBid->user_id = Auth::user()->id;
+            $placeBid->price = $request->price;
+            $placeBid->dateline = $request->dateline;
+            $placeBid->file = 'file';
+            $placeBid->bidDes = $request->bidDes;
+            $placeBid->save();
+            if ($placeBid) {
+                $notification = array(
+                    'message' => 'Biding  Successfully! Thank you :)',
+                    'alert-type' => 'success',
+                ); // returns Notification,
+                return redirect()->back()->with($notification);
+            }
+        }
+
 
     }//end bid store
 
