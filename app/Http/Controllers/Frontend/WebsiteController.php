@@ -34,6 +34,14 @@ class WebsiteController extends Controller
 
     //Bid store method
     public function Bid_store(Request $request){
+        //bid form validation
+        $today = Carbon::now();
+        $request->validate([
+            'price' => 'required',
+            'dateline' => 'required|after:' . $today,
+            'bidDes' => 'required',
+            'file' => 'max:1020',
+        ]);
         if (PlaceBit::where('user_id', Auth::user()->id )->where('service_id',$request->service_id)->exists()) {
             $notification = array(
                 'message' => 'You Already Bid This Service',

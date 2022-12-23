@@ -42,18 +42,31 @@
                             <div class="form-group">
                                 <label for="price">Biding Price</label><span class="text-danger">*</span>
                                 <input type="number" name="price" placeholder="Enter Bid Price" id="price" style="background-color:#203048; outline-style: none; border:none">
+                                @error('price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">Date Line</label><span class="text-danger">*</span>
                                 <input type="date" name="dateline" data-date-format="YYY MMMM DD" id="bidtitle">
+                                @error('dateline')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">File</label>
                                 <input name="file" type="file" class="form-control" id="inputGroupFile02">
+                                @error('file')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">Drescreption</label><span class="text-danger">*</span>
                                 <textarea name="bidDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
+                                @error('bidDes')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
                             </div>
 
                             <button type="submit" class="btn style1"> Place A Bid</button>
