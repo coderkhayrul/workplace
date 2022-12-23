@@ -1022,8 +1022,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
-                    <form action="#" class="newsletter-form">
-                        <input type="email" placeholder="Enter Your Email Address">
+                    <form action="{{route('web.subscribe')}}" method="POST" class="newsletter-form">
+                        @csrf
+                        <input name="email" type="email" placeholder="Enter Your Email Address">
                         <button type="submit">Subscribe Now <i class="ri-send-plane-fill"></i></button>
                     </form>
                 </div>

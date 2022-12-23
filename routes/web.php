@@ -35,7 +35,8 @@ Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth
 Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
 Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
 Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->name('web.category.service');
-
+// Frontend Subscribe Route
+Route::post('/subscribe', [WebsiteController::class, 'Subscribe'])->name('web.subscribe');
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
