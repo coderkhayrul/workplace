@@ -114,6 +114,8 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
         Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
         Route::get('/service/bid/{id}','Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
+        Route::get('/bid/download/{file}','BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
+        Route::get('/bid/hire/{id}','BidHire')->name('buyer.bid.hire');
 
     });
 
