@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/dark-theme.css">
     <!-- Toastr -->
-    <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/plagins/toastr/toastr.min.css') }}">
 
     <title>Workplace - Freelance Service Markatplace</title>
     <link rel="icon" type="image/png" href="{{ asset('frontend') }}/assets/img/favicon.png">
