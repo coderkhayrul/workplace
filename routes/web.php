@@ -42,6 +42,9 @@ Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.su
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
+//frontend search route
+Route::get('/search',[WebsiteController::class, 'Search'])->name('web.search');
+
 // <------- ADMIN USER ROLE ROUTE LIST ------->
 Route::prefix('product')->group(function () {
     Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');

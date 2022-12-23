@@ -98,9 +98,10 @@
 
 <div class="search-area">
     <div class="container">
-        <form action="#">
+        <form action="{{Route('web.search')}}" method="get">
+            @csrf
             <div class="form-group">
-                <input type="search" placeholder="Search Here" autofocus>
+                <input name="search" type="search" placeholder="Search Here" autofocus>
             </div>
         </form>
         <button type="button" class="close-searchbox">

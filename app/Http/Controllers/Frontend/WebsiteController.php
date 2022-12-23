@@ -124,4 +124,10 @@ class WebsiteController extends Controller
     {
         return view('frontend.pages.productView');
     }
+
+    //method for search
+    public function Search(Request $request){
+        $searches= Service::with('user')->orderBy('id','DESC')->where('status',1)->where('title','LIKE','%'.$request->search.'%')->get();
+        return view('frontend.pages.search',compact('searches'));
+    }
 }

@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="bid-title mb-3">
-                    {{-- <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2> --}}
+                   <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2>
                 </div>
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
