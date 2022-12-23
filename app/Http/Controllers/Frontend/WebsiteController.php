@@ -11,6 +11,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use App\Models\PlaceBit;
 use Intervention\Image\File;
+use App\Models\Backend\Subscribe;
 
 class WebsiteController extends Controller
 {
@@ -98,5 +99,17 @@ class WebsiteController extends Controller
     {
         $category = Category::where('slug', $slug)->first();
         return view('frontend.pages.categoryService', compact('category'));
+    }
+    public function Subscribe(Request $request){
+        $subscribe = new Subscribe();
+        $subscribe->email = $request->email;
+        $subscribe->save();
+        if ($subscribe) {
+            $notification = array(
+                'message' => 'Thank you! For Your Subscription:)',
+                'alert-type' => 'success',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
     }
 }
