@@ -34,13 +34,12 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="blog-card style1">
                             <div class="blog-img">
-                                <img src="{{ asset('frontend') }}/assets/img/blog/blog-1.jpg" alt="Image">
+                                <img src="{{ asset('uploads/products/' . $product->product_image) }}" alt="Image">
                                 <a href="posts-by-date.html" class="blog-date"><i class="ri-calendar-todo-line"></i>July 25,
                                     2022</a>
                             </div>
                             <div class="blog-info">
-                                <h3><a href="blog-details-right-sidebar.html">A NFT Portrait Of The Year That Changed
-                                        Everything</a></h3>
+                                <h3><a href="blog-details-right-sidebar.html">{{ $product->product_name }}</a></h3>
                                 <p>Mollis pellen tesque pellen tesque feugiat risus ut amet nunc. Volutpat nam convais.</p>
                                 <div class="blog-author-info">
                                     <div class="author-info">

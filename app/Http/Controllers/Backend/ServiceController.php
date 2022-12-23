@@ -20,10 +20,10 @@ class ServiceController extends Controller
     //service index method
     public function index()
     {
-        $services = Service::where('status', 1)->OrderBy('EndDate', 'ASC')->get();
-        $TotalServiceCount = $services->count();
+        $services = Service::with('user', 'category')->where('status', 1)->OrderBy('EndDate', 'ASC')->get();
+        // $TotalServiceCount = $services->count();
         $categories = Category::all();
-        return view('backend.pages.service.index', compact('services', 'TotalServiceCount', 'categories'));
+        return view('backend.pages.service.index', compact('services', 'categories'));
     } //end method
 
 
@@ -177,27 +177,30 @@ class ServiceController extends Controller
     }
 
     //service Bid show method
-    public function Bidapprove($id){
-        $allbids = PlaceBit::where('service_id',$id)->OrderBy('created_at','DESC')->get();
-        return view('backend.pages.service.bid_approve',compact('allbids'));
-    }//end method
+    public function Bidapprove($id)
+    {
+        $allbids = PlaceBit::where('service_id', $id)->OrderBy('created_at', 'DESC')->get();
+        return view('backend.pages.service.bid_approve', compact('allbids'));
+    } //end method
 
     //bid file download method
-    public function BidFileDownload($file){
-        return response()->download(public_path('uploads/placeBid/'.$file));
-    }//end method
+    public function BidFileDownload($file)
+    {
+        return response()->download(public_path('uploads/placeBid/' . $file));
+    } //end method
 
     //hire seller method
-    public function BidHire($id){
+    public function BidHire($id)
+    {
         $bids = PlaceBit::find($id);
-        $bids->status=1;
+        $bids->status = 1;
         $bids->update();
-        if($bids){
+        if ($bids) {
             $notification = array(
-                'message' => 'You heaired' .'"'.$bids->user->user_name.'"'. 'For This Project',
+                'message' => 'You heaired' . '"' . $bids->user->user_name . '"' . 'For This Project',
                 'alert-type' => 'success',
             );
             return redirect()->back()->with($notification);
         }
-    }//end method
+    } //end method
 }

@@ -1,6 +1,6 @@
 @extends('backend.layouts.layout')
 {{-- Dynamic Title --}}
-@section('admin-title', 'Blank')
+@section('admin-title', 'Setting')
 @section('admin_content')
 <div class="content-header">
     <div class="container-fluid">
@@ -38,7 +38,7 @@
                                                 placeholder="Enter Product Name" value="{{$setting->company_name}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Company Logo</label>
+                                            <label for="exampleInputFile">Company Logo (W-147,H-46)px</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" name="logo" class="custom-file-input"
@@ -80,8 +80,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="longdrescreption">Short Description</label>
-                                    <textarea class="textarea form-control" name="short_description" id="short_description" rows="5" cols="7">{{ $setting->short_description }}</textarea>
+                                    <label for="shortdrescreption">Short Drescreption</label>
+                                    <textarea class="form-control" name="short_description" id="short_description" rows="3">{{ $setting->short_description }}</textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->

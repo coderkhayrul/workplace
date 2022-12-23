@@ -136,11 +136,14 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
+        //product download
+        Route::get('/downloadApprove', 'downloadApprove')->name('admin.product.downloadApprove');
+
     });
     // <------- Setting ------->
     Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.setting.index');
-        Route::get('/update')->name('admin.setting.update');
+        Route::post('/update', 'update')->name('admin.setting.update');
     });
 
 });

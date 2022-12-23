@@ -85,10 +85,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -214,5 +211,9 @@ class ProductController extends Controller
             ); // returns Notification
         }
         return redirect()->back()->with($notification);
+    }
+    public function downloadApprove()
+    {
+        return view('backend.pages.product.download');
     }
 }

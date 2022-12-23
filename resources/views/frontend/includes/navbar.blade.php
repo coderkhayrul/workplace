@@ -3,7 +3,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="{{ route('web.home') }}">
-                <img src="{{ asset('frontend') }}/assets/img/logo-white.png" alt="logo">
+                <img src="{{ asset('uploads/setting/' .$setting->logo)}}" alt="logo">
             </a>
             <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                 <div class="menu-close d-lg-none">
