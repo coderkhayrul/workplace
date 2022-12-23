@@ -16,9 +16,20 @@ use Illuminate\Support\Facades\Route;
 //  <------------------ WEBSITE ROUTE LIST -------------->
 //  ======================================================
 
+// TEST NOTIFICATION ROUTE START
+Route::get('/test', function () {
+    $notification = array(
+        'message' => 'Test Notification!',
+        'alert-type' => 'success',
+    ); // returns Notification,
+    return redirect()->back()->with($notification);
+})->name('web.test');
+// TEST NOTIFICATION ROUTE END
+
+
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
-Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
+Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth')->name('web.logout');
 
 // Frontend Service Route
 Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
@@ -27,7 +38,7 @@ Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->
 
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
-Route::post('/bidstore',[WebsiteController::class,'Bid_store'])->middleware('auth')->name('web.placebid.store');
+Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
 
 
