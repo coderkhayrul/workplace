@@ -10,18 +10,20 @@ use App\Models\User;
 class Service extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title',
-        'slug',
-        'cat_id',
-        'shortDes',
-        'longdes',
-        'document',
-        'price',
-        'StartDate',
-        'EndDate',
-        'status',
-    ];
+    // protected $fillable = [
+    //     'title',
+    //     'slug',
+    //     'cat_id',
+    //     'shortDes',
+    //     'longdes',
+    //     'document',
+    //     'price',
+    //     'StartDate',
+    //     'EndDate',
+    //     'status',
+    // ];
+
+    protected $guarded = [];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

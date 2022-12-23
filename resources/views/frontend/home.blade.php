@@ -72,7 +72,11 @@
                 @foreach ($services as $service)
                     <div class="auction-card style1" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                         <div class="auction-img">
-                            <img src="{{ asset('uploads/services/' . $service->document) }}" alt="Image">
+                            @if (File::exists('uploads/services/' . $service->document))
+                                <img src="{{ asset('uploads/services/' . $service->document) }}" alt="Image">
+                            @else
+                                <img src="{{ $service->document }}" alt="Image">
+                            @endif
                         </div>
                         <div class="auction-info-wrap">
                             <h3><a href="{{ route('web.single.service', $service->slug) }}"

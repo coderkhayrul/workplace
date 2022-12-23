@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('shortDes');
             $table->longText('longdes');
-            $table->string('document');
+            $table->text('document');
             $table->integer('price');
             $table->date('StartDate');
             $table->date('EndDate');
