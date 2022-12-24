@@ -21,7 +21,7 @@ class WebsiteController extends Controller
     {
         $todaty = Carbon::now();
         $slider = Slider::latest()->where('slider_status','active')->first();
-        $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first(); 
+        $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first();
         $services = Service::where('status', 1)->where('EndDate', '>=', $todaty)->OrderBy('created_at', 'DESC')->limit(15)->get();
         $categories = Category::where('status', 1)->take(4)->get();
         return view('frontend.home', compact('services','slider','servicescurrent','categories'));
@@ -97,6 +97,15 @@ class WebsiteController extends Controller
         $buyer = User::where('user_slug', $slug)->first();
         return view('frontend.pages.buyerProfile', compact('buyer'));
     }
+
+    //seller profile method
+    public function SellerProfile($slug)
+    {
+        $seller = User::where('user_slug', $slug)->first();
+        $seller_id= $seller->id;
+        $bidservices=PlaceBit::with('user','user')->where('user_id',$seller->id)->get();
+        return view('frontend.pages.sellerProfile', compact('seller','bidservices'));
+    }//end method
 
     public function cateegoryService($slug)
     {
