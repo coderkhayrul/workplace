@@ -12,27 +12,20 @@ use App\Models\User;
 use Carbon\Carbon;
 use App\Models\PlaceBit;
 use Intervention\Image\File;
-<<<<<<< HEAD
 use App\Models\Backend\Subscribe;
 use App\Models\Backend\Slider;
-=======
 use App\Models\Backend\Subscriber;
->>>>>>> 205c870216f9033e75ffda5d08124898900418e0
 
 class WebsiteController extends Controller
 {
     public function home()
     {
-<<<<<<< HEAD
         $todaty = Carbon::now();
         $slider = Slider::latest()->where('slider_status','active')->first();
         $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first(); 
         $services = Service::where('status', 1)->where('EndDate', '>=', $todaty)->OrderBy('created_at', 'DESC')->limit(15)->get();
-        return view('frontend.home', compact('services','slider','servicescurrent'));
-=======
         $categories = Category::where('status', 1)->take(4)->get();
-        return view('frontend.home', compact('categories'));
->>>>>>> 205c870216f9033e75ffda5d08124898900418e0
+        return view('frontend.home', compact('services','slider','servicescurrent','categories'));
     }
     public function profile($slug)
     {

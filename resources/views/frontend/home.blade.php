@@ -24,14 +24,14 @@ $setting = App\Models\Backend\Setting::first();
                     <div class="hero-img-wrap">
                         <img src="{{ asset('frontend') }}/assets/img/hero/hero-shape-5.png" alt="Image"
                             class="hero-shape-one">
-                        <img class="bounce" src="{{ asset('backend/sliderimage/'.$slider->slider_image)}}" alt="Image">
+                        <img class="bounce" src="{{ !empty($slider->slider_image)? asset('backend/sliderimage/'.$slider->slider_image) : asset('nft-slider-3.jpg') }}" alt="Image">
                         <div class="hero-nft-info">
                             <div class="auction-info-wrap">
-                                <h3><a href="item-details.html">{{$servicescurrent->shortDes}}</a></h3>
+                                <h3><a>{{Str::limit($servicescurrent->shortDes,20)}}</a></h3>
                                 <div class="auction-author-info">
                                     <div class="author-info">
                                         <div class="author-img">
-                                            <img src="{{ asset('uploads/services/'.$servicescurrent->document) }}"
+                                            <img src="{{ !empty($slider->slider_image)? asset('backend/sliderimage/'.$slider->slider_image) : asset('nft-slider-3.jpg') }}"
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">

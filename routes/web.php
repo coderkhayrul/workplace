@@ -9,12 +9,9 @@ use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
-<<<<<<< HEAD
 use App\Http\Controllers\Backend\SliderController;
-=======
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\ProductOrderController;
->>>>>>> 205c870216f9033e75ffda5d08124898900418e0
 use Illuminate\Support\Facades\Route;
 
 
