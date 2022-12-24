@@ -15,7 +15,6 @@ use Intervention\Image\File;
 use App\Models\Backend\Subscribe;
 use App\Models\Backend\Slider;
 use App\Models\Backend\Subscriber;
-
 class WebsiteController extends Controller
 {
     public function home()
