@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\ProductOrderController;
 use Illuminate\Support\Facades\Route;
@@ -152,6 +153,15 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.setting.index');
         Route::post('/update', 'update')->name('admin.setting.update');
+    });
+    // <------- Slider ------->
+    Route::controller(SliderController::class)->prefix('slider')->middleware('admin')->group(function () {
+        Route::get('/manage/slider', 'IndexSlider')->name('slider.index');
+        Route::get('/add/slider', 'AddedSlider')->name('add.slider');
+        Route::POST('/store', 'sliderStore')->name('slider.store');
+        Route::GET('/edit/{id}', 'SliderEdit')->name('slider.edit');
+        Route::POST('/update/{id}', 'SliderUpdate')->name('slider.update');
+        Route::GET('/delete/{id}', 'SliderDelete')->name('slider.delete');
     });
 });
 

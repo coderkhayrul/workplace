@@ -158,6 +158,36 @@
                             </li>
                         </ul>
                     </li>
+                   <!-- SLIDER  -->
+                   <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>
+                            Slider
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                 
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ Route('slider.index') }}"
+                                    class="nav-link">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Slider Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ Route('add.slider') }}"
+                                    class="nav-link">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Add Slider</p>
+                                </a>
+                            </li>
+                        </ul>
+                </li>
+                   <!-- END SLIDER  -->
                 @endif
                 {{-- Subcategory --}}
                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)

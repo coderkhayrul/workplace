@@ -10,41 +10,37 @@ $setting = App\Models\Backend\Setting::first();
                 <div class="col-lg-6 order-lg-1 order-md-2 order-2">
                     <div class="hero-content">
                         {{-- <span data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">NFT Marketplace</span> --}}
-                        <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">Discover Rare Artworks By
-                            World Class Artists</h1>
-                        <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit, sed do eiusmod ut labore et dolor magna aliqua. Ut enim ad minim
-                            venia mquis ctetur adipisc.</p>
+                        <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">{{optional($slider)->slider_title}}</h1>
+                        <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">{{optional($slider)->slider_shortdescription}}</p>
                         <div class="hero-btn" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
-                            <a href="explore-products.html" class="btn style1">Explore New <i
+                            <a class="btn style1">Explore Below <i
                                     class="flaticon-right-arrow-1"></i></a>
-                            <a href="create-collection.html" class="btn style2">Create NFT <i
+                            <a class="btn style2">Just Demo <i
                                     class="flaticon-right-arrow-1"></i></a>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-lg-6 order-lg-2 order-md-1 order-1">
                     <div class="hero-img-wrap">
                         <img src="{{ asset('frontend') }}/assets/img/hero/hero-shape-5.png" alt="Image"
                             class="hero-shape-one">
-                        <img class="bounce" src="{{ asset('frontend') }}/assets/img/hero/hero-img-1.png" alt="Image">
+                        <img class="bounce" src="{{ asset('backend/sliderimage/'.$slider->slider_image)}}" alt="Image">
                         <div class="hero-nft-info">
                             <div class="auction-info-wrap">
-                                <h3><a href="item-details.html">Human Head Vector</a></h3>
+                                <h3><a href="item-details.html">{{$servicescurrent->shortDes}}</a></h3>
                                 <div class="auction-author-info">
                                     <div class="author-info">
                                         <div class="author-img">
-                                            <img src="{{ asset('frontend') }}/assets/img/author/author-14.jpg"
+                                            <img src="{{ asset('uploads/services/'.$servicescurrent->document) }}"
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">
-                                            <h6><a href="author-profile.html">Thora Jenkins</a></h6>
-                                            <a href="author-profile.html">@Jenkins</a>
+                                            <h6><a href="author-profile.html">{{ optional($servicescurrent->user)->user_name }}</a></h6>
+                                            <a href="author-profile.html">@ {{ optional($servicescurrent->user)->user_name }}</a>
                                         </div>
                                     </div>
                                     <div class="auction-item-stat">
-                                        <h6>0.567 $</h6>
+                                        <h6>{{$servicescurrent->price}} ৳</h6>
                                         <span>Current Bid</span>
                                     </div>
                                 </div>
