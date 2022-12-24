@@ -24,11 +24,5 @@ class DemoSeeder extends Seeder
                 'status' => 1,
             ]);
         }
-        //Setting Seeder
-        Setting::create([
-            'company_name' => 'Flex Lab',
-       ]);
-
-        // SERVICE SEEDER
     }
 }

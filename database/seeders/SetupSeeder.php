@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Backend\Setting;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SetupSeeder extends Seeder
@@ -15,8 +14,9 @@ class SetupSeeder extends Seeder
      */
     public function run()
     {
+        //Setting Seeder
         Setting::create([
-            'company_name' => 'Example Company',
+            'company_name' => 'Flex Lab',
         ]);
     }
 }
