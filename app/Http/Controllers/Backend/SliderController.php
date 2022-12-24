@@ -20,7 +20,7 @@ class SliderController extends Controller
 
    public function sliderStore(Request $request){
     $request->validate([
-        'slider_title'=>'required|regex:/^[a-zA-Z _]+$/u|max:150',
+        'slider_title'=>'required|regex:/^[a-zA-Z _ .]+$/u|max:150',
         'slider_shortdescription'=>'required',
         'slider_status'=>'required',
         'slider_image'=>'required|mimes:jpg,png,giff',
@@ -53,7 +53,7 @@ class SliderController extends Controller
    } //end method
    public function SliderUpdate(Request $request,$id){
     $request->validate([
-        'slider_title'=>'required|regex:/^[a-zA-Z _]+$/u|max:150',
+        'slider_title'=>'required|regex:/^[a-zA-Z _ .]+$/u|max:150',
         'slider_shortdescription'=>'required',
         'slider_status'=>'required',
     ]);
