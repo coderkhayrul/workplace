@@ -3,36 +3,51 @@
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="{{ route('web.home') }}">
-                <img src="{{ asset('frontend') }}/assets/img/logo-white.png" alt="logo">
+                <img src="{{ asset('uploads/setting/' . $setting->logo) }}" alt="logo">
             </a>
             <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                 <div class="menu-close d-lg-none">
                     <a href="javascript:void(0)"> <i class="ri-close-line"></i></a>
                 </div>
                 <ul class="navbar-nav ms-auto">
+                    @php
+                        $number = 0;
+                    @endphp
                     @foreach ($navbars as $navbar)
-                        <li class="nav-item has-child">
-                            <a href="#" class="nav-link">
-                                {{ $navbar->name }}
-                                <i class="ri-add-line"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="index-3.html" class="nav-link">Website Design</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index-2.html" class="nav-link ">Logo Design</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index-3.html" class="nav-link">App Desigin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link active">Flyer Design</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if ($number < 3)
+                            <li class="nav-item has-child">
+                                <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
+                                    {{ $navbar->name }}
+                                </a>
+                            </li>
+                        @endif
+                        @php
+                            $number++;
+                        @endphp
                     @endforeach
-
+                    <li class="nav-item has-child">
+                        <a href="#" class="nav-link">
+                            More
+                            <i class="ri-add-line"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @php
+                                $number = 0;
+                            @endphp
+                            @foreach ($navbars as $navbar)
+                                @if ($number > 3)
+                                    <li class="nav-item has-child">
+                                        <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
+                                            {{ $navbar->name }}
+                                        </a>
+                                    </li>
+                                @endif
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
+                        </ul>
+                    </li>
                     @guest
                         <li class="nav-item d-lg-none">
                             <a href="{{ route('login') }}" class="btn style1">Sign in</a>
@@ -55,6 +70,13 @@
                         </div>
                     </div>
                 @endguest
+                <!-- Digital Product -->
+                <div class="others-options  md-none">
+                    <div class="header-btn">
+                        <a href="{{ route('web.digital.product.all') }}" class="btn style1">Our
+                            Product<i class="flaticon-file"></i></a>
+                    </div>
+                </div>
                 @auth
                     <div class="others-options  md-none">
                         <div class="header-btn">
@@ -76,9 +98,10 @@
 
 <div class="search-area">
     <div class="container">
-        <form action="#">
+        <form action="{{ Route('web.search') }}" method="get">
+            @csrf
             <div class="form-group">
-                <input type="search" placeholder="Search Here" autofocus>
+                <input name="search" type="search" placeholder="Search Here" autofocus>
             </div>
         </form>
         <button type="button" class="close-searchbox">

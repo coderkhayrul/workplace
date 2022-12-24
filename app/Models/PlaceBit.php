@@ -11,14 +11,15 @@ class PlaceBit extends Model
     protected $fillable=([
         'service_id',
         'user_id',
-        'bid-title',
         'price',
         'dateline',
         'file',
         'bidDes',
         'status',
-
-
     ]);
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

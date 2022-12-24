@@ -51,16 +51,13 @@ class UserController extends Controller
                 'message' => 'User Create Successfully!',
                 'alert-type' => 'success',
             ); // returns Notification,
-
-            return redirect()->back()->with($notification);
         } else {
             $notification = array(
                 'message' => 'User Create Failed!',
                 'alert-type' => 'success',
             ); // returns Notification,
-
-            return redirect()->back()->with($notification);
         }
+        return redirect()->back()->with($notification);
     }
 
     public function show($id)

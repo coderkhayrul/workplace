@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\PlaceBit;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class ServiceController extends Controller
@@ -18,10 +20,10 @@ class ServiceController extends Controller
     //service index method
     public function index()
     {
-        $services = Service::where('status', 1)->OrderBy('EndDate', 'ASC')->get();
-        $TotalServiceCount = $services->count();
+        $services = Service::with('user', 'category')->where('status', 1)->OrderBy('EndDate', 'ASC')->get();
+        // $TotalServiceCount = $services->count();
         $categories = Category::all();
-        return view('backend.pages.service.index', compact('services', 'TotalServiceCount', 'categories'));
+        return view('backend.pages.service.index', compact('services', 'categories'));
     } //end method
 
 
@@ -31,7 +33,7 @@ class ServiceController extends Controller
     {
         $today = Carbon::now();
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:255',
             'price' => 'required',
             'EndDate' => 'required|after:' . $today,
             'cat_id' => 'required',
@@ -173,4 +175,32 @@ class ServiceController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+    //service Bid show method
+    public function Bidapprove($id)
+    {
+        $allbids = PlaceBit::where('service_id', $id)->OrderBy('created_at', 'DESC')->get();
+        return view('backend.pages.service.bid_approve', compact('allbids'));
+    } //end method
+
+    //bid file download method
+    public function BidFileDownload($file)
+    {
+        return response()->download(public_path('uploads/placeBid/' . $file));
+    } //end method
+
+    //hire seller method
+    public function BidHire($id)
+    {
+        $bids = PlaceBit::find($id);
+        $bids->status = 1;
+        $bids->update();
+        if ($bids) {
+            $notification = array(
+                'message' => 'You heaired' . '"' . $bids->user->user_name . '"' . 'For This Project',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
+        }
+    } //end method
 }

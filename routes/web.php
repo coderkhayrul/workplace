@@ -8,6 +8,9 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\ProductOrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,29 +18,42 @@ use Illuminate\Support\Facades\Route;
 //  <------------------ WEBSITE ROUTE LIST -------------->
 //  ======================================================
 
+// TEST NOTIFICATION ROUTE START
+Route::get('/test', function () {
+    $notification = array(
+        'message' => 'Test Notification!',
+        'alert-type' => 'success',
+    ); // returns Notification,
+    return redirect()->back()->with($notification);
+})->name('web.test');
+// TEST NOTIFICATION ROUTE END
+
+
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
-Route::get('/logout', [WebsiteController::class, 'Weblogout'])->name('web.logout');
+Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth')->name('web.logout');
+
+// Frontend Service Route
+Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
+Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
+Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->name('web.category.service');
+// Frontend Subscribe Route
+Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.subscribe');
+//frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
+Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
+// <------- DIGITAL PRODUCT ROUTE LIST ------->
+//frontend search route
+Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 
-// =======================================================
-//  <------------------ BUYER ROUTE LIST ---------------->
-//  ======================================================
-
-Route::prefix('buyer')->group(function () {
-    // <------- SERVICE ROUTE LIST ------->
-    Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
-        Route::post('/store', 'store')->name('buyer.service.store');
-        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
-        Route::post('/update/{id}', 'update')->name('buyer.service.update');
-        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
-        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
-        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
-    });
+// <------- ADMIN USER ROLE ROUTE LIST ------->
+Route::prefix('product')->group(function () {
+    Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
+    Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
+    Route::get('/bid/{slug}', [WebsiteController::class, 'productBid'])->name('web.digital.product.place-bid');
+    Route::post('/payment', [ProductOrderController::class, 'payment'])->name('web.digital.product.order');
 });
-
 
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
@@ -100,6 +116,38 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/edit', 'edit')->name('admin.subcategory.edit');
         Route::post('/update', 'update')->name('admin.subcategory.update');
         Route::get('/delete', 'destroy')->name('admin.subcategory.delete');
+    });
+
+    // <------- SERVICE ROUTE LIST ------->
+    Route::controller(ServiceController::class)->prefix('service')->group(function () {
+        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
+        Route::post('/store', 'store')->name('buyer.service.store');
+        Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
+        Route::post('/update/{id}', 'update')->name('buyer.service.update');
+        Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
+        Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
+        Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
+        Route::get('/service/bid/{id}', 'Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
+        Route::get('/bid/download/{file}', 'BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
+        Route::get('/bid/hire/{id}', 'BidHire')->name('buyer.bid.hire');
+    });
+
+    // <------- Product ------->
+    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::post('/store', 'store')->name('admin.product.store');
+        Route::post('/update/{id}', 'update')->name('admin.product.update');
+        Route::get('/delete/{id}', 'destroy')->name('admin.product.delete');
+        // Product Status Update
+        Route::get('/active/{slug}', 'active')->name('admin.product.active');
+        Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
+        //product download
+        Route::get('/downloadApprove', 'downloadApprove')->name('admin.product.downloadApprove');
+    });
+    // <------- Setting ------->
+    Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.setting.index');
+        Route::post('/update', 'update')->name('admin.setting.update');
     });
 });
 

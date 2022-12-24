@@ -31,34 +31,45 @@
         <div class="container">
             <div class="row">
                 <div class="bid-title mb-3">
-                    <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2>
+                   <h2 class="text-light text-capitalize text-center">{{$service->title}}</h2>
                 </div>
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Place A Bid</h2>
-                        <form action="#" class="bidding-form">
+                        <form action="{{Route('web.placebid.store')}}" class="bidding-form" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="service_id" value="{{$service->id}}">
                             <div class="form-group">
-                                <label for="bidtitle">Bid Title</label>
-                                <input type="text" name="bid-title" placeholder="Enter Bid Title" id="bidtitle" style="background-color:#203048; outline-style: none; border:none">
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Price</label>
+                                <label for="price">Biding Price</label><span class="text-danger">*</span>
                                 <input type="number" name="price" placeholder="Enter Bid Price" id="price" style="background-color:#203048; outline-style: none; border:none">
+                                @error('price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label for="bidtitle">Date Line</label>
-                                <input type="date" name="bid-title" placeholder="Enter Bid Title" id="bidtitle">
+                                <label for="bidtitle">Date Line</label><span class="text-danger">*</span>
+                                <input type="date" name="dateline" data-date-format="YYY MMMM DD" id="bidtitle">
+                                @error('dateline')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">File</label>
                                 <input name="file" type="file" class="form-control" id="inputGroupFile02">
+                                @error('file')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label for="bidtitle">Drescreption</label>
+                                <label for="bidtitle">Drescreption</label><span class="text-danger">*</span>
                                 <textarea name="bidDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
+                                @error('bidDes')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
                             </div>
 
-                            <button type="submit" class="btn style1" type="submit"> Place A Bid</button>
+                            <button type="submit" class="btn style1"> Place A Bid</button>
 
                         </form>
                     </div>
