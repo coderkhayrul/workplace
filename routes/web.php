@@ -99,6 +99,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.subcategory.store');
         Route::get('/edit', 'edit')->name('admin.subcategory.edit');
         Route::post('/update', 'update')->name('admin.subcategory.update');
+        Route::get('/delete', 'destroy')->name('admin.subcategory.delete');
     });
 });
 
