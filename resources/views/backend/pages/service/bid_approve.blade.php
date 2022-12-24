@@ -59,7 +59,7 @@
                                     <tbody>
                                         @foreach($allbids as $bid)
                                             <tr role="row" class="odd">
-                                                <td class="sorting_1">{{ $bid->user->user_name }}</td>
+                                                <td class="sorting_1"><a href="{{route('web.seller.profile',$bid->user->user_slug)}}">{{ $bid->user->user_name }}</a></td>
                                                 <td>{{$bid->price}}</td>
                                                 <td>{{Carbon\Carbon::parse($bid->dateline)->format('d M Y')
                                                 }}</td>

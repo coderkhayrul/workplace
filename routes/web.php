@@ -35,17 +35,21 @@ Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth
 
 // Frontend Service Route
 Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name('web.single.service');
+//frontend buyer and seller profile route
 Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
+Route::get('/seller/{slug}', [WebsiteController::class, 'SellerProfile'])->name('web.seller.profile');
+
 Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->name('web.category.service');
 // Frontend Subscribe Route
 Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.subscribe');
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
-
-// <------- DIGITAL PRODUCT ROUTE LIST ------->
 //frontend search route
 Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
+
+// <------- DIGITAL PRODUCT ROUTE LIST ------->
+
 
 // <------- ADMIN USER ROLE ROUTE LIST ------->
 Route::prefix('product')->group(function () {

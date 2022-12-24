@@ -69,7 +69,7 @@
                                             @foreach ($services as $service)
                                                 <tr role="row" class="odd">
                                                     <td>{{ $service->title }}</td>
-                                                    <td>{{ $service->cat_id }}</td>
+                                                    <td>{{ $service->category->name }}</td>
                                                     <td>{{ $service->price }}</td>
                                                     @php
 

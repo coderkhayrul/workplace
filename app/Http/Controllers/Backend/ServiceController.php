@@ -142,7 +142,7 @@ class ServiceController extends Controller
     //your service method
     public function yourservice($user_id)
     {
-        $services = Service::where('user_id', $user_id)->OrderBy('created_at', 'DESC')->get();
+        $services = Service::with('category')->where('user_id', $user_id)->OrderBy('created_at', 'DESC')->get();
         $TotalServiceCount = $services->count();
         $categories = Category::all();
         return view('backend.pages.service.yourService', compact('services', 'TotalServiceCount', 'categories'));
