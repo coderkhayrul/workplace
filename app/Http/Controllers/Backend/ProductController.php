@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_name' => 'required',
-            'product_price' => 'required',
+            'product_price' => 'required|numeric',
             'download_link' => 'required',
             'orderby' => 'required',
             'product_image' => 'required',
@@ -85,10 +85,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -110,6 +107,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'product_name' => 'required',
+            'product_price' => 'required|numeric',
+            'download_link' => 'required',
+            'orderby' => 'required',
+            'product_details' => 'required',
+        ]);
         $product= Product::find($id);
         $product->author_id =$request->author_id;
         $product->product_name =$request->product_name;
@@ -207,5 +211,9 @@ class ProductController extends Controller
             ); // returns Notification
         }
         return redirect()->back()->with($notification);
+    }
+    public function downloadApprove()
+    {
+        return view('backend.pages.product.download');
     }
 }

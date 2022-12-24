@@ -32,7 +32,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Total {{ $TotalServiceCount }} Services</h3>
+                        <h3 class="card-title">Total {{ count($services) }} Services</h3>
                         <a class="btn btn-sm btn-primary" href="#" style="float: right;" data-toggle="modal"
                             data-target="#modal-xl"><i class="fas fa-plus"></i>
                             Create</a>
@@ -73,7 +73,7 @@
                                                 <tr role="row" class="odd">
                                                     <td>{{ $service->title }}</td>
                                                     <td>{{ $service->user->user_name }}</td>
-                                                    <td>{{ $service->cat_id }}</td>
+                                                    <td>{{ $service->category->name }}</td>
                                                     <td>{{ $service->price }}</td>
                                                     @php
 

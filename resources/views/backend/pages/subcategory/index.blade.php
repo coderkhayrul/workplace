@@ -24,6 +24,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <div id="mgs" class="m-4"></div>
 
     <!-- Main content -->
     <section class="content">
@@ -80,7 +81,7 @@
                                                             title="Edit" id="editsubcategory" data-id= {{ $row->id }} class="btn btn-sm btn-primary"><i
                                                             data-toggle="modal" data-target="#editModel" class="fas fa-user-edit"></i></a>
 
-                                                        <a title="Delete" id="delete" class="btn btn-sm btn-danger"
+                                                        <a title="Delete" id="deletesubcat" data-id= {{ $row->id }} class="btn btn-sm btn-danger"
                                                             href="#"><i
                                                                 class="fas fa-user-times"></i></a>
                                                     </td>
@@ -240,6 +241,7 @@
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ asset('backend/dist/js/datatable.js') }}"></script>
 
+   {{---- Edit Part-1 SubCategory ----}}
     <script>
         jQuery(document).on('click','#editsubcategory',function(event)
         {
@@ -266,6 +268,8 @@
 
 
     </script>
+
+    {{---- Edit Part-2 SubCategory ----}}
     <script>
           $('#submitEditSubCategory').on('submit', function(event){
             event.preventDefault();
@@ -282,4 +286,26 @@
             });
         });
     </script>
+
+    {{---- delete SubCategory ----}}
+    <script>
+        $(document).on('click','#deletesubcat', function(event){
+          event.preventDefault();
+          var subcat_id = jQuery(this).data('id');
+        //   alert(subcat_id);
+
+          $.ajax({
+                url : '/admin/sub-category/delete/',
+                type    : 'GET',
+                dataType: 'json',
+                data    : {
+                    id : subcat_id,
+                },
+              success : function(response){
+                $('#mgs').append('<span class="alert alert-danger">'+response.success+'</span>').fadeOut(5000);
+                // location.reload();
+              },
+          });
+      });
+  </script>
 @endpush

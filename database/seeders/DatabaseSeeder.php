@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RoleSeeder::class,
             DemoSeeder::class,
+            SetupSeeder::class,
         ]);
-        Service::factory(10)->create();
+        Service::factory(20)->create();
     }
 }

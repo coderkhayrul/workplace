@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Backend\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Backend\Setting;
 
 class DemoSeeder extends Seeder
 {
@@ -20,8 +21,13 @@ class DemoSeeder extends Seeder
             Category::create([
                 'name' => $category,
                 'slug' => str_slug($category),
+                'status' => 1,
             ]);
         }
+        //Setting Seeder
+        Setting::create([
+            'company_name' => 'Flex Lab',
+       ]);
 
         // SERVICE SEEDER
     }

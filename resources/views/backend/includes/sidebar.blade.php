@@ -229,8 +229,38 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.product.downloadApprove') }}" class="nav-link   'active' : '' }}">
+                                    <i class="fas fa-comment"></i>
+                                    <p>Product Download Approve</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 @endif
+                {{--  setting  --}}
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                    <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
+                            <i class="fa fa-solid fa-gear"></i>
+                            <p>
+                                Setting
+                                <i class="fas fa-angle-left right"></i>
+                                {{-- <span class="badge badge-info right">6</span> --}}
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.setting.index') }}" class="nav-link   'active' : '' }}">
+                                    <i class="fa-solid fa-gears"></i>
+                                    <p>Setting Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 <li class="nav-header">Short Link</li>
                 {{-- Live Visit --}}
                 <li class="nav-item">

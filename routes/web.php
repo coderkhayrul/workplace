@@ -9,7 +9,12 @@ use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+<<<<<<< HEAD
 use App\Http\Controllers\Backend\SliderController;
+=======
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\ProductOrderController;
+>>>>>>> 205c870216f9033e75ffda5d08124898900418e0
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,12 +42,22 @@ Route::get('/service/{slug}', [WebsiteController::class, 'singleService'])->name
 Route::get('/buyer/{slug}', [WebsiteController::class, 'buyerProfile'])->name('web.buyer.profile');
 Route::get('/category/{slug}', [WebsiteController::class, 'cateegoryService'])->name('web.category.service');
 // Frontend Subscribe Route
-Route::post('/subscribe', [WebsiteController::class, 'Subscribe'])->name('web.subscribe');
+Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('web.subscribe');
 //frontend place Bid Route
 Route::get('/placebid/{slug}', [WebsiteController::class, 'PlaceBid'])->middleware('auth')->name('web.placebid');
 Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('auth')->name('web.placebid.store');
 
+// <------- DIGITAL PRODUCT ROUTE LIST ------->
+//frontend search route
+Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 
+// <------- ADMIN USER ROLE ROUTE LIST ------->
+Route::prefix('product')->group(function () {
+    Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
+    Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
+    Route::get('/bid/{slug}', [WebsiteController::class, 'productBid'])->name('web.digital.product.place-bid');
+    Route::post('/payment', [ProductOrderController::class, 'payment'])->name('web.digital.product.order');
+});
 
 // =======================================================
 //  <------------------ ADMIN ROUTE LIST ---------------->
@@ -104,6 +119,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.subcategory.store');
         Route::get('/edit', 'edit')->name('admin.subcategory.edit');
         Route::post('/update', 'update')->name('admin.subcategory.update');
+        Route::get('/delete', 'destroy')->name('admin.subcategory.delete');
     });
 
     // <------- SERVICE ROUTE LIST ------->
@@ -115,10 +131,9 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/yourservice/{user_id}', 'yourservice')->name('buyer.service.yourservice')->middleware('auth', 'buyer');
         Route::get('/request', 'viewServiceRequest')->name('buyer.service.request');
         Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
-        Route::get('/service/bid/{id}','Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
-        Route::get('/bid/download/{file}','BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
-        Route::get('/bid/hire/{id}','BidHire')->name('buyer.bid.hire');
-
+        Route::get('/service/bid/{id}', 'Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
+        Route::get('/bid/download/{file}', 'BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
+        Route::get('/bid/hire/{id}', 'BidHire')->name('buyer.bid.hire');
     });
 
     // <------- Product ------->
@@ -130,6 +145,13 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
+        //product download
+        Route::get('/downloadApprove', 'downloadApprove')->name('admin.product.downloadApprove');
+    });
+    // <------- Setting ------->
+    Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.setting.index');
+        Route::post('/update', 'update')->name('admin.setting.update');
     });
     // <------- Slider ------->
     Route::controller(SliderController::class)->prefix('slider')->middleware('admin')->group(function () {

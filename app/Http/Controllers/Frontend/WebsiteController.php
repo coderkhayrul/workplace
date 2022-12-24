@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
+use App\Models\Backend\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Service;
@@ -11,18 +12,27 @@ use App\Models\User;
 use Carbon\Carbon;
 use App\Models\PlaceBit;
 use Intervention\Image\File;
+<<<<<<< HEAD
 use App\Models\Backend\Subscribe;
 use App\Models\Backend\Slider;
+=======
+use App\Models\Backend\Subscriber;
+>>>>>>> 205c870216f9033e75ffda5d08124898900418e0
 
 class WebsiteController extends Controller
 {
     public function home()
     {
+<<<<<<< HEAD
         $todaty = Carbon::now();
         $slider = Slider::latest()->where('slider_status','active')->first();
         $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first(); 
         $services = Service::where('status', 1)->where('EndDate', '>=', $todaty)->OrderBy('created_at', 'DESC')->limit(15)->get();
         return view('frontend.home', compact('services','slider','servicescurrent'));
+=======
+        $categories = Category::where('status', 1)->take(4)->get();
+        return view('frontend.home', compact('categories'));
+>>>>>>> 205c870216f9033e75ffda5d08124898900418e0
     }
     public function profile($slug)
     {
@@ -37,7 +47,8 @@ class WebsiteController extends Controller
     } //end method
 
     //Bid store method
-    public function Bid_store(Request $request){
+    public function Bid_store(Request $request)
+    {
         //bid form validation
         $today = Carbon::now();
         $request->validate([
@@ -46,14 +57,13 @@ class WebsiteController extends Controller
             'bidDes' => 'required',
             'file' => 'max:1020',
         ]);
-        if (PlaceBit::where('user_id', Auth::user()->id )->where('service_id',$request->service_id)->exists()) {
+        if (PlaceBit::where('user_id', Auth::user()->id)->where('service_id', $request->service_id)->exists()) {
             $notification = array(
                 'message' => 'You Already Bid This Service',
                 'alert-type' => 'error',
             ); // returns Notification,
             return redirect()->back()->with($notification);
-        }
-        else{
+        } else {
             $placeBid = new PlaceBit;
             $placeBid->service_id = $request->service_id;
             $placeBid->user_id = Auth::user()->id;
@@ -61,12 +71,12 @@ class WebsiteController extends Controller
             $placeBid->dateline = $request->dateline;
             $placeBid->bidDes = $request->bidDes;
             $file = $request->file;
-            if($file){
-                $filename = rand().'.'.$file->getClientOriginalExtension();
+            if ($file) {
+                $filename = rand() . '.' . $file->getClientOriginalExtension();
                 $location = public_path('uploads/placeBid/');
                 $file->move($location,  $filename);
                 $placeBid->file = $filename;
-             }
+            }
             $placeBid->save();
             if ($placeBid) {
                 $notification = array(
@@ -76,9 +86,7 @@ class WebsiteController extends Controller
                 return redirect()->back()->with($notification);
             }
         }
-
-
-    }//end bid store
+    } //end bid store
 
     public function Weblogout()
     {
@@ -103,10 +111,13 @@ class WebsiteController extends Controller
         $category = Category::where('slug', $slug)->first();
         return view('frontend.pages.categoryService', compact('category'));
     }
-    public function Subscribe(Request $request){
-        $subscribe = new Subscribe();
-        $subscribe->email = $request->email;
-        $subscribe->save();
+    public function Subscribe(Request $request)
+    {
+
+        $subscribe = Subscriber::create([
+            'email' => $request->email,
+        ]);
+
         if ($subscribe) {
             $notification = array(
                 'message' => 'Thank you! For Your Subscription:)',
@@ -114,5 +125,34 @@ class WebsiteController extends Controller
             ); // returns Notification,
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function product()
+    {
+        $products = Product::with('author')->orderby('created_at', "ASC")->get();
+        return view('frontend.pages.products', compact('products'));
+    }
+
+    public function productView($slug)
+    {
+        $product = Product::with('author')->where('product_slug', $slug)->first();
+        return view('frontend.pages.productView', compact('product'));
+    }
+
+    public function productBid($slug)
+    {
+        $product = Product::where('product_slug', $slug)->first();
+        return view('frontend.pages.productBid', compact('product'));
+    }
+
+    //method for search
+    public function Search(Request $request){
+        $todaty = Carbon::now();
+        $searches= Service::with('user')
+        ->orderBy('id','DESC')
+        ->where('status',1)
+        ->where('EndDate', '>=', $todaty)
+        ->where('title','LIKE','%'.$request->search.'%')->get();
+        return view('frontend.pages.search',compact('searches'));
     }
 }

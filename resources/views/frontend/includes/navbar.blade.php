@@ -3,7 +3,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="{{ route('web.home') }}">
-                <img src="{{ asset('frontend') }}/assets/img/logo-white.png" alt="logo">
+                <img src="{{ asset('uploads/setting/' . $setting->logo) }}" alt="logo">
             </a>
             <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                 <div class="menu-close d-lg-none">
@@ -14,7 +14,7 @@
                         $number = 0;
                     @endphp
                     @foreach ($navbars as $navbar)
-                        @if ($number < 4)
+                        @if ($number < 3)
                             <li class="nav-item has-child">
                                 <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                     {{ $navbar->name }}
@@ -35,7 +35,7 @@
                                 $number = 0;
                             @endphp
                             @foreach ($navbars as $navbar)
-                                @if ($number > 4)
+                                @if ($number > 3)
                                     <li class="nav-item has-child">
                                         <a href="{{ route('web.category.service', $navbar->slug) }}" class="nav-link">
                                             {{ $navbar->name }}
@@ -73,7 +73,7 @@
                 <!-- Digital Product -->
                 <div class="others-options  md-none">
                     <div class="header-btn">
-                        <a href="#" class="btn style1">Our
+                        <a href="{{ route('web.digital.product.all') }}" class="btn style1">Our
                             Product<i class="flaticon-file"></i></a>
                     </div>
                 </div>
@@ -98,9 +98,10 @@
 
 <div class="search-area">
     <div class="container">
-        <form action="#">
+        <form action="{{ Route('web.search') }}" method="get">
+            @csrf
             <div class="form-group">
-                <input type="search" placeholder="Search Here" autofocus>
+                <input name="search" type="search" placeholder="Search Here" autofocus>
             </div>
         </form>
         <button type="button" class="close-searchbox">
