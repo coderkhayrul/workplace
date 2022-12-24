@@ -38,40 +38,45 @@
                         <form action="{{ route('web.digital.product.order') }}" class="bidding-form" method="POST">
                             @csrf
                             <input name="user_id" type="hidden" value="{{ Auth::id() }}">
+                            <input name="product_id" type="hidden" value="{{ $product->id }}">
                             <input name="price" type="hidden" value="{{ $product->product_price }}">
                             <input name="service_fee" type="hidden" value="150">
                             <div class="form-group">
-                                <input name="name" type="text" placeholder="Name">
+                                <input name="name" type="text" placeholder="Name" value="{{ old('name') }}">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input name="email" type="email" placeholder="Email">
+                                <input name="email" type="email" placeholder="Email" value="{{ old('email') }}">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input name="bank_name" type="text" placeholder="Bank Name">
+                                <input name="bank_name" type="text" placeholder="Bank Name"
+                                    value="{{ old('bank_name') }}">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input name="phone" type="number" placeholder="Phone Number">
+                                <input name="phone" type="number" placeholder="Phone Number"
+                                    value="{{ old('phone') }}">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input name="tns_number" type="text" placeholder="Payment Transaction ID">
+                                <input name="tns_number" type="text" placeholder="Payment Transaction ID"
+                                    value="{{ old('tns_number') }}">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input name="total_amount" type="number" placeholder="Amount">
+                                <input name="total_amount" type="number" placeholder="Amount"
+                                    value="{{ old('total_amount') }}">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

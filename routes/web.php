@@ -146,8 +146,14 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
-        //product download
-        Route::get('/downloadApprove', 'downloadApprove')->name('admin.product.downloadApprove');
+        //product Order
+        Route::get('/order', 'order')->name('admin.product.order');
+        Route::get('/pending', 'pending')->name('admin.product.order.pending');
+        Route::get('/approve', 'approve')->name('admin.product.order.approve');
+        Route::get('/rejected', 'rejected')->name('admin.product.order.rejected');
+
+        Route::get('/approve/{id}', 'approveStatus')->name('admin.product.order.approve.status');
+        Route::get('/rejected/{id}', 'rejectedStatus')->name('admin.product.order.rejected.status');
     });
     // <------- Setting ------->
     Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {

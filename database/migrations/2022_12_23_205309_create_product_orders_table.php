@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('email')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('product_id');
+            $table->string('order_code');
             $table->string('bank_name');
             $table->string('phone_number');
             $table->string('tns_number');

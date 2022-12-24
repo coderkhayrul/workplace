@@ -11,20 +11,20 @@ use App\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\PlaceBit;
-use Intervention\Image\File;
 use App\Models\Backend\Subscribe;
 use App\Models\Backend\Slider;
 use App\Models\Backend\Subscriber;
+
 class WebsiteController extends Controller
 {
     public function home()
     {
         $todaty = Carbon::now();
-        $slider = Slider::latest()->where('slider_status','active')->first();
-        $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first(); 
+        $slider = Slider::latest()->where('slider_status', 'active')->first();
+        $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first();
         $services = Service::where('status', 1)->where('EndDate', '>=', $todaty)->OrderBy('created_at', 'DESC')->limit(15)->get();
         $categories = Category::where('status', 1)->take(4)->get();
-        return view('frontend.home', compact('services','slider','servicescurrent','categories'));
+        return view('frontend.home', compact('services', 'slider', 'servicescurrent', 'categories'));
     }
     public function profile($slug)
     {
@@ -138,13 +138,14 @@ class WebsiteController extends Controller
     }
 
     //method for search
-    public function Search(Request $request){
+    public function Search(Request $request)
+    {
         $todaty = Carbon::now();
-        $searches= Service::with('user')
-        ->orderBy('id','DESC')
-        ->where('status',1)
-        ->where('EndDate', '>=', $todaty)
-        ->where('title','LIKE','%'.$request->search.'%')->get();
-        return view('frontend.pages.search',compact('searches'));
+        $searches = Service::with('user')
+            ->orderBy('id', 'DESC')
+            ->where('status', 1)
+            ->where('EndDate', '>=', $todaty)
+            ->where('title', 'LIKE', '%' . $request->search . '%')->get();
+        return view('frontend.pages.search', compact('searches'));
     }
 }

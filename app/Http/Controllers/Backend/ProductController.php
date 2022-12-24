@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use App\Models\Backend\Product;
+use App\Models\ProductOrder;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product=Product::orderby('id','asc')->get();
+        $product = Product::orderby('id', 'asc')->get();
         return view('backend.pages.product.index', compact('product'));
     }
 
@@ -48,14 +49,14 @@ class ProductController extends Controller
             'product_details' => 'required',
 
         ]);
-        $product= new Product();
-        $product->author_id =$request->author_id;
-        $product->product_name =$request->product_name;
-        $product->product_price =$request->product_price;
-        $product->download_link =$request->download_link;
-        $product->orderby =$request->orderby;
-        $product->product_slug =uniqid();
-        $product->product_details =$request->product_details;
+        $product = new Product();
+        $product->author_id = $request->author_id;
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->download_link = $request->download_link;
+        $product->orderby = $request->orderby;
+        $product->product_slug = uniqid();
+        $product->product_details = $request->product_details;
         $image = $request->file('product_image');
         $imageCustomename = rand() . '.' . $image->getClientOriginalExtension();
         $location = public_path('uploads/products/' . $imageCustomename);
@@ -76,7 +77,6 @@ class ProductController extends Controller
 
             return redirect()->back()->with($notification);
         }
-
     }
 
     /**
@@ -114,13 +114,13 @@ class ProductController extends Controller
             'orderby' => 'required',
             'product_details' => 'required',
         ]);
-        $product= Product::find($id);
-        $product->author_id =$request->author_id;
-        $product->product_name =$request->product_name;
-        $product->product_price =$request->product_price;
-        $product->download_link =$request->download_link;
-        $product->orderby =$request->orderby;
-        $product->product_details =$request->product_details;
+        $product = Product::find($id);
+        $product->author_id = $request->author_id;
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->download_link = $request->download_link;
+        $product->orderby = $request->orderby;
+        $product->product_details = $request->product_details;
         if (!empty($request->product_image)) {
             if (File::exists('uploads/products/' . $product->product_image)) {
                 File::delete('uploads/products/' . $product->product_image);
@@ -212,8 +212,65 @@ class ProductController extends Controller
         }
         return redirect()->back()->with($notification);
     }
-    public function downloadApprove()
+    public function order()
     {
-        return view('backend.pages.product.download');
+        $orders = ProductOrder::all();
+        return view('backend.pages.product.order', compact('orders'));
+    }
+
+    public function pending()
+    {
+        $orders = ProductOrder::where('status', 1)->get();
+        return view('backend.pages.product.order', compact('orders'));
+    }
+
+    public function approve()
+    {
+        $orders = ProductOrder::where('status', 2)->get();
+        return view('backend.pages.product.order', compact('orders'));
+    }
+
+    public function rejected()
+    {
+        $orders = ProductOrder::where('status', 3)->get();
+        return view('backend.pages.product.order', compact('orders'));
+    }
+
+    public function approveStatus($id)
+    {
+        $order = ProductOrder::where('id', $id)->update([
+            'status' => 2
+        ]);
+        if ($order) {
+            $notification = array(
+                'message' => 'Order Status Updated!',
+                'alert-type' => 'success',
+            ); // returns Notification
+        } else {
+            $notification = array(
+                'message' => 'Order Update Failed!',
+                'alert-type' => 'error',
+            ); // returns Notification
+        }
+        return redirect()->back()->with($notification);
+    }
+
+    public function rejectedStatus($id)
+    {
+        $order = ProductOrder::where('id', $id)->update([
+            'status' => 3
+        ]);
+        if ($order) {
+            $notification = array(
+                'message' => 'Order Status Updated!',
+                'alert-type' => 'success',
+            ); // returns Notification
+        } else {
+            $notification = array(
+                'message' => 'Order Update Failed!',
+                'alert-type' => 'error',
+            ); // returns Notification
+        }
+        return redirect()->back()->with($notification);
     }
 }

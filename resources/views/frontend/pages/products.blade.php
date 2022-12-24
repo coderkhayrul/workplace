@@ -35,8 +35,6 @@
                         <div class="blog-card style1">
                             <div class="blog-img">
                                 <img src="{{ asset('uploads/products/' . $product->product_image) }}" alt="Image">
-                                <a href="posts-by-date.html" class="blog-date"><i class="ri-calendar-todo-line"></i>July 25,
-                                    2022</a>
                             </div>
                             <div class="blog-info">
                                 <h3><a href="blog-details-right-sidebar.html">{{ $product->product_name }}</a></h3>
@@ -52,7 +50,7 @@
                                         </div>
                                     </div>
                                     <a href="{{ route('web.digital.product.view', $product->product_slug) }}"
-                                        class="btn style1"><i class="flaticon-right-arrow-1"></i></a>
+                                        class="btn style1">Order Now</a>
                                 </div>
                             </div>
 

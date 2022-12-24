@@ -158,20 +158,19 @@
                             </li>
                         </ul>
                     </li>
-                   <!-- SLIDER  -->
-                   <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>
-                            Slider
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                 
+                    <!-- SLIDER  -->
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>
+                                Slider
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ Route('slider.index') }}"
-                                    class="nav-link">
+                                <a href="{{ Route('slider.index') }}" class="nav-link">
                                     <i class="fas fa-comment"></i>
                                     <p>Slider Manage</p>
                                 </a>
@@ -179,25 +178,24 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ Route('add.slider') }}"
-                                    class="nav-link">
+                                <a href="{{ Route('add.slider') }}" class="nav-link">
                                     <i class="fas fa-comment"></i>
                                     <p>Add Slider</p>
                                 </a>
                             </li>
                         </ul>
-                </li>
-                   <!-- END SLIDER  -->
+                    </li>
+                    <!-- END SLIDER  -->
                 @endif
                 {{-- Subcategory --}}
-                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                {{-- @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                     <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
                             <i class="fa fa-list-alt"></i>
                             <p>
                                 SubCategory
                                 <i class="fas fa-angle-left right"></i>
-                                {{-- <span class="badge badge-info right">6</span> --}}
+                                <span class="badge badge-info right">6</span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -209,7 +207,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+                @endif --}}
                 {{--  product  --}}
                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                     <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
@@ -223,7 +221,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.product.index') }}" class="nav-link   'active' : '' }}">
+                                <a href="{{ route('admin.product.index') }}" class="nav-link">
                                     <i class="fas fa-comment"></i>
                                     <p>Digital Product Manage</p>
                                 </a>
@@ -231,9 +229,9 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.product.downloadApprove') }}" class="nav-link   'active' : '' }}">
+                                <a href="{{ route('admin.product.order') }}" class="nav-link">
                                     <i class="fas fa-comment"></i>
-                                    <p>Product Download Approve</p>
+                                    <p>Product Order</p>
                                 </a>
                             </li>
                         </ul>
