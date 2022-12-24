@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BalanceRequestController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -129,6 +130,10 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
+    });
+    // <------- Slider ------->
+    Route::controller(SliderController::class)->prefix('product')->middleware('admin')->group(function () {
+      
     });
 });
 
