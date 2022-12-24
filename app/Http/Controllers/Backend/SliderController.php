@@ -12,7 +12,7 @@ class SliderController extends Controller
 {
    public function IndexSlider(){
         $sliders = Slider::latest()->get();
-        return view('backend.pages.slider.index');
+        return view('backend.pages.slider.index',compact('sliders'));
    } //end method
    public function AddedSlider(){
     return view('backend.pages.slider.create');
@@ -42,5 +42,13 @@ class SliderController extends Controller
 
 
    } //end method
+
+   public function SliderEdit($id){
+    $slider = Slider::findOrFail($id);
+    return view('backend.pages.slider.edit',compact('slider'));
+   } //end method
+   public function SliderUpdate(){
+
+   } //end Method
 
 }

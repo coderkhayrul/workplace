@@ -136,6 +136,8 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
       Route::get('/manage/slider','IndexSlider')->name('slider.index');
       Route::get('/add/slider','AddedSlider')->name('add.slider');
       Route::POST('/store','sliderStore')->name('slider.store');
+      Route::GET('/edit/{id}','SliderEdit')->name('slider.edit');
+      Route::POST('/update/{id}','SliderUpdate')->name('slider.update');
     });
 });
 
