@@ -132,8 +132,10 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
     });
     // <------- Slider ------->
-    Route::controller(SliderController::class)->prefix('product')->middleware('admin')->group(function () {
-      
+    Route::controller(SliderController::class)->prefix('slider')->middleware('admin')->group(function () {
+      Route::get('/manage/slider','IndexSlider')->name('slider.index');
+      Route::get('/add/slider','AddedSlider')->name('add.slider');
+      Route::POST('/store','sliderStore')->name('slider.store');
     });
 });
 

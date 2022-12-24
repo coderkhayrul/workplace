@@ -170,7 +170,7 @@
                  
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ Route('buyer.service.index') }}"
+                                <a href="{{ Route('slider.index') }}"
                                     class="nav-link">
                                     <i class="fas fa-comment"></i>
                                     <p>Slider Manage</p>
@@ -179,7 +179,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ Route('buyer.service.request') }}"
+                                <a href="{{ Route('add.slider') }}"
                                     class="nav-link">
                                     <i class="fas fa-comment"></i>
                                     <p>Add Slider</p>
