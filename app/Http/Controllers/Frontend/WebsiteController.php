@@ -98,6 +98,15 @@ class WebsiteController extends Controller
         return view('frontend.pages.buyerProfile', compact('buyer'));
     }
 
+    //seller profile method
+    public function SellerProfile($slug)
+    {
+        $seller = User::where('user_slug', $slug)->first();
+        $seller_id = $seller->id;
+        $bidservices = PlaceBit::with('user', 'user')->where('user_id', $seller->id)->get();
+        return view('frontend.pages.sellerProfile', compact('seller', 'bidservices'));
+    } //end method
+
     public function cateegoryService($slug)
     {
         $category = Category::where('slug', $slug)->first();
