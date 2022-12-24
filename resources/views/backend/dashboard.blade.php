@@ -5,6 +5,15 @@
 
 @section('admin_content')
     @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+        @php
+            $totalseller = App\Models\User::where('role_id', 3)->count();
+            $totalbuyer = App\Models\User::where('role_id', 4)->count();
+            $totalService = App\Models\Service::count();
+            $totalPendingService = App\Models\Service::where('status', 0)->count();
+            $totalActiveService = App\Models\Service::where('status', 1)->count();
+            $totalCategory = App\Models\Backend\Category::count();
+            $totalProduct = App\Models\Backend\Product::count();
+        @endphp
         <!-- ADMIN & SUPER-ADMIN DASHBOARD -->
         <div class="content-header">
             <div class="container-fluid">
@@ -35,7 +44,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Seller</span>
                                 <span class="info-box-number">
-                                    10
+                                    {{ $totalseller }}
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -49,7 +58,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Buyer</span>
-                                <span class="info-box-number">41</span>
+                                <span class="info-box-number">{{ $totalbuyer }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -66,7 +75,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Service</span>
-                                <span class="info-box-number">760</span>
+                                <span class="info-box-number">{{ $totalService }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -79,7 +88,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Pending Service</span>
-                                <span class="info-box-number">2,000</span>
+                                <span class="info-box-number">{{ $totalPendingService }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -91,7 +100,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Active Service</span>
-                                <span class="info-box-number">2,000</span>
+                                <span class="info-box-number">{{ $totalActiveService }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -103,7 +112,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Category</span>
-                                <span class="info-box-number">2,000</span>
+                                <span class="info-box-number">{{ $totalCategory }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -114,8 +123,8 @@
                             <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Balance Request</span>
-                                <span class="info-box-number">120</span>
+                                <span class="info-box-text">Total Product</span>
+                                <span class="info-box-number">{{ $totalProduct }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -126,8 +135,8 @@
                             <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-users"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Payment Request</span>
-                                <span class="info-box-number">250</span>
+                                <span class="info-box-text">Balance Request</span>
+                                <span class="info-box-number">0</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
