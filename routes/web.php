@@ -138,6 +138,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
       Route::POST('/store','sliderStore')->name('slider.store');
       Route::GET('/edit/{id}','SliderEdit')->name('slider.edit');
       Route::POST('/update/{id}','SliderUpdate')->name('slider.update');
+      Route::GET('/delete/{id}','SliderDelete')->name('slider.delete');
     });
 });
 

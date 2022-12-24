@@ -71,7 +71,7 @@
                                                 <td><span class="badge badge-info">{{$slider->slider_status}}</span></td>
                                 <td>
                                         <a class="btn btn-sm btn-success" href="{{route('slider.edit',$slider->id)}}"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="{{route('slider.delete',$slider->id)}}"><i class="fas fa-trash"></i></a>
                                 </td>
                                              </tr>
                                             @endforeach
