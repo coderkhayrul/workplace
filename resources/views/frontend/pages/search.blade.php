@@ -30,11 +30,11 @@
      <section class="nft-wrap ptb-100 bg-zodiac">
         <div class="container">
             <div class="row justify-content-center">
-                @empty($searches)
-                <div class="col-xxl-12 col-xl-6 col-lg-12 col-md-12">
-                    <h2 class="text-center text-white">Opps Not Found!</h2>
-                </div>
-                @endempty
+                @if(count($searches)==0)
+                    <div class="col-xxl-12 col-xl-6 col-lg-12 col-md-12">
+                        <h2 class="text-center text-white">Opps Not Found!</h2>
+                    </div>
+                @endif
                 @foreach ( $searches as $search)
                     <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                         <div class="auction-card style3">
@@ -66,9 +66,6 @@
                     </div>
                 @endforeach
 
-            </div>
-            <div class="text-center mt-20">
-                <a href="index.html" class="btn style4">Load More<i class="ri-refresh-line"></i></a>
             </div>
         </div>
     </section>

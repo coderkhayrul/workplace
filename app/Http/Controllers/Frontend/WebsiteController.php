@@ -134,7 +134,12 @@ class WebsiteController extends Controller
 
     //method for search
     public function Search(Request $request){
-        $searches= Service::with('user')->orderBy('id','DESC')->where('status',1)->where('title','LIKE','%'.$request->search.'%')->get();
+        $todaty = Carbon::now();
+        $searches= Service::with('user')
+        ->orderBy('id','DESC')
+        ->where('status',1)
+        ->where('EndDate', '>=', $todaty)
+        ->where('title','LIKE','%'.$request->search.'%')->get();
         return view('frontend.pages.search',compact('searches'));
     }
 }
