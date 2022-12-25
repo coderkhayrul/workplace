@@ -50,7 +50,7 @@ Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('a
 Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 
 //frontend project submission
-Route::get('/submite/{slug}',[WebsiteController::class,'ProjectSubmite'])->middleware('auth')->name('web.projectsubmite.view');
+Route::get('/submite/{id}',[WebsiteController::class,'ProjectSubmite'])->middleware('auth')->name('web.projectsubmite.view');
 Route::post('/submite/store',[WebsiteController::class,'ProjectSubmiteStore'])->middleware('auth')->name('web.projectsubmite.store');
 
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
@@ -140,7 +140,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/service/bid/{id}', 'Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
         Route::get('/bid/download/{file}', 'BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
         Route::get('/bid/hire/{id}', 'BidHire')->name('buyer.bid.hire')->middleware('auth', 'buyer');
-        Route::get('/submition/view/{service_id}','SubmitionView')->name('buyer.projectSubmition.view')->middleware('auth','buyer');
+        Route::get('/submition/view/{bid_id}','SubmitionView')->name('buyer.projectSubmition.view')->middleware('auth','buyer');
     });
 
     // <------- Product ------->

@@ -160,9 +160,9 @@ class WebsiteController extends Controller
     }
 
     //seller project submission page view method
-    public function ProjectSubmite(string $slug){
-        $service= Service::where('slug', $slug)->first();
-        return view('frontend.pages.project_submission', compact('service'));
+    public function ProjectSubmite($id){
+        $bids= PlaceBit::with('service')->where('id', $id)->first();
+        return view('frontend.pages.project_submission', compact('bids'));
 
     }//end seller project submission page view method
 
@@ -185,6 +185,7 @@ class WebsiteController extends Controller
             $serviceSubmit =new ServiceSubmite;
             $serviceSubmit->service_id = $request->service_id;
             $serviceSubmit->buyer_id =  $request->buyer_id;
+            $serviceSubmit->bid_id =  $request->bid_id;
             $serviceSubmit->seller_id =  Auth::user()->id;
             $serviceSubmit->submition_externalLink = $request->externalLnk;
             $serviceSubmit->submition_drescreption = $request->ServiceDes;

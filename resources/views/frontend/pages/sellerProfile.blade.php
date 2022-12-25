@@ -147,7 +147,7 @@
                                         <div class="auction-card style3">
                                             <div class="auction-img">
                                                 <img src="{{ asset('uploads/services/' . $bidservice->service->document) }}" alt="Image">
-                                                <a href="{{Route('web.projectsubmite.view',$bidservice->service->slug)}}" class="btn style1">submite<i
+                                                <a href="{{Route('web.projectsubmite.view',$bidservice->id)}}" class="btn style1">submite<i
                                                     class="flaticon-right-arrow-1"></i></a>
                                             </div>
                                             <div class="auction-info-wrap">
@@ -185,7 +185,7 @@
                                 @endforeach
                             </div>
                         </div>
-                         <!--end buyer accpet bid-->
+                         <!--end buyer accpeted bid-->
                          <!--Complete Project-->
                         <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
                             <div class="row justify-content-center">

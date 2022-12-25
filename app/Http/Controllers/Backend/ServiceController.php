@@ -12,6 +12,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\ServiceSubmite;
 
 
 class ServiceController extends Controller
@@ -205,8 +206,9 @@ class ServiceController extends Controller
     } //end method
 
     //project submition method view
-    public function SubmitionView($service_id){
-        
-        return view('backend.pages.service.Service_complete');
+    public function SubmitionView($bid_id){
+
+        $resive_submition= ServiceSubmite::where('bid_id',$bid_id)->first();
+        return view('backend.pages.service.Service_complete',compact('resive_submition'));
     }//end method
 }

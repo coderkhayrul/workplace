@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('service_submites', function (Blueprint $table) {
             $table->id();
+            $table->integer('bid_id');
             $table->integer('service_id');
             $table->integer('buyer_id');
             $table->integer('seller_id');
