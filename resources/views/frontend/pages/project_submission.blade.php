@@ -36,9 +36,10 @@
                 <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                     <div class="bidding-popup mt-5">
                         <h2>Submite Project</h2>
-                        <form action="" class="bidding-form" method="POST" enctype="multipart/form-data">
+                        <form action="{{Route('web.projectsubmite.store')}}" class="bidding-form" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="service_id" value="{{$service->id}}">
+                            <input type="hidden" name="buyer_id" value="{{$service->user_id}}">
                             <div class="form-group">
                                 <label for="bidtitle">File</label>
                                 <input name="file" type="file" class="form-control" id="inputGroupFile02">
@@ -48,8 +49,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="bidtitle">Drescreption</label><span class="text-danger">*</span>
-                                <textarea name="bidDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
-                                @error('bidDes')
+                                <textarea name="ServiceDes" style="background-color:#203048; outline-style: none; border:none" class="form-control text-light" rows="5"></textarea>
+                                @error('ServiceDes')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -57,9 +58,6 @@
                                 <label for="externalLnk">External Link</label>
                                 <input type="text" name="externalLnk" placeholder="Enter External Link" id="price" style="background-color:#203048; outline-style: none; border:none">
                                 <span class="text-warning">(if have any external link)</span>
-                                @error('price')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
                             </div>
 
                             <button type="submit" class="btn style1">Submite</button>

@@ -14,6 +14,7 @@ use App\Models\PlaceBit;
 use App\Models\Backend\Subscribe;
 use App\Models\Backend\Slider;
 use App\Models\Backend\Subscriber;
+use App\Models\ServiceSubmite;
 
 class WebsiteController extends Controller
 {
@@ -163,5 +164,47 @@ class WebsiteController extends Controller
         $service= Service::where('slug', $slug)->first();
         return view('frontend.pages.project_submission', compact('service'));
 
-    }
+    }//end seller project submission page view method
+
+    //seller project submission page store method
+    public function ProjectSubmiteStore(Request $request){
+        $request->validate([
+
+            'ServiceDes' => 'required',
+            'file' => 'max:1024',
+        ]);
+
+        if(ServiceSubmite::where('service_id',$request->service_id)->where('buyer_id',$request->buyer_id)->where('seller_id',Auth::user()->id)->exists()){
+            $notification = array(
+                'message' => 'You Already Submited',
+                'alert-type' => 'error',
+            ); // returns Notification,
+            return redirect()->back()->with($notification);
+        }
+        else{
+            $serviceSubmit =new ServiceSubmite;
+            $serviceSubmit->service_id = $request->service_id;
+            $serviceSubmit->buyer_id =  $request->buyer_id;
+            $serviceSubmit->seller_id =  Auth::user()->id;
+            $serviceSubmit->submition_externalLink = $request->externalLnk;
+            $serviceSubmit->submition_drescreption = $request->ServiceDes;
+            $file = $request->file;
+            if($file) {
+                $filename = rand() . '.' . $file->getClientOriginalExtension();
+                $location = public_path('uploads/Service_submite/');
+                $file->move($location,  $filename);
+                $serviceSubmit->submition_document = $filename;
+            }
+            $serviceSubmit->save();
+            if ($serviceSubmit) {
+                $notification = array(
+                    'message' => 'Your Project Submition Succesfully:)',
+                    'alert-type' => 'success',
+                ); // returns Notification,
+                return redirect()->back()->with($notification);
+            }
+        }
+
+
+    }//end seller project submission page store method
 }

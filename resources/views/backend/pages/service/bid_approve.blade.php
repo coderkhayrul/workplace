@@ -82,6 +82,7 @@
                                                         <a href="{{Route('buyer.bid.hire',$bid->id)}}" class="btn btn-sm btn-success">Hire</a>
                                                     @elseif($bid->status==1)
                                                         <a href="#" class=" disable btn btn-sm btn-outline-primary">Complete job</a>
+                                                        <a href="#" class=" disable btn btn-sm btn-outline-info">view</a>
                                                     @elseif ($bid->status==2)
                                                         <span class="badge bg-success">Successfully Complete Job</span>
                                                     @endif

@@ -51,6 +51,7 @@ Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 
 //frontend project submission
 Route::get('/submite/{slug}',[WebsiteController::class,'ProjectSubmite'])->middleware('auth')->name('web.projectsubmite.view');
+Route::post('/submite/store',[WebsiteController::class,'ProjectSubmiteStore'])->middleware('auth')->name('web.projectsubmite.store');
 
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
 
