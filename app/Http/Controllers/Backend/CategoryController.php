@@ -70,9 +70,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $category = Category::find($request->id);
+        return response()->json([
+            'data'=> $category,
+
+        ]);
     }
 
     /**
@@ -82,9 +86,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $category = Category::find($request->cat_id);
+        $category->name = $request->category_name;
+        $category->status = $request->status;
+        $category->update();
+        return response()->json([
+            'success'=> 'Category Updated Successfully',
+
+        ]);
     }
 
     /**
