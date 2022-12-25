@@ -219,7 +219,6 @@
                                 </div>
                             @enderror
                         </div>
-
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -265,8 +264,6 @@
                 });
         });
 
-
-
     </script>
 
     {{---- Edit Part-2 SubCategory ----}}
@@ -274,7 +271,6 @@
           $('#submitEditSubCategory').on('submit', function(event){
             event.preventDefault();
             // alert('ok');
-
             $.ajax({
                 url     : '/admin/sub-category/update/',
                 type    : 'post',
