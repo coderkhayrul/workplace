@@ -203,4 +203,10 @@ class ServiceController extends Controller
             return redirect()->back()->with($notification);
         }
     } //end method
+
+    //project submition method view
+    public function SubmitionView($service_id){
+        
+        return view('backend.pages.service.Service_complete');
+    }//end method
 }

@@ -139,7 +139,8 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::get('/approve/{id}', 'ApproveService')->name('buyer.service.ApproveRequest');
         Route::get('/service/bid/{id}', 'Bidapprove')->name('buyer.bid.approve')->middleware('auth', 'buyer');
         Route::get('/bid/download/{file}', 'BidFileDownload')->name('buyer.bid.download')->middleware('auth', 'buyer');
-        Route::get('/bid/hire/{id}', 'BidHire')->name('buyer.bid.hire');
+        Route::get('/bid/hire/{id}', 'BidHire')->name('buyer.bid.hire')->middleware('auth', 'buyer');
+        Route::get('/submition/view/{service_id}','SubmitionView')->name('buyer.projectSubmition.view')->middleware('auth','buyer');
     });
 
     // <------- Product ------->
