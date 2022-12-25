@@ -40,20 +40,6 @@
                             @csrf
                             <input type="hidden" name="service_id" value="{{$service->id}}">
                             <div class="form-group">
-                                <label for="price">Biding Price</label><span class="text-danger">*</span>
-                                <input type="number" name="price" placeholder="Enter Bid Price" id="price" style="background-color:#203048; outline-style: none; border:none">
-                                @error('price')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="bidtitle">Date Line</label><span class="text-danger">*</span>
-                                <input type="date" name="dateline" data-date-format="YYY MMMM DD" id="bidtitle">
-                                @error('dateline')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="bidtitle">File</label>
                                 <input name="file" type="file" class="form-control" id="inputGroupFile02">
                                 @error('file')
@@ -66,10 +52,17 @@
                                 @error('bidDes')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
-
+                            </div>
+                            <div class="form-group">
+                                <label for="externalLnk">External Link</label>
+                                <input type="text" name="externalLnk" placeholder="Enter External Link" id="price" style="background-color:#203048; outline-style: none; border:none">
+                                <span class="text-warning">(if have any external link)</span>
+                                @error('price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
-                            <button type="submit" class="btn style1"> Place A Bid</button>
+                            <button type="submit" class="btn style1">Submite</button>
 
                         </form>
                     </div>

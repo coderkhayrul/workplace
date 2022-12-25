@@ -158,6 +158,7 @@ class WebsiteController extends Controller
         return view('frontend.pages.search', compact('searches'));
     }
 
+    //seller project submission page view method
     public function ProjectSubmite(string $slug){
         $service= Service::where('slug', $slug)->first();
         return view('frontend.pages.project_submission', compact('service'));
