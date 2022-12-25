@@ -14,6 +14,7 @@ use App\Models\PlaceBit;
 use App\Models\Backend\Subscribe;
 use App\Models\Backend\Slider;
 use App\Models\Backend\Subscriber;
+use App\Models\ProductOrder;
 use App\Models\ServiceSubmite;
 
 class WebsiteController extends Controller
@@ -96,7 +97,8 @@ class WebsiteController extends Controller
     public function buyerProfile($slug)
     {
         $buyer = User::where('user_slug', $slug)->first();
-        return view('frontend.pages.buyerProfile', compact('buyer'));
+        $productOrder = ProductOrder::with('product')->where('user_id', Auth::id())->get();
+        return view('frontend.pages.buyerProfile', compact('buyer', 'productOrder'));
     }
 
     //seller profile method
@@ -105,7 +107,8 @@ class WebsiteController extends Controller
         $seller = User::where('user_slug', $slug)->first();
         $seller_id = $seller->id;
         $bidservices = PlaceBit::with('user', 'user')->where('user_id', $seller->id)->get();
-        return view('frontend.pages.sellerProfile', compact('seller', 'bidservices'));
+        $productOrder = ProductOrder::with('product')->where('user_id', Auth::id())->get();
+        return view('frontend.pages.sellerProfile', compact('seller', 'bidservices', 'productOrder'));
     } //end method
 
     public function cateegoryService($slug)
@@ -160,29 +163,29 @@ class WebsiteController extends Controller
     }
 
     //seller project submission page view method
-    public function ProjectSubmite($id){
-        $bids= PlaceBit::with('service')->where('id', $id)->first();
+    public function ProjectSubmite($id)
+    {
+        $bids = PlaceBit::with('service')->where('id', $id)->first();
         return view('frontend.pages.project_submission', compact('bids'));
-
-    }//end seller project submission page view method
+    } //end seller project submission page view method
 
     //seller project submission page store method
-    public function ProjectSubmiteStore(Request $request){
+    public function ProjectSubmiteStore(Request $request)
+    {
         $request->validate([
 
             'ServiceDes' => 'required',
             'file' => 'max:1024',
         ]);
 
-        if(ServiceSubmite::where('service_id',$request->service_id)->where('buyer_id',$request->buyer_id)->where('seller_id',Auth::user()->id)->exists()){
+        if (ServiceSubmite::where('service_id', $request->service_id)->where('buyer_id', $request->buyer_id)->where('seller_id', Auth::user()->id)->exists()) {
             $notification = array(
                 'message' => 'You Already Submited',
                 'alert-type' => 'error',
             ); // returns Notification,
             return redirect()->back()->with($notification);
-        }
-        else{
-            $serviceSubmit =new ServiceSubmite;
+        } else {
+            $serviceSubmit = new ServiceSubmite;
             $serviceSubmit->service_id = $request->service_id;
             $serviceSubmit->buyer_id =  $request->buyer_id;
             $serviceSubmit->bid_id =  $request->bid_id;
@@ -190,7 +193,7 @@ class WebsiteController extends Controller
             $serviceSubmit->submition_externalLink = $request->externalLnk;
             $serviceSubmit->submition_drescreption = $request->ServiceDes;
             $file = $request->file;
-            if($file) {
+            if ($file) {
                 $filename = rand() . '.' . $file->getClientOriginalExtension();
                 $location = public_path('uploads/Service_submite/');
                 $file->move($location,  $filename);
@@ -205,7 +208,5 @@ class WebsiteController extends Controller
                 return redirect()->back()->with($notification);
             }
         }
-
-
-    }//end seller project submission page store method
+    } //end seller project submission page store method
 }

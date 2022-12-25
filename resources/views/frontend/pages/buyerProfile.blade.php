@@ -81,6 +81,11 @@
                             type="button" role="tab" aria-controls="tab-3" aria-selected="false">Recent
                             Uploads</button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#tab-4"
+                            type="button" role="tab" aria-controls="tab-4" aria-selected="false">Purchase
+                            Product</button>
+                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
@@ -169,6 +174,61 @@
                             @endforeach
                         </div>
                     </div>
+                    <!--Digital Product-->
+                    <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-8">
+                                @forelse ($productOrder as $order)
+                                    <div class="activity-card">
+                                        <div class="activity-card-img">
+                                            <img src="{{ asset('uploads/products/' . $order->product->product_image) }}"
+                                                alt="Image">
+                                        </div>
+                                        <ul class="activity-card-metainfo list-style">
+                                            <li>
+                                                <i class="ri-calendar-todo-line"></i>
+                                                @if ($order->status == 1)
+                                                    <span class="badge badge-success">Pending</span>
+                                                @elseif ($order->status == 2)
+                                                    <span class="badge badge-success">Approve</span>
+                                                @else
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                @endif
+                                            </li>
+                                            <li><i class="ri-time-line"></i>{{ $order->created_at->diffForHumans() }}
+                                            </li>
+                                        </ul>
+                                        <div class="activity-card-info">
+                                            <h3>
+                                                <a
+                                                    href="{{ route('web.digital.product.view', $order->product->product_slug) }}">{{ Str::limit($order->product->product_name, 20, '...') }}</a>
+                                            </h3>
+                                            <p>Total Amount:
+                                                <span>{{ $order->total_amount }}Tk</span>
+                                            </p>
+                                        </div>
+                                        @if ($order->status == 1)
+                                            <a title="Pending" href="#" class="activity-card-action">
+                                                <i class="ri-history-fill"></i>
+                                            </a>
+                                        @elseif ($order->status == 2)
+                                            <a target="_blank" title="Download"
+                                                href="{{ $order->product->download_link }}" class="activity-card-action">
+                                                <i class="ri-download-cloud-2-line"></i>
+                                            </a>
+                                        @else
+                                            <a title="Rejected" href="#" class="activity-card-action">
+                                                <i class="ri-delete-back-2-fill"></i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                @empty
+                                @endforelse
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Digital Product-->
                 </div>
             </div>
         </div>
