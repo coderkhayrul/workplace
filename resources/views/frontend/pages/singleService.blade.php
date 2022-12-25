@@ -53,10 +53,19 @@
                                     </h6>
                                 </div>
                             </div>
+                            @php
+                                $bid = App\Models\PlaceBit::where('user_id', Auth::user()->id)->where('service_id', $service->id)->get();
+
+                            @endphp
                             <div class="single-item-bid">
                                 <p>Bid Rate</p>
                                 <h6>{{ $service->price }}৳</h6>
+                                 {{-- @if($Bid->price)
+                                    <p>Your Bid Rate</p>
+                                    <h6>{{$Bid->price}}৳</h6>
+                                 @endif --}}
                             </div>
+
                         </div>
                         <div class="item-title">
                             <div class="item-title-left">

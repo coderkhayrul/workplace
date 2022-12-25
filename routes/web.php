@@ -49,6 +49,9 @@ Route::post('/bidstore', [WebsiteController::class, 'Bid_store'])->middleware('a
 //frontend search route
 Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 
+//frontend project submission
+Route::get('/submite/{slug}',[WebsiteController::class,'ProjectSubmite'])->middleware('auth')->name('web.projectsubmite.view');
+
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
 
 

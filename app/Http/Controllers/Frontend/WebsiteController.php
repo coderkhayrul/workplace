@@ -157,4 +157,10 @@ class WebsiteController extends Controller
             ->where('title', 'LIKE', '%' . $request->search . '%')->get();
         return view('frontend.pages.search', compact('searches'));
     }
+
+    public function ProjectSubmite(string $slug){
+        $service= Service::where('slug', $slug)->first();
+        return view('frontend.pages.project_submission', compact('service'));
+
+    }
 }

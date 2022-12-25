@@ -123,7 +123,7 @@
                                                         @php
                                                              $todaty = \Carbon\Carbon::now();
                                                         @endphp
-                                                        @if ($bidservice->service->EndDate > $todaty)
+                                                        @if ($bidservice->service->EndDate < $todaty)
                                                               <span><del>{{Carbon\Carbon::parse($bidservice->service->EndDate)->format('d M, y') }}</del><span>
                                                         @else
                                                             <span>{{Carbon\Carbon::parse($bidservice->service->EndDate)->format('d M, y') }}</span>
@@ -147,6 +147,8 @@
                                         <div class="auction-card style3">
                                             <div class="auction-img">
                                                 <img src="{{ asset('uploads/services/' . $bidservice->service->document) }}" alt="Image">
+                                                <a href="{{Route('web.projectsubmite.view',$bidservice->service->slug)}}" class="btn style1">submite<i
+                                                    class="flaticon-right-arrow-1"></i></a>
                                             </div>
                                             <div class="auction-info-wrap">
                                                 <h3><a href="item-details.html">{{Str::limit($bidservice->service->title,23)}}</a></h3>
@@ -169,7 +171,7 @@
                                                         @php
                                                              $todaty = \Carbon\Carbon::now();
                                                         @endphp
-                                                        @if ($bidservice->service->EndDate > $todaty)
+                                                        @if ($bidservice->service->EndDate < $todaty)
                                                               <span><del>{{Carbon\Carbon::parse($bidservice->service->EndDate)->format('d M, y') }}</del><span>
                                                         @else
                                                             <span>{{Carbon\Carbon::parse($bidservice->service->EndDate)->format('d M, y') }}</span>
