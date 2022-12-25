@@ -80,8 +80,13 @@
                 @auth
                     <div class="others-options  md-none">
                         <div class="header-btn">
-                            <a href="{{ route('web.profile', Auth::user()->user_slug) }}" class="btn style1">Profile<i
+                            @if (Auth::user()->role->role_slug == 'seller')
+                                <a href="{{ route('web.seller.profile', Auth::user()->user_slug) }}" class="btn style1">Profile<i
                                     class="flaticon-user-avatar"></i></a>
+                            @elseif(Auth::user()->role->role_slug == 'buyer')
+                                <a href="{{ route('web.buyer.profile', Auth::user()->user_slug) }}" class="btn style1">Profile<i
+                                    class="flaticon-user-avatar"></i></a>
+                            @endif
                         </div>
                     </div>
                 @endauth
