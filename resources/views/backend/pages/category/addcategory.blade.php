@@ -2,28 +2,25 @@
 {{-- Dynamic Title --}}
 @section('admin-title', 'Blank')
 @section('admin_content')
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Blank Page</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v2</li>
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
+<div class="content-header" <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Blank Page</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard v2</li>
+            </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
 <!-- /.content-header -->
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card card-primary">
-
                     <!-- /.card-header -->
                     <div class="card-body">
                         <h4>Category Manage <a class="btn btn-info btn-sm" href="" style="float: right;"
@@ -63,7 +60,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <button class="btn-sm btn-info btn" data-target="#EditCategory"
+                                                    <button class="btn-sm btn-info btn" id="editCategory"
+                                                        data-id={{ $category->id }} data-target="#EditCategory"
                                                         data-toggle="modal"><i class="fa fa-edit"></i></button>
                                                     <button class="btn-sm btn-danger btn" data-target="#deletemodal"
                                                         data-toggle="modal"><i class="fa fa-trash"></i></button>
@@ -83,7 +81,6 @@
         </div>
     </div>
 </section>
-
 <!-- category add Modal -->
 <div class="modal fade" id="addcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -104,7 +101,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="category_name">Category Name</label>
-                        <input type="text" class="form-control" name="category_name" id="category_name"
+                        <input type="text" class="form-control" name="category_name"
                             placeholder=" Enter your Category Name">
                         @error('category_name')
                         <span class="text-danger">{{ $message }}</span>
@@ -113,7 +110,7 @@
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select class="form-control" id="status" name="status">
+                        <select class="form-control" name="status">
                             <option value="">=====Status======</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
@@ -132,40 +129,29 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 <!-- edit Modal Start  -->
-<div class="modal fade" id="editModel" data-backdrop="static">
+<div class="modal fade" id="EditCategory" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><b>Edit Category</b></h4>
+                <h4 class="modal-title"><b>Create Sub-Category</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" id="EditCategory" method="POST">
-                @csrf
-                <input name="category_id" type="hidden" id="category_id">
-                <div class="modal-body">
+            <div class="modal-body">
+                <!--  category edit form -->
+                <form method="post" id="editcategoryData">
+                    @csrf
+                    <input type="hidden" name="cat_id" id="cat_id">
                     <div class="form-group">
-                        <label for="exampleInputName">Name</label>
-                        <input name="name" value="" type="text"
-                            class="form-control" id="name"
-                            placeholder="Enter Name">
-                        @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                        <label for="category_name">Category Name</label>
+                        <input type="text" class="form-control" name="category_name" id="category_name"
+                            placeholder=" Enter your Category Name">
+                        @error('category_name')
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
+
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -178,11 +164,11 @@
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
-                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>Update</button>
+            </div>
             </form>
         </div>
         <!-- /.modal-content -->
@@ -190,4 +176,47 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- edit Modal End  -->
+{{---- Edit Part-1 SubCategory ----}}
+<script>
+    jQuery(document).on('click', '#editCategory', function (event) {
+        event.preventDefault();
+        var cat_id = jQuery(this).data('id');
+        // alert(cat_id);
+        $.ajax({
+            url: "{{ route('admin.category.edit') }}",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                id: cat_id,
+            },
+            success: function (response) {
+                console.log(response.data);
+
+                jQuery('#cat_id').val(response.data.id);
+                jQuery('#category_name').val(response.data.name);
+                // jQuery('#subcategory_id').val(response.subcategories.id);
+                jQuery("#status").val(response.data.status).change();
+            },
+        });
+    });
+
+</script>
+{{---- Edit Part-2 SubCategory ----}}
+<script>
+    $('#editcategoryData').on('submit', function (event) {
+        event.preventDefault();
+        // alert('ok');
+        $.ajax({
+            url: '{{ route("admin.category.update") }}',
+            type: 'post',
+            dataType: 'json',
+            data: $('#editcategoryData').serialize(),
+            success: function (response) {
+                location.reload();
+            },
+        });
+    });
+
+</script>
+
 @endsection
