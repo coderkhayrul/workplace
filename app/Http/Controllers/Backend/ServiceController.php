@@ -205,10 +205,31 @@ class ServiceController extends Controller
         }
     } //end method
 
+    //Complete job approve method
+    public function Completejob($id)
+    {
+        $bids = PlaceBit::find($id);
+        $bids->status = 2;
+        $bids->update();
+        if ($bids) {
+            $notification = array(
+                'message' => 'Your Given Job Completed! :)',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
+        }
+    } //end Complete job approve method
+
     //project submition method view
     public function SubmitionView($bid_id){
 
         $resive_submition= ServiceSubmite::where('bid_id',$bid_id)->first();
         return view('backend.pages.service.Service_complete',compact('resive_submition'));
     }//end method
+
+    //service complete file download
+    public function ServiceCompleteFileDownload($file){
+        return response()->download(public_path('uploads/Service_submite/' . $file));
+
+    }
 }
