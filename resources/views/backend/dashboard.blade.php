@@ -150,7 +150,12 @@
             <!--/. container-fluid -->
         </section>
     @else
-        <!-- SELLER DASHBOARD -->
+        <!-- Buyer DASHBOARD -->
+        @php
+            $totalactiveService = App\Models\Service::where('user_id', Auth::user()->id)->where('status',1)->count();
+            $totalPendingService = App\Models\Service::where('user_id', Auth::user()->id)->where('status',2)->count();
+
+        @endphp
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -189,7 +194,7 @@
                                 <div class="row">
                                     <div class="col-sm-4 border-right">
                                         <div class="description-block">
-                                            <h5 class="description-header">7</h5>
+                                            <h5 class="description-header">{{ $totalactiveService}}</h5>
                                             <span class="description-text">Active Service</span>
                                         </div>
                                         <!-- /.description-block -->
@@ -205,7 +210,7 @@
                                     <!-- /.col -->
                                     <div class="col-sm-4">
                                         <div class="description-block">
-                                            <h5 class="description-header">2</h5>
+                                            <h5 class="description-header">{{$totalPendingService}}</h5>
                                             <span class="description-text">Pendin Service</span>
                                         </div>
                                         <!-- /.description-block -->
