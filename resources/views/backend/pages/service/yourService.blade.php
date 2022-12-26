@@ -158,16 +158,8 @@
                                                                             <select class="form-control select2"
                                                                                 name="cat_id" style="width: 100%;">
                                                                                 <option>Select Category</option>
-                                                                                {{-- @foreach ($categories as $cat)
-                                                                                        <option value="{{ $cat->id }}"
-                                                                                @if($cat->id == $service->category->id)
-                                                                                selected
-                                                                                @endif>{{ $service->category->name }}
-                                                                                </option>
-                                                                                @endforeach --}}
                                                                                 @foreach ($categories as $category)
-                                                                                <option value="{{ $category->id }}" @if ($category->id=$service->cat_id)
-
+                                                                                <option value="{{ $category->id }}" @if ($category->id==$service->cat_id)
                                                                                 @endif>
                                                                                     {{ $category->name }}</option>
                                                                                 @endforeach

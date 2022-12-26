@@ -40,11 +40,10 @@
                         <div class="auction-card style3">
                             <div class="auction-img">
                                 <img src="{{ asset('uploads/services/' . $search->document) }}" alt="Image">
-                                <span class="item-popularity"><i class="ri-heart-fill"></i>1.3k</span>
                                 <a href="{{ Route('web.placebid', $search->slug) }}" class="btn style1">Place Bid <i class="flaticon-right-arrow-1"></i></a>
                             </div>
                             <div class="auction-info-wrap">
-                                <h3><a href="item-details.html">{{ Str::limit($search->title, 35) }}</a></h3>
+                                <h3><a href="{{route('web.single.service',$search->slug)}}">{{ Str::limit($search->title, 35) }}</a></h3>
                                 <div class="auction-author-info">
                                     <div class="author-info">
                                         <div class="author-img">
