@@ -63,7 +63,7 @@
                                                     <button class="btn-sm btn-info btn" id="editCategory"
                                                         data-id={{ $category->id }} data-target="#EditCategory"
                                                         data-toggle="modal"><i class="fa fa-edit"></i></button>
-                                                    <button class="btn-sm btn-danger btn" data-target="#deletemodal"
+                                                    <button class="btn-sm btn-danger btn" id="deleteCategory" data-id="{{ $category->id }}" data-target="#deletCategory"
                                                         data-toggle="modal"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
@@ -216,7 +216,26 @@
             },
         });
     });
-
 </script>
+{{---- delete SubCategory ----}}
+<script>
+    $(document).on('click','#deletCategory', function(event){
+      event.preventDefault();
+      var subcat_id = jQuery(this).data('id');
+    //   alert(subcat_id);
 
+      $.ajax({
+            url     : '/admin/category/destroy/',
+            type    : 'GET',
+            dataType: 'json',
+            data    : {
+            id      : cat_id,
+            },
+          success : function(response){
+            $('#mgs').append('<span class="alert alert-danger">'+response.success+'</span>').fadeOut(5000);
+            // location.reload();
+          },
+      });
+  });
+</script>
 @endsection

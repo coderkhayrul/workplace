@@ -164,8 +164,9 @@
                                                                                         name="cat_id"
                                                                                         style="width: 100%;">
                                                                                         <option>Select Category</option>
-                                                                                        <option value="1">Category
+                                                                                        <option value="{{ $service->category->id }}" @if($service->category->id == $service->category->id) selected @endif>{{ $service->category->name }}
                                                                                         </option>
+
                                                                                     </select>
                                                                                     @error('cat_id')
                                                                                         <span
@@ -174,7 +175,7 @@
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <label for="exampleInputFile">Service
-                                                                                        Document</label>
+                                                                                        Image</label>
                                                                                     <div class="input-group">
                                                                                         <div class="custom-file">
                                                                                             <input type="file"

@@ -118,7 +118,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         Route::post('/store', 'store')->name('admin.category.store');
         Route::get('/edit', 'edit')->name('admin.category.edit');
         Route::post('/update', 'update')->name('admin.category.update');
-        Route::get('/delete/{id}', 'destroy')->name('admin.category.destroy');
+        Route::get('/delete', 'destroy')->name('admin.category.destroy');
     });
     // <------- SubCategory ------->
     Route::controller(SubCategoryController::class)->prefix('sub-category')->middleware('admin')->group(function () {
