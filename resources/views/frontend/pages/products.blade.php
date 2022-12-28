@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <a href="{{ route('web.digital.product.view', $product->product_slug) }}"
-                                        class="btn style1">Order Now</a>
+                                        class="btn style1">Download Now</a>
                                 </div>
                             </div>
 
