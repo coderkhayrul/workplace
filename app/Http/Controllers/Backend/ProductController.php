@@ -44,7 +44,7 @@ class ProductController extends Controller
             'product_name' => 'required',
             'product_price' => 'required|numeric',
             'download_link' => 'required',
-            'orderby' => 'required',
+            'orderby' => 'required|numeric',
             'product_image' => 'required',
             'product_details' => 'required',
 
