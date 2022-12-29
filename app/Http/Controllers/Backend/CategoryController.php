@@ -104,21 +104,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        // dd($request->id);
-        $category = Category::findOrFail($request->id);
+        $id = decrypt($request->id);
+        $category = Category::findOrFail($id);
+        // dd($category);
         $category->delete();
 
-        if ($category) {
-            $notification = array(
-                'message' => 'Category Deleted Successfully!',
-                'alert-type' => 'success',
-            ); // returns Notification,
-        }
-
         return response()->json([
-            'success' => 'Category deleted SuccessFully',
+            'status' => 'Data Deleted Successfully!'
         ]);
     }
 }

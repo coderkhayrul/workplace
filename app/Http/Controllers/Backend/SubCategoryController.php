@@ -134,7 +134,7 @@ class SubCategoryController extends Controller
      */
     public function destroy(Request $request)
     {
-        // dd($request->id);
+        dd($request->id);
         $subcat = SubCategory::findOrFail($request->id);
         $subcat->delete();
 
