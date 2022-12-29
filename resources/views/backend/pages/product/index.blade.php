@@ -10,7 +10,7 @@
 @section('admin_content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">Digital Product</h1>
                 </div><!-- /.col -->
@@ -71,20 +71,24 @@
                                                     style="width: 140px;">Action</th>
                                             </tr>
                                         </thead>
-                                          <tbody>
+                                        <tbody>
                                             @foreach ($product as $products)
                                                 <tr role="row" class="odd">
                                                     <td>{{ $products->product_name }}</td>
                                                     <td>{{ $products->product_price }}</td>
                                                     <td>{{ $products->author->user_name }}</td>
-                                                    <td><img height="60" width="80" id="showImage" src="{{asset('uploads/products/'.$products->product_image)}}" class="img-fluid" alt="PRODUCT IMAGE"></td>
+                                                    <td><img height="60" width="80" id="showImage"
+                                                            src="{{ asset('uploads/products/' . $products->product_image) }}"
+                                                            class="img-fluid" alt="PRODUCT IMAGE"></td>
 
                                                     <td>{{ $products->orderby }}</td>
                                                     <td>
-                                                        @if($products->status == 0)
-                                                        <a href="{{ route('admin.product.active', $products->product_slug) }}" class='btn btn-danger btn-sm'>Inactive</a>
+                                                        @if ($products->status == 0)
+                                                            <a href="{{ route('admin.product.active', $products->product_slug) }}"
+                                                                class='btn btn-danger btn-sm'>Inactive</a>
                                                         @else
-                                                        <a href="{{ route('admin.product.deactive', $products->product_slug) }}" class='btn btn-success btn-sm'>Active</a>
+                                                            <a href="{{ route('admin.product.deactive', $products->product_slug) }}"
+                                                                class='btn btn-success btn-sm'>Active</a>
                                                         @endif
                                                     </td>
                                                     <td>
@@ -94,8 +98,8 @@
                                                         <a id="delete" class="btn btn-sm btn-danger"
                                                             href="{{ route('admin.product.delete', $products->id) }}"><i
                                                                 class="fas fa-trash"></i></a>
-                                                        <a id="view" class="btn btn-sm btn-warning" href=""><i
-                                                                class="fas fa-eye"></i></a>
+                                                        <a id="view" class="btn btn-sm btn-warning"
+                                                            href=""><i class="fas fa-eye"></i></a>
                                                     </td>
                                                     <!-- Edit Modal Start  -->
                                                     <div class="modal fade" id="editProduct{{ $products->id }}"
@@ -118,71 +122,97 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group" hidden>
-                                                                                    <input type="text" class="form-control"  name="author_id" id="author_id" value="{{ Auth::user()->id }}">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="author_id" id="author_id"
+                                                                                        value="{{ Auth::user()->id }}">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="title">Product Name</label>
-                                                                                    <input type="text" name="product_name" class="form-control" id="product_name"
-                                                                                        placeholder="Enter Product Name" value="{{ $products->product_name }}">
+                                                                                    <label for="title">Product
+                                                                                        Name</label>
+                                                                                    <input type="text"
+                                                                                        name="product_name"
+                                                                                        class="form-control"
+                                                                                        id="product_name"
+                                                                                        placeholder="Enter Product Name"
+                                                                                        value="{{ $products->product_name }}">
                                                                                     @error('product_name')
-                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        <span
+                                                                                            class="text-danger">{{ $message }}</span>
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="title">Product Price</label>
-                                                                                    <input type="number" name="product_price" class="form-control" id="product_price"
-                                                                                        placeholder="Enter Product Price" value="{{ $products->product_price }}">
+                                                                                    <label for="title">Product
+                                                                                        Price</label>
+                                                                                    <input type="number"
+                                                                                        name="product_price"
+                                                                                        class="form-control"
+                                                                                        id="product_price"
+                                                                                        placeholder="Enter Product Price"
+                                                                                        value="{{ $products->product_price }}">
                                                                                     @error('product_price')
-                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        <span
+                                                                                            class="text-danger">{{ $message }}</span>
                                                                                     @enderror
                                                                                 </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="title">Order By</label>
-                                                                                    <input type="text" name="orderby" class="form-control" id="orderby"
-                                                                                        placeholder="Enter Order By" value="{{ $products->orderby }}">
-                                                                                    @error('orderby')
-                                                                                        <span class="text-danger">{{ $message }}</span>
-                                                                                    @enderror
-                                                                                </div>
-
-                                                                                {{-- ----------- --}}
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label for="title">Download Link</label>
-                                                                                    <input type="text" name="download_link" class="form-control" id="download_link"
-                                                                                        placeholder="Enter Download Link" value="{{ $products->download_link }}">
+                                                                                    <label for="title">Download
+                                                                                        Link</label>
+                                                                                    <input type="text"
+                                                                                        name="download_link"
+                                                                                        class="form-control"
+                                                                                        id="download_link"
+                                                                                        placeholder="Enter Download Link"
+                                                                                        value="{{ $products->download_link }}">
                                                                                     @error('download_link')
-                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        <span
+                                                                                            class="text-danger">{{ $message }}</span>
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="exampleInputFile">Product Image</label>
+                                                                                    <label for="exampleInputFile">Product
+                                                                                        Image</label>
                                                                                     <div class="input-group">
                                                                                         <div class="custom-file">
-                                                                                            <input type="file" name="product_image" class="custom-file-input"
-                                                                                                id="pro_document" onchange="readURLserviceImg(this);">
-                                                                                            <label class="custom-file-label" for="pro_document">Choose file</label>
+                                                                                            <input type="file"
+                                                                                                name="product_image"
+                                                                                                class="custom-file-input"
+                                                                                                id="pro_document"
+                                                                                                onchange="readURLserviceImg(this);">
+                                                                                            <label
+                                                                                                class="custom-file-label"
+                                                                                                for="pro_document">Choose
+                                                                                                file</label>
                                                                                         </div>
                                                                                         <div class="input-group-append">
-                                                                                            <span class="input-group-text" id="">Upload</span>
+                                                                                            <span class="input-group-text"
+                                                                                                id="">Upload</span>
                                                                                         </div>
                                                                                     </div>
                                                                                     @error('product_image')
-                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        <span
+                                                                                            class="text-danger">{{ $message }}</span>
                                                                                     @enderror
                                                                                     <div class="input-group">
-                                                                                        <img height="80" width="100" src="{{ asset('uploads/products/' .$products->product_image) }}" alt="" class="img-thumbnail" id="servicepreviewImg">
+                                                                                        <img height="80" width="100"
+                                                                                            src="{{ asset('uploads/products/' . $products->product_image) }}"
+                                                                                            alt=""
+                                                                                            class="img-thumbnail"
+                                                                                            id="servicepreviewImg">
                                                                                     </div>
                                                                                 </div>
                                                                                 {{-- ---------- --}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="longdrescreption">Product Details</label>
+                                                                            <label for="longdrescreption">Product
+                                                                                Details</label>
                                                                             <textarea class="textarea form-control" name="product_details" id="product_details" rows="5" cols="7">{{ $products->product_details }}</textarea>
                                                                             @error('product_details')
-                                                                                <span class="text-danger">{{ $message }}</span>
+                                                                                <span
+                                                                                    class="text-danger">{{ $message }}</span>
                                                                             @enderror
                                                                         </div>
                                                                     </div>
@@ -233,7 +263,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group" hidden>
-                                    <input type="text" class="form-control"  name="author_id" id="author_id" value="{{ Auth::user()->id }}">
+                                    <input type="text" class="form-control" name="author_id" id="author_id"
+                                        value="{{ Auth::user()->id }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Product Name</label>
@@ -251,16 +282,6 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="title">Order By</label>
-                                    <input type="text" name="orderby" class="form-control" id="orderby"
-                                        placeholder="Enter Order By" value={{ old('orderby') }}>
-                                    @error('orderby')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                {{-- ----------- --}}
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
