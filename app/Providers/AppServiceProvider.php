@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // view()->share('navbars', Category::where('status', '1')->get());
-        // view()->share('setting', Setting::first());
+        view()->share('navbars', Category::where('status', '1')->limit(12)->get());
+        view()->share('setting', Setting::first());
     }
 }

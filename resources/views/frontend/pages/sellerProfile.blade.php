@@ -37,42 +37,13 @@
                 </div>
                 <div class="single-author-info">
                     <h3>{{ $seller->profile->full_name }}</h3>
-                    <span>'@' {{ $seller->user_name }}</span>
                 </div>
                 <div class="author-metainfo-wrap">
                     <div class="author-metainfo">
                         <a href="{{ route('web.logout') }}" class="btn style1">Logout<i class="flaticon-exit"></i>
                         </a>
-                        <div class="share-profile">
-                            <span><i class="ri-share-line"></i></span>
-                            <ul class="social-profile style1 list-style">
-                                <li>
-                                    <a target="_blank" href="https://facebook.com/">
-                                        <i class="ri-facebook-fill"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/">
-                                        <i class="ri-twitter-fill"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a target="_blank" href="https://instagram.com/">
-                                        <i class="ri-instagram-line"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="item-option">
-                            <span><i class="ri-more-2-line"></i></span>
-                            <ul class="more-option list-style">
-                                <li><a href="author-profile.html">Author Profile</a></li>
-                                <li><a href="place-bid.html">Place A Bid</a></li>
-                            </ul>
-                        </div>
-                        <a class="edit-profile" href="login.html"><i class="ri-edit-box-line"></i></a>
+                        {{-- <a class="edit-profile" href="#"><i class="ri-edit-box-line"></i></a> --}}
                     </div>
-                    <p>Present Address</p>
                 </div>
             </div>
             <!--section for seller profile-->
@@ -111,7 +82,7 @@
                                             </div>
                                             <div class="auction-info-wrap">
                                                 <h3><a
-                                                        href="item-details.html">{{ Str::limit($bidservice->service->title, 23) }}</a>
+                                                        href="{{ route('web.single.service', $bidservice->service->slug) }}">{{ Str::limit($bidservice->service->title, 23) }}</a>
                                                 </h3>
                                                 <div class="auction-author-info">
                                                     <div class="author-info">
