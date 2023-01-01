@@ -11,7 +11,7 @@
                 </div>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item has-child">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('web.home')}}" class="nav-link">
                             Home
                         </a>
                     </li>

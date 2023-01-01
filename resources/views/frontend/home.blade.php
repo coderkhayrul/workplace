@@ -13,9 +13,9 @@ $setting = App\Models\Backend\Setting::first();
                         <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">{{optional($slider)->slider_title}}</h1>
                         <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">{{optional($slider)->slider_shortdescription}}</p>
                         <div class="hero-btn" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
-                            <a class="btn style1">Explore Below <i
+                            <a href="{{Route('web.digital.product.all') }}" class="btn style1">Digital Product <i
                                     class="flaticon-right-arrow-1"></i></a>
-                            <a class="btn style2">Just Demo <i
+                            <a href="{{Route('allcategories') }}" class="btn style2">All Categories <i
                                     class="flaticon-right-arrow-1"></i></a>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ $setting = App\Models\Backend\Setting::first();
                                 <div class="auction-author-info">
                                     <div class="author-info">
                                         <div class="author-img">
-                                            <img src="{{ !empty($slider->slider_image)? asset('backend/sliderimage/'.$slider->slider_image) : asset('nft-slider-3.jpg') }}"
+                                            <img src="{{ empty($servicescurrent->document)? asset('uploads/services/'.$servicescurrent->document) : asset('author-14.jpg') }}"
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">
@@ -41,7 +41,7 @@ $setting = App\Models\Backend\Setting::first();
                                     </div>
                                     <div class="auction-item-stat">
                                         <h6>{{$servicescurrent->price}} ৳</h6>
-                                        <span>Current Bid</span>
+                                        <span>Created Bid Now</span>
                                     </div>
                                 </div>
                                 {{-- <div class="nft-deadline">
