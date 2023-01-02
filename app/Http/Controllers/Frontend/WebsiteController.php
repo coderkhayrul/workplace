@@ -23,7 +23,7 @@ class WebsiteController extends Controller
     {
         $todaty = Carbon::now();
         $slider = Slider::latest()->where('slider_status', 'active')->first();
-        $servicescurrent = Service::where('status', 1)->OrderBy('created_at', 'DESC')->first();
+        $servicescurrent = Service::where('status', 1)->OrderBy('id', 'DESC')->first();
         $services = Service::where('status', 1)->where('EndDate', '>=', $todaty)->OrderBy('created_at', 'DESC')->limit(15)->get();
         $categories = Category::where('status', 1)->take(4)->get();
         return view('frontend.home', compact('services', 'slider', 'servicescurrent', 'categories'));

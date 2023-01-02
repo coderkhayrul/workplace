@@ -27,11 +27,11 @@ $setting = App\Models\Backend\Setting::first();
                         <img class="bounce" src="{{ !empty($slider->slider_image)? asset('backend/sliderimage/'.$slider->slider_image) : asset('nft-slider-3.jpg') }}" alt="Image">
                         <div class="hero-nft-info">
                             <div class="auction-info-wrap">
-                                <h3><a>{{Str::limit($servicescurrent->shortDes,20)}}</a></h3>
+                                <h3><a>{{Str::limit($servicescurrent->title,20)}}</a></h3>
                                 <div class="auction-author-info">
                                     <div class="author-info">
                                         <div class="author-img">
-                                            <img src="{{ empty($servicescurrent->document)? asset('uploads/services/'.$servicescurrent->document) : asset('author-14.jpg') }}"
+                                            <img src="{{ !empty($servicescurrent->document)? asset('uploads/services/'.$servicescurrent->document) : asset('author-14.jpg') }}"
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">
