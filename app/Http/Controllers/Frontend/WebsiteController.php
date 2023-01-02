@@ -209,4 +209,22 @@ class WebsiteController extends Controller
             }
         }
     } //end seller project submission page store method
+
+    // show contact page
+    public function contactpage()
+    {
+        return view('frontend.pages.contact');
+    }
+
+    // show privacy policy page
+    public function privacypolicy()
+    {
+        return view('frontend.pages.privacy_policy');
+    }
+
+    // show Terms & Conditions page
+    public function termsandconditons()
+    {
+        return view('frontend.pages.terms_and_conditons');
+    }
 }

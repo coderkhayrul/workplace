@@ -33,8 +33,8 @@ Route::get('/test', function () {
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth')->name('web.logout');
-Route::get('/allcategories',function() {
- return view('frontend.categories');
+Route::get('/allcategories', function () {
+    return view('frontend.categories');
 })->name('allcategories');
 
 // Frontend Service Route
@@ -56,6 +56,14 @@ Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 //frontend project submission
 Route::get('/submite/{id}', [WebsiteController::class, 'ProjectSubmite'])->middleware('auth')->name('web.projectsubmite.view');
 Route::post('/submite/store', [WebsiteController::class, 'ProjectSubmiteStore'])->middleware('auth')->name('web.projectsubmite.store');
+
+// Frontend Contact Us Page Route
+Route::get('/contactpage', [WebsiteController::class, 'contactpage'])->name('web.contactpage');
+// Frontend Privacy Policy Page Route
+Route::get('/privacy-policy', [WebsiteController::class, 'privacypolicy'])->name('web.privacypolicy');
+// Frontend Terms & Conditions Page Route
+Route::get('/terms-and-conditons', [WebsiteController::class, 'termsandconditons'])->name('web.termsandconditons');
+
 
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
 
