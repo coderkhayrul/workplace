@@ -116,7 +116,7 @@
                     <h3 class="footer-widget-title">Resources</h3>
                     <ul class="footer-menu list-style">
                         <li>
-                            <a href="about.html" target="_blank">
+                            <a href="{{ route('web.aboutpage') }}" target="_blank">
                                 <i class="flaticon-next-1"></i>
                                 About Us
                             </a>

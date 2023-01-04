@@ -59,6 +59,8 @@ Route::post('/submite/store', [WebsiteController::class, 'ProjectSubmiteStore'])
 
 // Frontend Contact Us Page Route
 Route::get('/contactpage', [WebsiteController::class, 'contactpage'])->name('web.contactpage');
+// Frontend About Us Page Route
+Route::get('/aboutpage', [WebsiteController::class, 'aboutpage'])->name('web.aboutpage');
 // Frontend Privacy Policy Page Route
 Route::get('/privacy-policy', [WebsiteController::class, 'privacypolicy'])->name('web.privacypolicy');
 // Frontend Terms & Conditions Page Route

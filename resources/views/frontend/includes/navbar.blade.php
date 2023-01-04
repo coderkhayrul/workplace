@@ -37,7 +37,7 @@
                     </li>
 
                     <li class="nav-item has-child">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('web.aboutpage') }}" class="nav-link">
                             About us
                         </a>
                     </li>

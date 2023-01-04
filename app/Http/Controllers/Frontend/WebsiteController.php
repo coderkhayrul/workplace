@@ -227,4 +227,10 @@ class WebsiteController extends Controller
     {
         return view('frontend.pages.terms_and_conditons');
     }
+
+    // show About us page
+    public function aboutpage()
+    {
+        return view('frontend.pages.about');
+    }
 }
