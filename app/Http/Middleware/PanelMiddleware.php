@@ -11,7 +11,7 @@ class PanelMiddleware
 
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role->role_slug == 'super-admin' || Auth::user()->role->role_slug == 'admin' || Auth::user()->role->role_slug == 'buyer') {
+        if (Auth::user()->role->role_slug == 'super-admin' || Auth::user()->role->role_slug == 'admin' || Auth::user()->role->role_slug == 'buyer' || Auth::user()->role->role_slug == 'seller') {
             return $next($request);
         }
         return redirect()->back();

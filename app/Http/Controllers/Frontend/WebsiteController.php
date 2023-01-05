@@ -134,7 +134,7 @@ class WebsiteController extends Controller
 
     public function product()
     {
-        $products = Product::with('author')->orderby('created_at', "ASC")->get();
+        $products = Product::with('author')->orderby('created_at', "ASC")->where('status', 1)->get();
         return view('frontend.pages.products', compact('products'));
     }
 

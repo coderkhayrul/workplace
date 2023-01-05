@@ -68,9 +68,6 @@ Route::get('/terms-and-conditons', [WebsiteController::class, 'termsandconditons
 
 
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
-
-
-// <------- ADMIN USER ROLE ROUTE LIST ------->
 Route::prefix('product')->group(function () {
     Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
     Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
@@ -160,7 +157,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     });
 
     // <------- Product ------->
-    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
+    Route::controller(ProductController::class)->prefix('product')->middleware('seller')->group(function () {
         Route::get('/', 'index')->name('admin.product.index');
         Route::post('/store', 'store')->name('admin.product.store');
         Route::post('/update/{id}', 'update')->name('admin.product.update');

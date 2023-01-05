@@ -56,13 +56,7 @@
                                                     style="width: 200.547px;">Price</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                    style="width: 278.547px;">Author</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                    colspan="1" aria-label="Browser: activate to sort column ascending"
                                                     style="width: 278.547px;">Image</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                    colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                    style="width: 278.547px;">OrderBy</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                     style="width: 132.275px;">status</th>
@@ -75,20 +69,15 @@
                                             @foreach ($product as $products)
                                                 <tr role="row" class="odd">
                                                     <td>{{ $products->product_name }}</td>
-                                                    <td>{{ $products->product_price }}</td>
-                                                    <td>{{ $products->author->user_name }}</td>
+                                                    <td>{{ $products->product_price }} Tk</td>
                                                     <td><img height="60" width="80" id="showImage"
                                                             src="{{ asset('uploads/products/' . $products->product_image) }}"
                                                             class="img-fluid" alt="PRODUCT IMAGE"></td>
-
-                                                    <td>{{ $products->orderby }}</td>
                                                     <td>
                                                         @if ($products->status == 0)
-                                                            <a href="{{ route('admin.product.active', $products->product_slug) }}"
-                                                                class='btn btn-danger btn-sm'>Inactive</a>
+                                                            <span class="badge badge-info">Pending</span>
                                                         @else
-                                                            <a href="{{ route('admin.product.deactive', $products->product_slug) }}"
-                                                                class='btn btn-success btn-sm'>Active</a>
+                                                            <span class="badge badge-success">Approve</span>
                                                         @endif
                                                     </td>
                                                     <td>
@@ -98,8 +87,6 @@
                                                         <a id="delete" class="btn btn-sm btn-danger"
                                                             href="{{ route('admin.product.delete', $products->id) }}"><i
                                                                 class="fas fa-trash"></i></a>
-                                                        <a id="view" class="btn btn-sm btn-warning"
-                                                            href=""><i class="fas fa-eye"></i></a>
                                                     </td>
                                                     <!-- Edit Modal Start  -->
                                                     <div class="modal fade" id="editProduct{{ $products->id }}"

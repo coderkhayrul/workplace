@@ -206,7 +206,7 @@
                     </li>
                 @endif --}}
                 {{--  product  --}}
-                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3 || Auth::user()->role_id == 2)
                     <li class="nav-item has-treeview {{ Route::is('buyer.service.create.*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ Route::is('buyer.service.create.*') ? 'active' : '' }}">
                             <i class="fas fa-truck"></i>
@@ -225,12 +225,22 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.product.order') }}" class="nav-link">
-                                    <i class="fas fa-store"></i>
-                                    <p>Product Order</p>
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-truck-monster"></i>
+                                    <p>Report</p>
                                 </a>
                             </li>
                         </ul>
+                        @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.product.order') }}" class="nav-link">
+                                        <i class="fas fa-store"></i>
+                                        <p>Product Order</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                     </li>
                 @endif
                 {{--  setting  --}}
