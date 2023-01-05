@@ -37,7 +37,9 @@
                                 <img src="{{ asset('uploads/products/' . $product->product_image) }}" alt="Image">
                             </div>
                             <div class="blog-info">
-                                <h3><a href="blog-details-right-sidebar.html">{{ $product->product_name }}</a></h3>
+                                <h3><a
+                                        href="{{ route('web.digital.product.view', $product->product_slug) }}">{{ $product->product_name }}</a>
+                                </h3>
                                 <p>Mollis pellen tesque pellen tesque feugiat risus ut amet nunc. Volutpat nam convais.</p>
                                 <div class="blog-author-info">
                                     <div class="author-info">
@@ -46,7 +48,7 @@
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">
-                                            <h6><a href="author-profile.html">Admin</a></h6>
+                                            <h6><a href="#">{{ $product->author->user_name }}</a></h6>
                                         </div>
                                     </div>
                                     <a href="{{ route('web.digital.product.view', $product->product_slug) }}"

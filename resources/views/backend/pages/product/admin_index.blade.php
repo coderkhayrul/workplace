@@ -33,9 +33,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title"></h3>
-                        <a class="btn btn-sm btn-primary" href="#" style="float: right;" data-toggle="modal"
-                            data-target="#modal-xl"><i class="fas fa-plus"></i>
-                            Create</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -94,14 +91,15 @@
                                                                 class="fas fa-trash"></i></a>
                                                         @if ($products->status == 0)
                                                             <a title="Approve" class="btn btn-sm btn-success"
-                                                                href=""><i class="fas fa-check"></i></a>
+                                                                href="{{ route('admin.product.active', $products->product_slug) }}"><i
+                                                                    class="fas fa-check"></i></a>
                                                             <a title="Reject" class="btn btn-sm btn-danger"
-                                                                href="#">
+                                                                href="{{ route('admin.product.deactive', $products->product_slug) }}">
                                                                 <i class="fas fa-times"></i>
                                                             </a>
                                                         @else
                                                             <a title="Reject" class="btn btn-sm btn-danger"
-                                                                href="#">
+                                                                href="{{ route('admin.product.deactive', $products->product_slug) }}">
                                                                 <i class="fas fa-times"></i>
                                                             </a>
                                                         @endif

@@ -74,7 +74,7 @@
                 </div> --}}
             </div>
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 ps-xxl-5 ps-lg-5">
-                <div class="footer-widget">
+                {{-- <div class="footer-widget">
                     <h3 class="footer-widget-title">My Account</h3>
                     <ul class="footer-menu list-style">
                         <li>
@@ -109,7 +109,7 @@
                         </li>
                     </ul>
 
-                </div>
+                </div> --}}
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-widget">

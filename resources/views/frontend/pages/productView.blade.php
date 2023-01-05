@@ -6,11 +6,11 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumb-title">
-                        <h2>Item Details</h2>
+                        <h2>Product Details</h2>
                         <ul class="breadcrumb-menu list-style">
                             <li><a href="index.html">Home </a></li>
-                            <li><a href="explore-products.html">Item </a></li>
-                            <li>Item Details</li>
+                            <li><a href="#">Product </a></li>
+                            <li>Product Details</li>
                         </ul>
                     </div>
                 </div>
@@ -34,7 +34,6 @@
                 <div class="col-lg-6">
                     <div class="single-item-img">
                         <img src="{{ asset('uploads/products/' . $product->product_image) }}" alt="Image">
-
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -48,8 +47,7 @@
                                 </div>
                                 <div class="author-name">
                                     <h6>
-                                        <a href="#">Official
-                                            Product</a>
+                                        <a href="#">{{ $product->author->user_name }}</a>
                                     </h6>
                                 </div>
                             </div>

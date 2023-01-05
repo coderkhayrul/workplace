@@ -1,8 +1,8 @@
 @extends('frontend.layouts.app')
 @section('home-content')
-@php
-$setting = App\Models\Backend\Setting::first();
-@endphp
+    @php
+        $setting = App\Models\Backend\Setting::first();
+    @endphp
     <!-- Hero Section Start -->
     <section class="hero-wrap style1">
         <div class="container">
@@ -10,12 +10,14 @@ $setting = App\Models\Backend\Setting::first();
                 <div class="col-lg-6 order-lg-1 order-md-2 order-2">
                     <div class="hero-content">
                         {{-- <span data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">NFT Marketplace</span> --}}
-                        <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">{{optional($slider)->slider_title}}</h1>
-                        <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">{{optional($slider)->slider_shortdescription}}</p>
+                        <h1 data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">
+                            {{ optional($slider)->slider_title }}</h1>
+                        <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">
+                            {{ optional($slider)->slider_shortdescription }}</p>
                         <div class="hero-btn" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500">
-                            <a href="{{Route('web.digital.product.all') }}" class="btn style1">Digital Product <i
+                            <a href="{{ Route('web.digital.product.all') }}" class="btn style1">Digital Product <i
                                     class="flaticon-right-arrow-1"></i></a>
-                            <a href="{{Route('allcategories') }}" class="btn style2">All Categories <i
+                            <a href="{{ Route('allcategories') }}" class="btn style2">All Categories <i
                                     class="flaticon-right-arrow-1"></i></a>
                         </div>
                     </div>
@@ -24,23 +26,28 @@ $setting = App\Models\Backend\Setting::first();
                     <div class="hero-img-wrap">
                         <img src="{{ asset('frontend') }}/assets/img/hero/hero-shape-5.png" alt="Image"
                             class="hero-shape-one">
-                        <img class="bounce" src="{{ !empty($slider->slider_image)? asset('backend/sliderimage/'.$slider->slider_image) : asset('nft-slider-3.jpg') }}" alt="Image">
+                        <img class="bounce"
+                            src="{{ !empty($slider->slider_image) ? asset('backend/sliderimage/' . $slider->slider_image) : asset('nft-slider-3.jpg') }}"
+                            alt="Image">
                         <div class="hero-nft-info">
                             <div class="auction-info-wrap">
-                                <h3><a>{{Str::limit($servicescurrent->title,20)}}</a></h3>
+                                <h3><a>{{ Str::limit($servicescurrent->title, 20) }}</a></h3>
                                 <div class="auction-author-info">
                                     <div class="author-info">
                                         <div class="author-img">
-                                            <img src="{{ !empty($servicescurrent->document)? asset('uploads/services/'.$servicescurrent->document) : asset('author-14.jpg') }}"
+                                            <img src="{{ !empty($servicescurrent->document) ? asset('uploads/services/' . $servicescurrent->document) : asset('author-14.jpg') }}"
                                                 alt="Image">
                                         </div>
                                         <div class="author-name">
-                                            <h6><a href="author-profile.html">{{ optional($servicescurrent->user)->user_name }}</a></h6>
-                                            <a href="author-profile.html">@ {{ optional($servicescurrent->user)->user_name }}</a>
+                                            <h6><a
+                                                    href="author-profile.html">{{ optional($servicescurrent->user)->user_name }}</a>
+                                            </h6>
+                                            <a href="author-profile.html">@
+                                                {{ optional($servicescurrent->user)->user_name }}</a>
                                         </div>
                                     </div>
                                     <div class="auction-item-stat">
-                                        <h6>{{$servicescurrent->price}} ৳</h6>
+                                        <h6>{{ $servicescurrent->price }} ৳</h6>
                                         <span>Created Bid Now</span>
                                     </div>
                                 </div>
@@ -164,7 +171,7 @@ $setting = App\Models\Backend\Setting::first();
                 <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
                     <form action="{{ route('web.subscribe') }}" method="POST" class="newsletter-form">
                         @csrf
-                        <input name="email" type="email" placeholder="Enter Your Email Address">
+                        <input name="email" type="email" placeholder="Enter Your Email Address" required>
                         <button type="submit">Subscribe Now <i class="ri-send-plane-fill"></i></button>
                     </form>
                 </div>
