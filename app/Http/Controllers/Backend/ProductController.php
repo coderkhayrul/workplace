@@ -8,6 +8,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use App\Models\Backend\Product;
 use App\Models\ProductOrder;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -18,8 +19,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::orderby('id', 'asc')->get();
-        return view('backend.pages.product.index', compact('product'));
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            $author_id = auth()->user()->id;
+            $product = Product::orderby('id', 'asc')->get();
+            return view('backend.pages.product.admin_index', compact('product'));
+        } else {
+            $author_id = auth()->user()->id;
+            $product = Product::orderby('id', 'asc')->where('author_id', $author_id)->get();
+            return view('backend.pages.product.index', compact('product'));
+        }
     }
 
     /**
@@ -40,21 +48,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $request->validate([
             'product_name' => 'required',
             'product_price' => 'required|numeric',
             'download_link' => 'required',
-            'orderby' => 'required|numeric',
             'product_image' => 'required',
             'product_details' => 'required',
-
         ]);
+
         $product = new Product();
         $product->author_id = $request->author_id;
         $product->product_name = $request->product_name;
         $product->product_price = $request->product_price;
         $product->download_link = $request->download_link;
-        $product->orderby = $request->orderby;
         $product->product_slug = uniqid();
         $product->product_details = $request->product_details;
         $image = $request->file('product_image');
@@ -79,39 +86,12 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
             'product_name' => 'required',
             'product_price' => 'required|numeric',
             'download_link' => 'required',
-            'orderby' => 'required',
             'product_details' => 'required',
         ]);
         $product = Product::find($id);
@@ -119,7 +99,6 @@ class ProductController extends Controller
         $product->product_name = $request->product_name;
         $product->product_price = $request->product_price;
         $product->download_link = $request->download_link;
-        $product->orderby = $request->orderby;
         $product->product_details = $request->product_details;
         if (!empty($request->product_image)) {
             if (File::exists('uploads/products/' . $product->product_image)) {
@@ -212,6 +191,15 @@ class ProductController extends Controller
         }
         return redirect()->back()->with($notification);
     }
+
+
+
+
+    // <--------- Product Order Controller ------>
+
+
+
+
     public function order()
     {
         $orders = ProductOrder::all();

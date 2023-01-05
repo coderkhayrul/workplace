@@ -116,13 +116,13 @@
                     <h3 class="footer-widget-title">Resources</h3>
                     <ul class="footer-menu list-style">
                         <li>
-                            <a href="about.html" target="_blank">
+                            <a href="{{ route('web.aboutpage') }}" target="_blank">
                                 <i class="flaticon-next-1"></i>
                                 About Us
                             </a>
                         </li>
                         <li>
-                            <a href="contact.html" target="_blank">
+                            <a href="{{ route('web.contactpage') }}">
                                 <i class="flaticon-next-1"></i>
                                 Contact Us
                             </a>
@@ -134,13 +134,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="privacy-policy.html" target="_blank">
+                            <a href="{{ route('web.privacypolicy') }}">
                                 <i class="flaticon-next-1"></i>
                                 privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="terms-of-service.html" target="_blank">
+                            <a href="{{ route('web.termsandconditons') }}">
                                 <i class="flaticon-next-1"></i>
                                 Terms &amp; Conditions
                             </a>

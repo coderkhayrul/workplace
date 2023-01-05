@@ -33,8 +33,8 @@ Route::get('/test', function () {
 Route::get('/', [WebsiteController::class, 'home'])->name('web.home');
 Route::get('/profile/{slug}', [WebsiteController::class, 'profile'])->name('web.profile')->middleware('auth');
 Route::get('/logout', [WebsiteController::class, 'Weblogout'])->middleware('auth')->name('web.logout');
-Route::get('/allcategories',function() {
- return view('frontend.categories');
+Route::get('/allcategories', function () {
+    return view('frontend.categories');
 })->name('allcategories');
 
 // Frontend Service Route
@@ -57,10 +57,17 @@ Route::get('/search', [WebsiteController::class, 'Search'])->name('web.search');
 Route::get('/submite/{id}', [WebsiteController::class, 'ProjectSubmite'])->middleware('auth')->name('web.projectsubmite.view');
 Route::post('/submite/store', [WebsiteController::class, 'ProjectSubmiteStore'])->middleware('auth')->name('web.projectsubmite.store');
 
+// Frontend Contact Us Page Route
+Route::get('/contactpage', [WebsiteController::class, 'contactpage'])->name('web.contactpage');
+// Frontend About Us Page Route
+Route::get('/aboutpage', [WebsiteController::class, 'aboutpage'])->name('web.aboutpage');
+// Frontend Privacy Policy Page Route
+Route::get('/privacy-policy', [WebsiteController::class, 'privacypolicy'])->name('web.privacypolicy');
+// Frontend Terms & Conditions Page Route
+Route::get('/terms-and-conditons', [WebsiteController::class, 'termsandconditons'])->name('web.termsandconditons');
+
+
 // <------- DIGITAL PRODUCT ROUTE LIST ------->
-
-
-// <------- ADMIN USER ROLE ROUTE LIST ------->
 Route::prefix('product')->group(function () {
     Route::get('/', [WebsiteController::class, 'product'])->name('web.digital.product.all');
     Route::get('/{slug}', [WebsiteController::class, 'productView'])->name('web.digital.product.view');
@@ -150,7 +157,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
     });
 
     // <------- Product ------->
-    Route::controller(ProductController::class)->prefix('product')->middleware('admin')->group(function () {
+    Route::controller(ProductController::class)->prefix('product')->middleware('seller')->group(function () {
         Route::get('/', 'index')->name('admin.product.index');
         Route::post('/store', 'store')->name('admin.product.store');
         Route::post('/update/{id}', 'update')->name('admin.product.update');
@@ -158,7 +165,13 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
-        //product Order
+
+
+
+
+
+
+        //PRODCUT ORDER ROUTE LIST
         Route::get('/order', 'order')->name('admin.product.order');
         Route::get('/pending', 'pending')->name('admin.product.order.pending');
         Route::get('/approve', 'approve')->name('admin.product.order.approve');

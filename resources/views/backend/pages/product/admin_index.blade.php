@@ -51,6 +51,10 @@
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Rendering engine: activate to sort column descending"
                                                     style="width: 217.078px;">Product Name</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending"
+                                                    style="width: 217.078px;">Seller Name</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1" aria-label="Browser: activate to sort column ascending"
                                                     style="width: 200.547px;">Price</th>
@@ -69,6 +73,7 @@
                                             @foreach ($product as $products)
                                                 <tr role="row" class="odd">
                                                     <td>{{ $products->product_name }}</td>
+                                                    <td>{{ $products->author->user_name }}</td>
                                                     <td>{{ $products->product_price }} Tk</td>
                                                     <td><img height="60" width="80" id="showImage"
                                                             src="{{ asset('uploads/products/' . $products->product_image) }}"
@@ -87,6 +92,19 @@
                                                         <a id="delete" class="btn btn-sm btn-danger"
                                                             href="{{ route('admin.product.delete', $products->id) }}"><i
                                                                 class="fas fa-trash"></i></a>
+                                                        @if ($products->status == 0)
+                                                            <a title="Approve" class="btn btn-sm btn-success"
+                                                                href=""><i class="fas fa-check"></i></a>
+                                                            <a title="Reject" class="btn btn-sm btn-danger"
+                                                                href="#">
+                                                                <i class="fas fa-times"></i>
+                                                            </a>
+                                                        @else
+                                                            <a title="Reject" class="btn btn-sm btn-danger"
+                                                                href="#">
+                                                                <i class="fas fa-times"></i>
+                                                            </a>
+                                                        @endif
                                                     </td>
                                                     <!-- Edit Modal Start  -->
                                                     <div class="modal fade" id="editProduct{{ $products->id }}"

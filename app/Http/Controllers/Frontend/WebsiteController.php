@@ -134,7 +134,7 @@ class WebsiteController extends Controller
 
     public function product()
     {
-        $products = Product::with('author')->orderby('created_at', "ASC")->get();
+        $products = Product::with('author')->orderby('created_at', "ASC")->where('status', 1)->get();
         return view('frontend.pages.products', compact('products'));
     }
 
@@ -209,4 +209,28 @@ class WebsiteController extends Controller
             }
         }
     } //end seller project submission page store method
+
+    // show contact page
+    public function contactpage()
+    {
+        return view('frontend.pages.contact');
+    }
+
+    // show privacy policy page
+    public function privacypolicy()
+    {
+        return view('frontend.pages.privacy_policy');
+    }
+
+    // show Terms & Conditions page
+    public function termsandconditons()
+    {
+        return view('frontend.pages.terms_and_conditons');
+    }
+
+    // show About us page
+    public function aboutpage()
+    {
+        return view('frontend.pages.about');
+    }
 }
