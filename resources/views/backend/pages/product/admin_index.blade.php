@@ -94,7 +94,11 @@
                                                                 class="fas fa-trash"></i></a>
                                                         @if ($products->status == 0)
                                                             <a title="Approve" class="btn btn-sm btn-success"
-                                                                href="#"><i class="fas fa-check"></i></a>
+                                                                href=""><i class="fas fa-check"></i></a>
+                                                            <a title="Reject" class="btn btn-sm btn-danger"
+                                                                href="#">
+                                                                <i class="fas fa-times"></i>
+                                                            </a>
                                                         @else
                                                             <a title="Reject" class="btn btn-sm btn-danger"
                                                                 href="#">

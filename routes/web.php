@@ -165,7 +165,13 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
         // Product Status Update
         Route::get('/active/{slug}', 'active')->name('admin.product.active');
         Route::get('/deactive/{slug}', 'deactive')->name('admin.product.deactive');
-        //product Order
+
+
+
+
+
+
+        //PRODCUT ORDER ROUTE LIST
         Route::get('/order', 'order')->name('admin.product.order');
         Route::get('/pending', 'pending')->name('admin.product.order.pending');
         Route::get('/approve', 'approve')->name('admin.product.order.approve');

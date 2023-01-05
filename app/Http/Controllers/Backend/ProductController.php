@@ -191,6 +191,15 @@ class ProductController extends Controller
         }
         return redirect()->back()->with($notification);
     }
+
+
+
+
+    // <--------- Product Order Controller ------>
+
+
+
+
     public function order()
     {
         $orders = ProductOrder::all();
