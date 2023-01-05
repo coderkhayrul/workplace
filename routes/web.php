@@ -134,7 +134,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
 
     // <------- SERVICE ROUTE LIST ------->
     Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
+        Route::get('/', 'index')->middleware('auth', 'panelaccess')->name('manage.access');
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
