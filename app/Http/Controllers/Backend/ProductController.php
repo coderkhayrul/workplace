@@ -8,6 +8,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use App\Models\Backend\Product;
 use App\Models\ProductOrder;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -18,9 +19,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $author_id = auth()->user()->id;
-        $product = Product::orderby('id', 'asc')->where('author_id', $author_id)->get();
-        return view('backend.pages.product.index', compact('product'));
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            $author_id = auth()->user()->id;
+            $product = Product::orderby('id', 'asc')->get();
+            return view('backend.pages.product.admin_index', compact('product'));
+        } else {
+            $author_id = auth()->user()->id;
+            $product = Product::orderby('id', 'asc')->where('author_id', $author_id)->get();
+            return view('backend.pages.product.index', compact('product'));
+        }
     }
 
     /**

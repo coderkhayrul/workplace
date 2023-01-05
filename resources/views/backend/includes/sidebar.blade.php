@@ -223,14 +223,16 @@
                                 </a>
                             </li>
                         </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-truck-monster"></i>
-                                    <p>Report</p>
-                                </a>
-                            </li>
-                        </ul>
+                        @if (Auth::user()->role_id == 3)
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-truck-monster"></i>
+                                        <p>Report</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                         @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
