@@ -226,7 +226,7 @@
                         @if (Auth::user()->role_id == 3)
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('admin.product.report') }}" class="nav-link">
                                         <i class="fas fa-truck-monster"></i>
                                         <p>Report</p>
                                     </a>

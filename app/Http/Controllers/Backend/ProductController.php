@@ -261,4 +261,15 @@ class ProductController extends Controller
         }
         return redirect()->back()->with($notification);
     }
+
+
+    // REPORT CONTROLLER
+    public function report()
+    {
+
+        $productOrder = ProductOrder::all();
+        $totalAmount = ProductOrder::sum('total_amount');
+
+        return view('backend.pages.product.report', compact('productOrder', 'totalAmount'));
+    }
 }

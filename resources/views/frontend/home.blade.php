@@ -118,7 +118,6 @@
                                     </div>
                                 </div>
                                 <div class="auction-stock">
-                                    <p>25+ Place Bid</p>
                                     <a href="{{ Route('web.placebid', $service->slug) }}" class="btn style1">Place Bid <i
                                             class="flaticon-right-arrow-1"></i></a>
                                 </div>

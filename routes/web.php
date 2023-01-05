@@ -141,7 +141,7 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
 
     // <------- SERVICE ROUTE LIST ------->
     Route::controller(ServiceController::class)->prefix('service')->group(function () {
-        Route::get('/', 'index')->middleware('auth', 'panelaccess')->name('manage.access');
+        Route::get('/', 'index')->name('buyer.service.index')->middleware('auth', 'panelaccess');
         Route::post('/store', 'store')->name('buyer.service.store');
         Route::get('/delete/{id}', 'distroy')->name('buyer.service.delete');
         Route::post('/update/{id}', 'update')->name('buyer.service.update');
@@ -170,7 +170,6 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
 
 
 
-
         //PRODCUT ORDER ROUTE LIST
         Route::get('/order', 'order')->name('admin.product.order');
         Route::get('/pending', 'pending')->name('admin.product.order.pending');
@@ -179,12 +178,18 @@ Route::prefix('admin')->middleware('auth', 'panelaccess')->group(function () {
 
         Route::get('/approve/{id}', 'approveStatus')->name('admin.product.order.approve.status');
         Route::get('/rejected/{id}', 'rejectedStatus')->name('admin.product.order.rejected.status');
+
+        // REPORT ROUTE LIST
+        Route::get('/report', 'report')->name('admin.product.report');
     });
+
+
     // <------- Setting ------->
     Route::controller(SettingController::class)->prefix('setting')->middleware('admin')->group(function () {
         Route::get('/', 'index')->name('admin.setting.index');
         Route::post('/update', 'update')->name('admin.setting.update');
     });
+
     // <------- Slider ------->
     Route::controller(SliderController::class)->prefix('slider')->middleware('admin')->group(function () {
         Route::get('/manage/slider', 'IndexSlider')->name('slider.index');
