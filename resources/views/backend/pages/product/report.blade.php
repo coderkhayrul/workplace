@@ -42,14 +42,14 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
+                {{-- <!-- /.col -->
                 <div class="col-md-4 col-sm-6 col-12">
                     <div class="info-box">
                         <span class="info-box-icon bg-success"><i class="far fa-calendar-check"></i></span>
 
                         <div class="info-box-content m-auto">
                             <span class="info-box-text">Approve Order</span>
-                            {{-- <span class="info-box-number">54</span> --}}
+                            <!-- <span class="info-box-number">54</span> -->
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -62,13 +62,13 @@
 
                         <div class="info-box-content m-auto">
                             <span class="info-box-text">Rejected Order</span>
-                            {{-- <span class="info-box-number">13,648</span> --}}
+                            <!-- <span class="info-box-number">13,648</span> -->
                         </div>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
+                <!-- /.col --> --}}
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="card">
@@ -116,11 +116,11 @@
                                                     <td class="sorting_1">{{ $order->user->user_name }}</td>
                                                     <td>{{ $order->product->product_name }}</td>
                                                     <td>{{ $order->bank_name }}</td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         @if ($order->status == 1)
                                                             <span class="badge badge-warning">Pending</span>
                                                         @elseif($order->status == 2)
-                                                            <span class="badge badge-success">Approve</span>
+                                                            <span class="badge badge-info">Sold</span>
                                                         @else
                                                             <span class="badge badge-danger">Rejected</span>
                                                         @endif
